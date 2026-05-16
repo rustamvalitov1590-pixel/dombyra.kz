@@ -1,25 +1,20 @@
 {
   "functions": {
-    "*.php": {
-      "runtime": "vercel-php@0.7.2"
-    }
+    "index.php": { "runtime": "vercel-php@0.7.2" },
+    "about.php": { "runtime": "vercel-php@0.7.2" },
+    "catalog.php": { "runtime": "vercel-php@0.7.2" },
+    "articles.php": { "runtime": "vercel-php@0.7.2" },
+    "contacts.php": { "runtime": "vercel-php@0.7.2" },
+    "certificate.php": { "runtime": "vercel-php@0.7.2" },
+    "guide.php": { "runtime": "vercel-php@0.7.2" },
+    "privacy.php": { "runtime": "vercel-php@0.7.2" },
+    "offer.php": { "runtime": "vercel-php@0.7.2" }
   },
   "routes": [
-    {
-      "src": "/(assets|img)/(.*)",
-      "dest": "/$1/$2"
-    },
-    {
-      "src": "/(about|catalog|articles|contacts|certificate|guide|privacy|offer)",
-      "dest": "/$1.php"
-    },
-    {
-      "src": "/",
-      "dest": "/index.php"
-    },
-    {
-      "src": "/(.*).php",
-      "dest": "/$1.php"
-    }
+    { "src": "/assets/(.*)", "dest": "/assets/$1" },
+    { "src": "/img/(.*)", "dest": "/img/$1" },
+    { "src": "/(about|catalog|articles|contacts|certificate|guide|privacy|offer)", "dest": "/$1.php" },
+    { "src": "/", "dest": "/index.php" },
+    { "src": "/(.*).php", "dest": "/$1.php" }
   ]
 }
