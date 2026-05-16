@@ -1,17 +1,25 @@
 {
   "functions": {
     "*.php": {
-      "runtime": "vercel-php@0.7.0"
+      "runtime": "vercel-php@0.7.2"
     }
   },
   "routes": [
+    {
+      "src": "/(assets|img)/(.*)",
+      "dest": "/$1/$2"
+    },
     {
       "src": "/(about|catalog|articles|contacts|certificate|guide|privacy|offer)",
       "dest": "/$1.php"
     },
     {
-      "src": "/(.*)",
+      "src": "/",
       "dest": "/index.php"
+    },
+    {
+      "src": "/(.*).php",
+      "dest": "/$1.php"
     }
   ]
 }
