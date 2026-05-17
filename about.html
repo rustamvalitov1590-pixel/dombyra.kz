@@ -1,0 +1,274 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нас | DOMBYRA.KZ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#C5A377',
+                            goldLight: '#E2D1B9',
+                            cream: '#FAF9F6',
+                            dark: '#3A3530',
+                            clay: '#8C7B6C',
+                            accent: '#F3F0E9',
+                            white: '#FFFFFF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Outfit', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        '4xl': '2.5rem',
+                        '5xl': '3.5rem',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-brand-cream font-['Inter'] text-brand-dark selection:bg-brand-gold selection:text-white overflow-x-hidden">
+    <!-- Floating Background Shapes -->
+    <div class="floating-shape bg-brand-gold/10 w-96 h-96 top-[-10%] left-[-10%]"></div>
+    <div class="floating-shape bg-brand-clay/5 w-[500px] h-[500px] top-[30%] right-[-15%]"></div>
+    <div class="floating-shape bg-brand-gold/10 w-80 h-80 bottom-[10%] left-[20%]"></div>
+
+    <header class="fixed w-full top-0 z-50 px-4 transition-all duration-300" id="mainHeader"></header>
+    <div id="mobileMenu" class="fixed inset-0 z-[60] bg-brand-cream transform translate-x-full transition-transform duration-300 md:hidden"></div>
+
+    <main class="pt-32 pb-24">
+        <div class="container mx-auto max-w-7xl px-4 md:px-10">
+            <!-- Header Section -->
+            <div class="text-center mb-20">
+                <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-brand-gold/5 border border-brand-gold/10 mb-6">
+                    <span class="text-[10px] font-black uppercase tracking-[0.2em] text-brand-gold">Наша история</span>
+                </div>
+                <h1 class="text-4xl md:text-7xl font-light uppercase tracking-tight text-brand-dark mb-6">О <span class="text-brand-gold font-bold">проекте</span></h1>
+                <p class="text-brand-clay font-medium max-w-2xl mx-auto leading-relaxed text-sm md:text-base">Как современные технологии объединились с древним искусством создания казахских музыкальных инструментов.</p>
+            </div>
+
+            <!-- Brand Story & Mission -->
+            <section class="mb-32">
+                <div class="glass-card rounded-5xl border border-brand-gold/10 overflow-hidden relative shadow-2xl">
+                    <div class="absolute top-0 right-0 w-1/3 h-full bg-brand-gold/5 pointer-events-none"></div>
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-7 p-8 md:p-16">
+                            <span class="inline-block bg-brand-gold/10 text-brand-gold text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-6 border border-brand-gold/20">Миссия</span>
+                            <h2 class="text-2xl sm:text-3xl md:text-5xl font-light uppercase tracking-tight text-brand-dark mb-8 leading-tight font-serif">
+                                Искусство, <br><span class="text-brand-gold italic">рожденное в сердце</span>
+                            </h2>
+                            <div class="space-y-6 text-brand-clay font-medium text-sm md:text-base leading-relaxed max-w-xl">
+                                <p>
+                                    «Каждая созданная нами домбра — это живой голос казахской степи. Меня зовут <b class="text-brand-dark font-bold">Айым Эрнст</b>. Я объединила свой многолетний опыт управления современными IT-продуктами с безграничной любовью к народным музыкальным традициям».
+                                </p>
+                                <p>
+                                    Наша главная цель — отказаться от безликого массового конвейера в пользу штучных шедевров. Мы бережно соединяем вековые секреты мастеров с инновационными методами обработки материалов, чтобы наши инструменты радовали вас безупречным звучанием десятилетиями.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-5 relative flex justify-center p-6 lg:p-12">
+                            <div class="w-full max-w-[400px] aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl relative border border-brand-gold/10">
+                                <img src="./assets/workshop.jpg" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" alt="Workshop">
+                                <div class="absolute inset-0 bg-brand-dark/10"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Grand Statistics -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
+                <div class="glass-card p-6 md:p-10 rounded-4xl border border-brand-gold/5 text-center transition-all duration-300 hover:border-brand-gold/25 shadow-lg">
+                    <div class="text-5xl font-bold text-brand-gold mb-3">28 лет</div>
+                    <div class="text-[10px] uppercase font-bold tracking-widest text-brand-clay">Опыта создания инструментов</div>
+                </div>
+                <div class="glass-card p-6 md:p-10 rounded-4xl border border-brand-gold/5 text-center transition-all duration-300 hover:border-brand-gold/25 shadow-lg">
+                    <div class="text-5xl font-bold text-brand-gold mb-3">7000+</div>
+                    <div class="text-[10px] uppercase font-bold tracking-widest text-brand-clay">Домбр звучат по всему миру</div>
+                </div>
+                <div class="glass-card p-6 md:p-10 rounded-4xl border border-brand-gold/5 text-center transition-all duration-300 hover:border-brand-gold/25 shadow-lg">
+                    <div class="text-5xl font-bold text-brand-gold mb-3">3 года</div>
+                    <div class="text-[10px] uppercase font-bold tracking-widest text-brand-clay">Полной письменной гарантии</div>
+                </div>
+            </div>
+
+            <!-- Historical Milestone Timeline -->
+            <section class="mb-32">
+                <h2 class="text-3xl md:text-5xl font-light mb-16 uppercase tracking-tight text-brand-dark text-center">Путь <span class="text-brand-gold font-bold">развития</span></h2>
+                <div class="max-w-4xl mx-auto space-y-12">
+                    <!-- 1998 -->
+                    <div class="glass-card p-6 md:p-12 rounded-4xl border border-brand-gold/10 relative transition-transform hover:-translate-y-1 shadow-lg">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                            <div class="md:col-span-3 text-left">
+                                <span class="text-4xl font-extrabold text-brand-gold">1998</span>
+                                <p class="text-[9px] font-bold uppercase tracking-widest text-brand-clay">Рождение мастерской</p>
+                            </div>
+                            <div class="md:col-span-9 border-t md:border-t-0 md:border-l border-brand-gold/20 pt-4 md:pt-0 md:pl-8">
+                                <h4 class="font-bold text-brand-dark text-lg mb-2">Начало традиции</h4>
+                                <p class="text-brand-clay text-sm leading-relaxed">Наши мастера создают первые профессиональные домбры в небольшом алматинском цеху, фокусируясь исключительно на акустической чистоте звука и ручном труде.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2012 -->
+                    <div class="glass-card p-6 md:p-12 rounded-4xl border border-brand-gold/10 relative transition-transform hover:-translate-y-1 shadow-lg">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                            <div class="md:col-span-3 text-left">
+                                <span class="text-4xl font-extrabold text-brand-gold">2012</span>
+                                <p class="text-[9px] font-bold uppercase tracking-widest text-brand-clay">Эпоха инноваций</p>
+                            </div>
+                            <div class="md:col-span-9 border-t md:border-t-0 md:border-l border-brand-gold/20 pt-4 md:pt-0 md:pl-8">
+                                <h4 class="font-bold text-brand-dark text-lg mb-2">Швейцарские технологии сушки</h4>
+                                <p class="text-brand-clay text-sm leading-relaxed">Мы расширили команду и внедрили передовые технологии сушки древесины, которые позволили сохранить геометрию и звонкость деки при любых перепадах влажности.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2026 -->
+                    <div class="glass-card p-6 md:p-12 rounded-4xl border border-brand-gold/10 relative transition-transform hover:-translate-y-1 shadow-lg">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                            <div class="md:col-span-3 text-left">
+                                <span class="text-4xl font-extrabold text-brand-gold">2026</span>
+                                <p class="text-[9px] font-bold uppercase tracking-widest text-brand-clay">Современный виток</p>
+                            </div>
+                            <div class="md:col-span-9 border-t md:border-t-0 md:border-l border-brand-gold/20 pt-4 md:pt-0 md:pl-8">
+                                <h4 class="font-bold text-brand-dark text-lg mb-2">Интерактивный конфигуратор</h4>
+                                <p class="text-brand-clay text-sm leading-relaxed">Интеграция 3D-конфигуратора под руководством Айым Эрнст. Теперь ценители традиционной музыки по всему миру могут собрать инструмент своей мечты онлайн.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Meet Our Master Craftsmen -->
+            <section class="mb-32">
+                <h2 class="text-3xl md:text-5xl font-light mb-16 uppercase tracking-tight text-brand-dark text-center">Золотые руки <span class="text-brand-gold font-bold">мастерской</span></h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <!-- Master 1 -->
+                    <div class="glass-card p-6 md:p-10 rounded-4xl border border-brand-gold/10 relative overflow-hidden group shadow-lg">
+                        <div class="absolute top-0 right-0 w-16 h-16 bg-brand-gold/5 rounded-bl-full flex items-center justify-center text-brand-gold">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                        </div>
+                        <span class="inline-block text-[9px] font-black uppercase tracking-widest text-brand-gold mb-3">Опыт с 1998 года</span>
+                        <h3 class="text-2xl font-bold text-brand-dark mb-4 uppercase">Мастер Серик</h3>
+                        <p class="text-brand-gold text-xs font-bold uppercase tracking-widest mb-6">Акустика и выбор резонансного дерева</p>
+                        <p class="text-brand-clay text-sm leading-relaxed italic border-l-2 border-brand-gold pl-4">
+                            «Звук домбры рождается глубоко внутри дерева. Я чувствую уникальный характер и плотность каждой заготовки еще до того, как она попадет на сборочный стол».
+                        </p>
+                    </div>
+
+                    <!-- Master 2 -->
+                    <div class="glass-card p-6 md:p-10 rounded-4xl border border-brand-gold/10 relative overflow-hidden group shadow-lg">
+                        <div class="absolute top-0 right-0 w-16 h-16 bg-brand-gold/5 rounded-bl-full flex items-center justify-center text-brand-gold">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+                        </div>
+                        <span class="inline-block text-[9px] font-black uppercase tracking-widest text-brand-gold mb-3">Опыт с 2005 года</span>
+                        <h3 class="text-2xl font-bold text-brand-dark mb-4 uppercase">Мастер Канат</h3>
+                        <p class="text-brand-gold text-xs font-bold uppercase tracking-widest mb-6">Инкрустация, резьба и финальный декор</p>
+                        <p class="text-brand-clay text-sm leading-relaxed italic border-l-2 border-brand-gold pl-4">
+                            «Каждый узор на домбре — это древнее послание с глубоким смыслом. Я бережно высекаю каждую линию декора, чтобы инструмент выглядел благородно и престижно».
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Strict Resonance Wood Selection -->
+            <section class="mb-32">
+                <h2 class="text-3xl md:text-5xl font-light mb-16 uppercase tracking-tight text-brand-dark text-center">Как рождается <span class="text-brand-gold font-bold">звучание</span></h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Wood 1 -->
+                    <div class="glass-card p-8 rounded-3xl border border-brand-gold/5 hover:border-brand-gold/20 transition-all duration-300 shadow-md">
+                        <h4 class="font-bold text-brand-dark mb-2 uppercase tracking-wider text-xs">Ангарская сосна</h4>
+                        <p class="text-[9px] font-bold uppercase tracking-widest text-brand-gold mb-4">Верхняя дека</p>
+                        <p class="text-xs text-brand-clay leading-relaxed">Дарит инструменту кристально чистые высокие частоты, невероятную громкость и отзывчивость на каждое легкое касание.</p>
+                    </div>
+
+                    <!-- Wood 2 -->
+                    <div class="glass-card p-8 rounded-3xl border border-brand-gold/5 hover:border-brand-gold/20 transition-all duration-300 shadow-md">
+                        <h4 class="font-bold text-brand-dark mb-2 uppercase tracking-wider text-xs">Горный клён</h4>
+                        <p class="text-[9px] font-bold uppercase tracking-widest text-brand-gold mb-4">Задний корпус</p>
+                        <p class="text-xs text-brand-clay leading-relaxed">Обеспечивает невероятную плотность, насыщенные средние частоты, бархатную глубину звука и отличную прочность.</p>
+                    </div>
+
+                    <!-- Wood 3 -->
+                    <div class="glass-card p-8 rounded-3xl border border-brand-gold/5 hover:border-brand-gold/20 transition-all duration-300 shadow-md">
+                        <h4 class="font-bold text-brand-dark mb-2 uppercase tracking-wider text-xs">Черный орех</h4>
+                        <p class="text-[9px] font-bold uppercase tracking-widest text-brand-gold mb-4">Детали и шпон</p>
+                        <p class="text-xs text-brand-clay leading-relaxed">Придает звучанию благородный бархатный тембр и неповторимый темно-шоколадный древесный рисунок на корпусе.</p>
+                    </div>
+
+                    <!-- Wood 4 -->
+                    <div class="glass-card p-8 rounded-3xl border border-brand-gold/5 hover:border-brand-gold/20 transition-all duration-300 shadow-md">
+                        <h4 class="font-bold text-brand-dark mb-2 uppercase tracking-wider text-xs">Бук и береза</h4>
+                        <p class="text-[9px] font-bold uppercase tracking-widest text-brand-gold mb-4">Гриф и голова</p>
+                        <p class="text-xs text-brand-clay leading-relaxed">Обеспечивают стабильное натяжение струн, безупречную ровность грифа и полное отсутствие искривления со временем.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Call to Action Section -->
+            <div class="mt-32">
+                <div class="glass-card p-8 md:p-16 rounded-5xl border border-brand-gold/10 relative overflow-hidden bg-brand-dark text-white shadow-2xl">
+                    <div class="absolute top-0 right-0 w-96 h-96 bg-brand-gold/10 blur-[100px] -mr-48 -mt-48"></div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+                        <div>
+                            <h2 class="text-3xl md:text-5xl font-light uppercase tracking-tight mb-6 leading-tight">Хотите обсудить <span class="text-brand-gold font-bold">дизайн</span>?</h2>
+                            <p class="text-white/60 mb-10 text-base md:text-lg leading-relaxed font-sans">
+                                Свяжитесь с нами прямо сейчас! Мы с удовольствием поможем вам подобрать материалы, определиться со стилем и создать по-настоящему личный инструмент.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-6">
+                                <a href="https://wa.me/77755226901" class="btn-gold px-12 py-6 rounded-full font-bold uppercase text-[11px] tracking-widest shadow-2xl active:scale-95 text-center">Консультация в WhatsApp</a>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-brand-gold">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 leading-none">Звонок мастеру</p>
+                                        <p class="text-sm font-bold text-white">+7 (775) 522 69 01</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative hidden lg:block">
+                            <div class="aspect-square bg-gradient-to-tr from-brand-gold/20 to-transparent rounded-full flex items-center justify-center p-20">
+                                <img src="assets/hero_dombyra.png" alt="Custom Dombyra" class="h-full object-contain drop-shadow-2xl animate-float">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Sticky Tab Bar -->
+    <div class="sticky-footer md:hidden glass-cobalt border-t border-brand-gold/10" id="stickyFooter">
+        <a href="index.html" class="nav-tab">
+            <div class="nav-tab-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg></div>
+            <span class="nav-tab-label">Главная</span>
+        </a>
+        <a href="catalog.html" class="nav-tab">
+            <div class="nav-tab-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg></div>
+            <span class="nav-tab-label">Каталог</span>
+        </a>
+        <a href="index.html#reviews" class="nav-tab">
+            <div class="nav-tab-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg></div>
+            <span class="nav-tab-label">Отзывы</span>
+        </a>
+        <a href="https://wa.me/77755226901" target="_blank" class="nav-tab nav-tab-main !bg-brand-gold">
+            <div class="nav-tab-icon text-white rounded-2xl"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></div>
+            <span class="nav-tab-label">Заказать</span>
+        </a>
+    </div>
+
+    <footer id="mainFooter" class="bg-brand-dark text-white pt-24 pb-44 md:py-24 border-t border-white/5"></footer>
+    <script src="assets/main.js"></script>
+</body>
+</html>

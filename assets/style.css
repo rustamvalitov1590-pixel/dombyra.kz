@@ -1,0 +1,210 @@
+﻿html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+:root {
+    --brand-gold: #C5A377;
+    --brand-gold-light: #E2D1B9;
+    --brand-cream: #FAF9F6;
+    --brand-dark: #3A3530;
+    --brand-clay: #8C7B6C;
+    --brand-accent: #F3F0E9;
+    --brand-white: #FFFFFF;
+    --glass-bg: rgba(255, 255, 255, 0.92);
+    --glass-border: rgba(160, 120, 70, 0.15);
+    --soft-gradient: linear-gradient(135deg, #FAF9F6 0%, #F3F0E9 100%);
+    --gold-gradient: linear-gradient(135deg, #C5A377 0%, #A6875A 100%);
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--brand-cream);
+    color: var(--brand-dark);
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 4px 24px rgba(100, 70, 20, 0.10), 0 1px 4px rgba(100,70,20,0.06);
+}
+
+.card-shadow {
+    box-shadow: 0 25px 60px rgba(0, 71, 171, 0.03);
+}
+
+/* Cinema Hero Effect */
+@keyframes kenBurns {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+.cinema-bg {
+    animation: kenBurns 20s linear infinite alternate;
+}
+
+/* Modal / Popup Styles */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(58, 53, 48, 0.4);
+    backdrop-filter: blur(15px);
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+.modal-content {
+    transform: scale(0.9);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+/* Quiz Styles */
+.quiz-step {
+    display: none;
+}
+.quiz-step.active {
+    display: block;
+}
+.quiz-option {
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+.quiz-option:hover {
+    border-color: var(--brand-gold);
+    background: rgba(197, 163, 119, 0.05);
+}
+.quiz-option.selected {
+    border-color: var(--brand-gold);
+    background: rgba(197, 163, 119, 0.1);
+}
+
+.glass-cobalt {
+    background: rgba(197, 163, 119, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(197, 163, 119, 0.2);
+    color: var(--brand-dark);
+}
+
+.floating-shape {
+    position: absolute;
+    filter: blur(100px);
+    z-index: -1;
+    opacity: 0.35;
+    pointer-events: none;
+    border-radius: 50%;
+}
+
+.header-glass {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    box-shadow: 0 12px 50px rgba(0, 0, 0, 0.02);
+}
+
+.sticky-footer {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    right: 25px;
+    background: rgba(10, 10, 15, 0.82);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 12px 10px;
+    border-radius: 40px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+    z-index: 100;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(150%);
+}
+
+.sticky-footer.visible {
+    transform: translateY(0);
+}
+
+.nav-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: rgba(255, 255, 255, 0.45);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.nav-tab.active {
+    color: var(--brand-gold);
+}
+
+.nav-tab-icon {
+    width: 22px;
+    height: 22px;
+}
+
+.nav-tab-label {
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.btn-gold {
+    background: var(--gold-gradient);
+    color: white;
+    box-shadow: 0 15px 30px rgba(197, 163, 119, 0.15);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-gold:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(197, 163, 119, 0.2);
+}
+
+.faq-content {
+    transition: all 0.5s ease;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Scrollbar Utilities */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.product-image-blend {
+    mix-blend-mode: multiply;
+}

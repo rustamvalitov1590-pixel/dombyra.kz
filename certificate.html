@@ -1,0 +1,281 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сертификат подлинности | DOMBYRA.KZ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#C5A377',
+                            goldLight: '#E2D1B9',
+                            cream: '#FAF9F6',
+                            dark: '#3A3530',
+                            clay: '#8C7B6C',
+                            accent: '#F3F0E9',
+                            white: '#FFFFFF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Outfit', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        '4xl': '2.5rem',
+                        '5xl': '3.5rem',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-brand-cream font-['Inter'] text-brand-dark selection:bg-brand-gold selection:text-white overflow-x-hidden">
+    <!-- Floating Background Shapes -->
+    <div class="floating-shape bg-brand-gold/10 w-96 h-96 top-[-10%] left-[-10%]"></div>
+    <div class="floating-shape bg-brand-clay/5 w-[500px] h-[500px] top-[30%] right-[-15%]"></div>
+    <div class="floating-shape bg-brand-gold/10 w-80 h-80 bottom-[10%] left-[20%]"></div>
+
+    <header class="fixed w-full top-0 z-50 px-4 transition-all duration-300" id="mainHeader"></header>
+    <div id="mobileMenu" class="fixed inset-0 z-[60] bg-brand-cream transform translate-x-full transition-transform duration-300 md:hidden"></div>
+
+    <main class="pt-32 pb-24">
+        <div class="container mx-auto max-w-7xl px-4 md:px-10">
+            <!-- Header Section -->
+            <div class="text-center mb-20">
+                <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-brand-gold/5 border border-brand-gold/10 mb-6">
+                    <span class="text-[10px] font-black uppercase tracking-[0.2em] text-brand-gold">Защита оригинальности</span>
+                </div>
+                <h1 class="text-4xl md:text-7xl font-light uppercase tracking-tight text-brand-dark mb-6 font-serif">Паспорт <span class="text-brand-gold font-bold">инструмента</span></h1>
+                <p class="text-brand-clay font-medium max-w-2xl mx-auto leading-relaxed text-sm md:text-base">Каждая созданная нами домбра обладает уникальным цифровым паспортом и подтвержденной трехлетней гарантией.</p>
+            </div>
+
+            <!-- Cinematic Passport Showcase -->
+            <section class="mb-24">
+                <div class="glass-card rounded-5xl overflow-hidden border border-brand-gold/10 relative shadow-2xl">
+                    <div class="absolute top-0 right-0 w-1/3 h-full bg-brand-gold/5 pointer-events-none"></div>
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-6 p-8 md:p-16">
+                            <span class="inline-block bg-brand-gold/10 text-brand-gold text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-6 border border-brand-gold/20">Подлинность</span>
+                            <h2 class="text-3xl md:text-5xl font-light uppercase tracking-tight text-brand-dark mb-8 leading-tight font-serif">
+                                Защита вашего <br><span class="text-brand-gold italic">выбора и вложений</span>
+                            </h2>
+                            <div class="space-y-6 text-brand-clay font-medium text-sm leading-relaxed max-w-lg">
+                                <p>
+                                    Мы верим, что великие музыкальные инструменты должны обладать безупречной и прозрачной историей. Поэтому мы отказались от бумажных талонов прошлых лет в пользу защищенной цифровой системы верификации.
+                                </p>
+                                <p>
+                                    Электронный паспорт подтверждает подлинность вашей домбры, фиксирует точные материалы изготовления (породу деки, корпуса, грифа), закрепляет дату выпуска и имя мастера, сотворившего этот шедевр.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-6 relative flex justify-center p-4 lg:p-16 bg-brand-accent/20">
+                            <!-- Visual Holographic Passport mockup -->
+                            <div class="w-full max-w-[420px] aspect-auto md:aspect-[1.58/1] rounded-3xl p-6 md:p-8 py-8 bg-gradient-to-tr from-brand-dark to-brand-dark/95 border border-brand-gold/30 text-white relative shadow-2xl overflow-hidden">
+                                <div class="absolute top-0 right-0 w-40 h-40 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+                                <div class="flex justify-between items-start mb-10">
+                                    <div>
+                                        <p class="text-[8px] uppercase tracking-widest text-brand-gold/60 font-bold mb-1">Мануфактура</p>
+                                        <h4 class="text-lg font-bold tracking-widest font-serif leading-none">DOMBYRA</h4>
+                                    </div>
+                                    <div class="w-8 h-8 rounded-full border border-brand-gold/30 flex items-center justify-center text-brand-gold text-xs font-bold bg-white/5">NFC</div>
+                                </div>
+                                <div class="space-y-4">
+                                    <p class="text-[9px] uppercase tracking-[0.25em] text-white/50 leading-none">Серийный номер паспорта</p>
+                                    <h3 class="text-xl font-mono font-bold tracking-widest text-brand-gold">DKZ-2026-XXXX</h3>
+                                </div>
+                                <div class="mt-8 pt-6 border-t border-white/5 flex justify-between items-center text-[8px] uppercase tracking-widest text-white/40">
+                                    <span>Гарантия: 3 года</span>
+                                    <span class="text-brand-gold font-bold">Оригинальный продукт</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Three Degrees of Protection Grid -->
+            <section class="mb-24">
+                <h3 class="text-2xl md:text-4xl font-light uppercase tracking-tight text-brand-dark mb-16 text-center font-serif">Три степени <span class="text-brand-gold font-bold">защиты</span></h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Protection 1 -->
+                    <div class="glass-card p-6 md:p-10 rounded-4xl border border-brand-gold/10 relative shadow-lg">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                        </div>
+                        <h4 class="text-xl font-bold uppercase text-brand-dark mb-4">Фирменное клеймо</h4>
+                        <p class="text-brand-clay text-xs leading-relaxed">
+                            На обратной стороне головы грифа каждого оригинального инструмента горячим тиснением выжигается фирменный товарный знак нашей мануфактуры.
+                        </p>
+                    </div>
+
+                    <!-- Protection 2 -->
+                    <div class="glass-card p-6 md:p-10 rounded-4xl border border-brand-gold/10 relative shadow-lg">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/></svg>
+                        </div>
+                        <h4 class="text-xl font-bold uppercase text-brand-dark mb-4">Внутренняя лазерная резьба</h4>
+                        <p class="text-brand-clay text-xs leading-relaxed">
+                            Уникальный серийный номер вырезается лазером на деревянной пластине внутри резонатора. Его легко прочитать, заглянув сквозь резонаторное отверстие верхней деки.
+                        </p>
+                    </div>
+
+                    <!-- Protection 3 -->
+                    <div class="glass-card p-6 md:p-10 rounded-4xl border border-brand-gold/10 relative shadow-lg">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                        </div>
+                        <h4 class="text-xl font-bold uppercase text-brand-dark mb-4">Встроенный NFC-чип</h4>
+                        <p class="text-brand-clay text-xs leading-relaxed">
+                            Внутри корпуса установлен миниатюрный микрочип аутентификации. Поднесите смартфон к деке, чтобы мгновенно считать ссылку с зашифрованными данными о модели.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Verification scanner terminal -->
+            <section class="max-w-4xl mx-auto mb-24">
+                <div class="glass-card rounded-[3rem] p-8 md:p-16 border-2 border-brand-gold/25 shadow-2xl relative overflow-hidden">
+                    <div class="absolute inset-0 bg-brand-gold/5 pointer-events-none"></div>
+                    <div class="text-center mb-10 relative z-10">
+                        <h3 class="text-2xl md:text-4xl font-light uppercase tracking-tight text-brand-dark mb-4 font-serif">Проверить <span class="text-brand-gold font-bold">подлинность</span></h3>
+                        <p class="text-brand-clay text-xs md:text-sm font-medium">Введите серийный номер вашего паспорта для верификации инструмента в нашей базе данных.</p>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto relative z-10 mb-8">
+                        <input type="text" id="certInput" placeholder="Например: DKZ-2026-001" class="flex-1 bg-white border border-brand-gold/25 rounded-2xl px-6 py-5 text-brand-dark font-bold text-sm focus:outline-none focus:border-brand-gold transition-colors shadow-inner">
+                        <button onclick="checkCertificate()" id="checkBtn" class="btn-gold px-12 py-5 rounded-2xl font-bold uppercase tracking-widest text-[10px] active:scale-95 transition-transform flex items-center justify-center gap-2">Проверить паспорт</button>
+                    </div>
+
+                    <!-- Dynamic result section -->
+                    <div id="certResult" class="mt-6 hidden max-w-2xl mx-auto relative z-10"></div>
+                </div>
+            </section>
+
+            <!-- Warranty & Care Grid -->
+            <section class="mb-24">
+                <h3 class="text-2xl md:text-4xl font-light uppercase tracking-tight text-brand-dark mb-16 text-center font-serif">Как сохранить <span class="text-brand-gold font-bold">инструмент</span></h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Care 1 -->
+                    <div class="glass-card p-8 rounded-3xl border border-brand-gold/5 shadow-md">
+                        <h4 class="font-bold text-brand-dark text-xs uppercase mb-3 tracking-wider">Влажность 40-60%</h4>
+                        <p class="text-[11px] text-brand-clay leading-relaxed">Древесина чрезвычайно чувствительна к сухому воздуху. Во время отопительного сезона обязательно используйте комнатный увлажнитель воздуха.</p>
+                    </div>
+
+                    <!-- Care 2 -->
+                    <div class="glass-card p-8 rounded-3xl border border-brand-gold/5 shadow-md">
+                        <h4 class="font-bold text-brand-dark text-xs uppercase mb-3 tracking-wider">Температура 18-24°C</h4>
+                        <p class="text-[11px] text-brand-clay leading-relaxed">Избегайте близости к батареям отопления, сквознякам или кондиционерам. Не оставляйте инструмент в машине под открытым солнцем.</p>
+                    </div>
+
+                    <!-- Care 3 -->
+                    <div class="glass-card p-8 rounded-3xl border border-brand-gold/5 shadow-md">
+                        <h4 class="font-bold text-brand-dark text-xs uppercase mb-3 tracking-wider">Жёсткий кофр</h4>
+                        <p class="text-[11px] text-brand-clay leading-relaxed">Храните и транспортируйте домбру только в специальном жестком чехле (кофре), который гасит температурные перепады и удары.</p>
+                    </div>
+
+                    <!-- Care 4 -->
+                    <div class="glass-card p-8 rounded-3xl border border-brand-gold/5 shadow-md">
+                        <h4 class="font-bold text-brand-dark text-xs uppercase mb-3 tracking-wider">Чистка и уход</h4>
+                        <p class="text-[11px] text-brand-clay leading-relaxed">Протирайте лакированные детали мягкой микрофиброй без использования спиртовых и химических чистящих растворов.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recovery & Restoration CTA Banner -->
+            <section class="mt-20">
+                <div class="glass-card p-8 md:p-16 rounded-5xl border border-brand-gold/10 relative overflow-hidden bg-brand-dark text-white shadow-2xl">
+                    <div class="absolute top-0 right-0 w-96 h-96 bg-brand-gold/10 blur-[100px] -mr-48 -mt-48"></div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+                        <div>
+                            <h2 class="text-3xl md:text-5xl font-light uppercase tracking-tight mb-6 leading-tight">Утеряли <span class="text-brand-gold font-bold">паспорт</span>?</h2>
+                            <p class="text-white/60 mb-10 text-sm md:text-base leading-relaxed max-w-lg">
+                                Не беспокойтесь! Мы поможем восстановить электронные или физические документы вашего инструмента по ФИО первого покупателя, ориентировочной дате заказа или фотографиям домбры.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-6">
+                                <a href="https://wa.me/77755226901?text=Здравствуйте!%20Я%20утерял%20паспорт%20своей%20домбры%20и%20хочу%20его%20восстановить" target="_blank" class="btn-gold px-12 py-6 rounded-full font-bold uppercase text-[11px] tracking-widest shadow-2xl active:scale-95 text-center flex items-center justify-center gap-3">
+                                    Восстановить в WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                        <div class="relative hidden lg:block">
+                            <div class="aspect-square bg-gradient-to-tr from-brand-gold/20 to-transparent rounded-full flex items-center justify-center p-20">
+                                <img src="assets/hero_dombyra.png" alt="Custom Dombyra" class="h-full object-contain drop-shadow-2xl animate-float">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Sticky Tab Bar -->
+    <div class="sticky-footer md:hidden glass-cobalt border-t border-brand-gold/10" id="stickyFooter">
+        <a href="index.html" class="nav-tab">
+            <div class="nav-tab-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg></div>
+            <span class="nav-tab-label">Главная</span>
+        </a>
+        <a href="catalog.html" class="nav-tab">
+            <div class="nav-tab-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg></div>
+            <span class="nav-tab-label">Каталог</span>
+        </a>
+        <a href="index.html#reviews" class="nav-tab">
+            <div class="nav-tab-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg></div>
+            <span class="nav-tab-label">Отзывы</span>
+        </a>
+        <a href="https://wa.me/77755226901" target="_blank" class="nav-tab nav-tab-main !bg-brand-gold">
+            <div class="nav-tab-icon text-white rounded-2xl"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></div>
+            <span class="nav-tab-label">Заказать</span>
+        </a>
+    </div>
+
+    <footer id="mainFooter" class="bg-brand-dark text-white pt-24 pb-44 md:py-24 border-t border-white/5"></footer>
+    <script src="assets/main.js"></script>
+    <script>
+        async function checkCertificate() {
+            const input = document.getElementById('certInput');
+            const btn = document.getElementById('checkBtn');
+            const result = document.getElementById('certResult');
+            
+            if (input.value.trim().length < 5) {
+                alert('Пожалуйста, введите корректный номер сертификата');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = '<span class="flex items-center gap-2"><svg class="animate-spin h-5 w-5 text-white" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Проверка...</span>';
+            
+            await new Promise(r => setTimeout(r, 1200));
+            
+            btn.disabled = false;
+            btn.innerHTML = 'Проверить паспорт';
+            result.classList.remove('hidden');
+            result.innerHTML = `
+                <div class="p-8 md:p-10 rounded-3xl bg-white border-2 border-brand-gold shadow-2xl text-left animate-in fade-in slide-in-from-bottom-4 duration-700">
+                    <div class="flex items-center gap-4 mb-6 text-green-600">
+                        <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        <h3 class="text-lg font-bold uppercase tracking-tight">Сертификат подлинности подтвержден</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-x-8 gap-y-4 text-xs">
+                        <div class="flex flex-col"><span class="text-[9px] uppercase font-bold text-brand-clay/60">Модель</span><span class="font-bold text-brand-dark">Домбра "Толқын"</span></div>
+                        <div class="flex flex-col"><span class="text-[9px] uppercase font-bold text-brand-clay/60">Номер паспорта</span><span class="font-bold text-brand-dark">${input.value.toUpperCase()}</span></div>
+                        <div class="flex flex-col"><span class="text-[9px] uppercase font-bold text-brand-clay/60">Древесина</span><span class="font-bold text-brand-dark">Черный орех, Ангарская сосна</span></div>
+                        <div class="flex flex-col"><span class="text-[9px] uppercase font-bold text-brand-clay/60">Дата выпуска</span><span class="font-bold text-brand-dark">12.02.2024</span></div>
+                        <div class="flex flex-col"><span class="text-[9px] uppercase font-bold text-brand-clay/60">Ведущий мастер</span><span class="font-bold text-brand-dark">Мастер Серик</span></div>
+                        <div class="flex flex-col"><span class="text-[9px] uppercase font-bold text-brand-clay/60">Встроенный NFC ID</span><span class="font-bold text-brand-dark">NFC-E74A89C102</span></div>
+                    </div>
+                    <div class="mt-8 pt-8 border-t border-brand-gold/10">
+                        <p class="text-xs text-brand-clay font-medium italic">Официальная 3-летняя гарантия действительна до 12.02.2027. По любым вопросам обслуживания вы можете связаться с мануфактурой по серийному номеру паспорта.</p>
+                    </div>
+                </div>
+            `;
+            result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>
