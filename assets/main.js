@@ -1,10 +1,22 @@
-
 const headerHTML = `
     <div class="container mx-auto max-w-7xl px-1 md:px-10">
         <div class="header-glass rounded-3xl px-6 md:px-10 h-16 md:h-20 flex items-center justify-between transition-all duration-300" id="headerInner">
-            <a href="index.html" class="flex flex-col items-start leading-none group flex-shrink-0" id="logoLink">
-                <span class="text-xl md:text-2xl font-black tracking-tighter text-brand-dark">DOMBYRA.KZ</span>
-                <span class="text-[8px] md:text-[10px] font-medium tracking-[0.3em] text-brand-dark/60 uppercase -mt-1 group-hover:text-brand-gold transition-colors">by Aiym ERNST</span>
+            <a href="index.html" class="flex items-center gap-3 group flex-shrink-0" id="logoLink">
+                <!-- Master stamp logo -->
+                <div class="w-9 h-9 rounded-full border border-brand-gold/30 flex items-center justify-center text-brand-gold bg-brand-gold/5 group-hover:scale-105 group-hover:border-brand-gold transition-all duration-300">
+                    <svg class="w-6 h-6 fill-none stroke-current" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="45" stroke-width="1.5" stroke-dasharray="3 3"/>
+                        <circle cx="50" cy="50" r="35" stroke-width="1"/>
+                        <path d="M50 15V85M15 50H85" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M28 28C38 38 62 38 72 28M28 72C38 62 62 62 72 72" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M28 28C38 38 38 62 28 72M72 28C62 38 62 62 72 72" stroke-width="1.5" stroke-linecap="round"/>
+                        <circle cx="50" cy="50" r="6" fill="currentColor"/>
+                    </svg>
+                </div>
+                <div class="flex flex-col items-start leading-none">
+                    <span class="text-xl md:text-2xl font-black tracking-tighter text-brand-dark transition-colors group-hover:text-brand-gold">DOMBYRA.KZ</span>
+                    <span class="text-[8px] md:text-[10px] font-medium tracking-[0.3em] text-brand-dark/60 uppercase -mt-1 group-hover:text-brand-gold/80 transition-colors">by Aiym ERNST</span>
+                </div>
             </a>
 
             <nav class="hidden xl:flex items-center gap-x-4 2xl:gap-x-8 font-black text-brand-dark">
@@ -52,9 +64,22 @@ const footerHTML = `
     <div class="container mx-auto px-6 max-w-7xl md:px-10 mx-auto relative z-10">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 mb-20">
             <div class="col-span-1 lg:col-span-1">
-                <a href="index.html" class="flex flex-col items-start leading-none group mb-10">
-                    <span class="text-xl md:text-2xl font-black tracking-tighter text-white">DOMBYRA.KZ</span>
-                    <span class="text-[8px] md:text-[10px] font-medium tracking-[0.3em] text-white/40 uppercase -mt-1 group-hover:text-brand-gold transition-colors">by Aiym ERNST</span>
+                <a href="index.html" class="flex items-center gap-3 group mb-10" id="footerLogoLink">
+                    <!-- Master stamp logo (footer variant) -->
+                    <div class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-brand-gold bg-white/5 group-hover:scale-105 group-hover:border-brand-gold transition-all duration-300">
+                        <svg class="w-6 h-6 fill-none stroke-current" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" stroke-width="1.5" stroke-dasharray="3 3"/>
+                            <circle cx="50" cy="50" r="35" stroke-width="1"/>
+                            <path d="M50 15V85M15 50H85" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M28 28C38 38 62 38 72 28M28 72C38 62 62 62 72 72" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M28 28C38 38 38 62 28 72M72 28C62 38 62 62 72 72" stroke-width="1.5" stroke-linecap="round"/>
+                            <circle cx="50" cy="50" r="6" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col items-start leading-none">
+                        <span class="text-xl md:text-2xl font-black tracking-tighter text-white transition-colors group-hover:text-brand-gold">DOMBYRA.KZ</span>
+                        <span class="text-[8px] md:text-[10px] font-medium tracking-[0.3em] text-white/40 uppercase -mt-1 group-hover:text-brand-gold/80 transition-colors">by Aiym ERNST</span>
+                    </div>
                 </a>
                 <p class="text-white/40 font-medium text-sm leading-relaxed">Объединяем традиции и современные технологии. Dombyra.kz — это стандарт качества с 2015 года.</p>
             </div>
@@ -115,7 +140,7 @@ const mobileMenuHTML = `
             </svg>
         </button>
     </div>
-    <nav class="flex flex-col p-8 space-y-8 text-3xl font-light uppercase text-brand-dark font-serif">
+    <nav class="flex flex-col p-8 space-y-6 text-3xl font-light uppercase text-brand-dark font-serif">
         <a href="index.html" class="menu-link hover:text-brand-gold transition-colors">Главная</a>
         <a href="catalog.html" class="menu-link hover:text-brand-gold transition-colors">Каталог</a>
         <a href="articles.html" class="menu-link hover:text-brand-gold transition-colors">Статьи</a>
@@ -123,6 +148,44 @@ const mobileMenuHTML = `
         <a href="contacts.html" class="menu-link hover:text-brand-gold transition-colors">Контакты</a>
         <a href="certificate.html" class="menu-link hover:text-brand-gold transition-colors">Сертификат</a>
     </nav>
+
+    <!-- Gold divider in mobile menu -->
+    <div class="px-8 my-2">
+        <div class="w-full h-px bg-brand-gold/20"></div>
+    </div>
+
+    <!-- Mobile Menu Contact & Social Info -->
+    <div class="p-8 pt-4 space-y-6">
+        <!-- Phone & WhatsApp -->
+        <div class="space-y-3">
+            <span class="text-brand-clay/60 text-[9px] uppercase font-bold tracking-widest block">Связаться с нами</span>
+            <a href="tel:87755226901" class="text-xl font-bold text-brand-dark hover:text-brand-gold transition-colors block">+7 (775) 522 69 01</a>
+            <a href="https://wa.me/77755226901" target="_blank" class="inline-flex items-center justify-center gap-2 bg-brand-gold text-white px-5 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-brand-dark transition-all shadow-[0_5px_15px_rgba(197,163,119,0.2)] active:scale-95 w-full sm:w-auto">
+                <svg class="w-4 h-4 fill-none stroke-current" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                </svg>
+                Написать в WhatsApp
+            </a>
+        </div>
+
+        <!-- Social Media Icons (Instagram, YouTube) -->
+        <div class="space-y-3">
+            <span class="text-brand-clay/60 text-[9px] uppercase font-bold tracking-widest block">Наши медиа каналы</span>
+            <div class="flex gap-4">
+                <a href="https://www.instagram.com/dombyra.kz/" target="_blank" class="w-10 h-10 rounded-xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-gold hover:bg-brand-gold hover:text-white transition-all duration-300">
+                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" /></svg>
+                </a>
+                <a href="https://www.youtube.com/@DombyraAiymErnst" target="_blank" class="w-10 h-10 rounded-xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-gold hover:bg-brand-gold hover:text-white transition-all duration-300">
+                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Mini Philosophy Text -->
+        <p class="text-[9px] font-bold uppercase tracking-widest text-brand-clay/70 leading-relaxed border-l border-brand-gold/30 pl-4 py-1">
+            Объединяем традиции и современные технологии. Создаем шедевры ручной работы для будущих поколений.
+        </p>
+    </div>
 `;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -140,6 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (mobileMenu) {
         mobileMenu.innerHTML = mobileMenuHTML;
+        mobileMenu.classList.add('overflow-y-auto');
         console.log('Mobile menu injected');
     }
 
@@ -222,15 +286,6 @@ document.addEventListener('DOMContentLoaded', () => {
             headerInner?.classList.remove('h-14');
             headerInner?.classList.add('h-16', 'md:h-20');
         }
-
-        const stickyFooter = document.getElementById('stickyFooter');
-        if (stickyFooter) {
-            if (window.scrollY > 300) {
-                stickyFooter.classList.add('visible');
-            } else {
-                stickyFooter.classList.remove('visible');
-            }
-        }
     });
 
     // Scroll to Top Button Injection (Site-wide, Left Aligned)
@@ -262,19 +317,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // WhatsApp Floating Button Injection (Site-wide, Right Aligned)
-    const waFloatBtn = document.createElement('a');
+    const waFloatBtn = document.createElement('button');
     waFloatBtn.id = 'waFloatBtn';
-    waFloatBtn.href = 'https://wa.me/77755226901?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%BE%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BF%D0%BE%20%D0%BF%D0%BE%D0%B2%D0%BE%D0%B4%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%20%D0%B4%D0%BE%D0%BC%D0%B1%D1%80%D1%8B%20%D1%80%D1%83%D1%87%D0%BD%D0%BE%D0%B9%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B.';
-    waFloatBtn.target = '_blank';
-    waFloatBtn.className = 'hidden md:flex fixed right-6 bottom-6 md:right-8 md:bottom-8 z-50 w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-[0_10px_30px_rgba(37,211,102,0.3)] border border-[#25D366]/20 cursor-pointer hover:scale-110 hover:shadow-[0_15px_35px_rgba(37,211,102,0.5)] transition-all duration-300 group';
+    waFloatBtn.className = 'flex fixed right-6 bottom-6 md:right-8 md:bottom-8 z-50 w-14 h-14 md:w-16 md:h-16 rounded-full bg-brand-gold text-white items-center justify-center shadow-[0_10px_30px_rgba(197,163,119,0.3)] border border-brand-gold/20 cursor-pointer hover:scale-110 hover:shadow-[0_15px_35px_rgba(197,163,119,0.5)] transition-all duration-300 group focus:outline-none';
     
     // Inject Custom CSS for Pulse Effect
     const styleEl = document.createElement('style');
     styleEl.innerHTML = `
         @keyframes waPulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(197, 163, 119, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(197, 163, 119, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(197, 163, 119, 0); }
         }
         #waFloatBtn {
             animation: waPulse 2s infinite;
@@ -316,6 +369,76 @@ document.addEventListener('DOMContentLoaded', () => {
         </svg>
     `;
     document.body.appendChild(waFloatBtn);
+
+    // Create the Popup Menu (Site-wide, right aligned, above floating button)
+    const waFloatMenu = document.createElement('div');
+    waFloatMenu.id = 'waFloatMenu';
+    waFloatMenu.className = 'fixed right-6 bottom-24 md:right-8 md:bottom-28 z-50 w-72 sm:w-80 glass-card rounded-[2rem] border border-brand-gold/20 shadow-2xl p-5 translate-y-4 opacity-0 pointer-events-none transition-all duration-300 bg-white/95 backdrop-blur-xl overflow-hidden bg-ornament-watermark';
+    
+    waFloatMenu.innerHTML = `
+        <div class="relative z-10">
+            <!-- Header with mini Kazakh Shanyrak emblem -->
+            <div class="flex items-center gap-3 pb-4 mb-4 border-b border-brand-gold/15">
+                <div class="w-8 h-8 rounded-full border border-brand-gold/30 flex items-center justify-center text-brand-gold bg-brand-gold/5">
+                    <svg class="w-5 h-5 fill-none stroke-current" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="45" stroke-width="1.5" stroke-dasharray="3 3"/>
+                        <circle cx="50" cy="50" r="35" stroke-width="1"/>
+                        <path d="M50 15V85M15 50H85" stroke-width="1.5"/>
+                        <circle cx="50" cy="50" r="5" fill="currentColor"/>
+                    </svg>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-brand-dark">Консультация</h4>
+                    <p class="text-[8px] uppercase tracking-widest text-brand-clay font-bold leading-none mt-0.5">Выберите тему обращения</p>
+                </div>
+            </div>
+            <!-- Menu items list -->
+            <div class="space-y-2">
+                <a href="https://wa.me/77755226901?text=Здравствуйте!%20Я%20хочу%20заказать%20домбру%20ручной%20работы" target="_blank" class="wa-item flex items-center gap-3 p-3 rounded-xl hover:bg-brand-gold/5 border border-transparent hover:border-brand-gold/20 transition-all group">
+                    <span class="w-8 h-8 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold group-hover:bg-brand-gold group-hover:text-white transition-all text-xs font-bold">🛠️</span>
+                    <span class="text-xs font-bold text-brand-dark leading-tight">Хочу заказать домбру</span>
+                </a>
+                <a href="https://wa.me/77755226901?text=Здравствуйте!%20У%20меня%20есть%20вопрос%20по%20поводу%20инструментов" target="_blank" class="wa-item flex items-center gap-3 p-3 rounded-xl hover:bg-brand-gold/5 border border-transparent hover:border-brand-gold/20 transition-all group">
+                    <span class="w-8 h-8 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold group-hover:bg-brand-gold group-hover:text-white transition-all text-xs font-bold">❓</span>
+                    <span class="text-xs font-bold text-brand-dark leading-tight">Задать вопрос мастеру</span>
+                </a>
+                <a href="https://wa.me/77755226901?text=Здравствуйте!%20Хочу%20узнать%20статус%20своего%20заказа" target="_blank" class="wa-item flex items-center gap-3 p-3 rounded-xl hover:bg-brand-gold/5 border border-transparent hover:border-brand-gold/20 transition-all group">
+                    <span class="w-8 h-8 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold group-hover:bg-brand-gold group-hover:text-white transition-all text-xs font-bold">📦</span>
+                    <span class="text-xs font-bold text-brand-dark leading-tight">Узнать статус заказа</span>
+                </a>
+                <a href="https://wa.me/77755226901?text=Здравствуйте!%20Я%20хочу%20записаться%20на%20персональный%20визит%20в%20шоурум" target="_blank" class="wa-item flex items-center gap-3 p-3 rounded-xl hover:bg-brand-gold/5 border border-transparent hover:border-brand-gold/20 transition-all group">
+                    <span class="w-8 h-8 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold group-hover:bg-brand-gold group-hover:text-white transition-all text-xs font-bold">🏛️</span>
+                    <span class="text-xs font-bold text-brand-dark leading-tight">Записаться в шоурум</span>
+                </a>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(waFloatMenu);
+
+    // Toggle menu
+    waFloatBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = !waFloatMenu.classList.contains('opacity-0');
+        if (isOpen) {
+            waFloatMenu.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+        } else {
+            waFloatMenu.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+        }
+    });
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+        if (!waFloatMenu.contains(e.target) && e.target !== waFloatBtn && !waFloatBtn.contains(e.target)) {
+            waFloatMenu.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+        }
+    });
+
+    // Close on selecting any item
+    waFloatMenu.querySelectorAll('.wa-item').forEach(item => {
+        item.addEventListener('click', () => {
+            waFloatMenu.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+        });
+    });
 
     // Dynamic Breadcrumbs Injection (All pages except main page)
     const path = window.location.pathname;
@@ -401,24 +524,15 @@ function toggleFaq(btn) {
 
 function checkCertificate() {
     const input = document.getElementById('certInput');
-    const btn = document.getElementById('checkBtn');
-    
-    if (!input.value.trim()) {
-        input.classList.add('border-red-400');
-        setTimeout(() => input.classList.remove('border-red-400'), 2000);
+    if (!input || !input.value.trim()) {
+        if (input) {
+            input.classList.add('border-red-400');
+            setTimeout(() => input.classList.remove('border-red-400'), 2000);
+        }
         return;
     }
-
-    const originalText = btn.innerHTML;
-    btn.disabled = true;
-    btn.innerHTML = '<svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>';
-
-    // Simulate API call
-    setTimeout(() => {
-        btn.disabled = false;
-        btn.innerHTML = originalText;
-        openModal('certModal');
-    }, 1500);
+    const val = input.value.trim();
+    window.location.href = `certificate.html?cert=${encodeURIComponent(val)}`;
 }
 
 window.toggleFaq = toggleFaq;
