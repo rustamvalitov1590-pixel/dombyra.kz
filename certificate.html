@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Паспорт Домбры & Сертификат Настоящего Казаха | DOMBYRA.KZ</title>
+    <title>Паспорт Домбры & Сертификат Нағыз Қазақ | DOMBYRA.KZ</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
     <script>
         tailwind.config = {
@@ -40,18 +44,25 @@
         /* Custom luxury styles for 3D flip card */
         .card-perspective {
             perspective: 1500px;
+            -webkit-perspective: 1500px;
         }
+
         .flip-card-inner {
             position: relative;
             width: 100%;
             height: 100%;
             transition: transform 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            -webkit-transition: -webkit-transform 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
         }
+
         .flip-card-inner.flipped {
             transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
         }
-        .flip-card-front, .flip-card-back {
+
+        .flip-card-front {
             position: absolute;
             inset: 0;
             width: 100%;
@@ -60,9 +71,21 @@
             -webkit-backface-visibility: hidden;
             border-radius: 2rem;
             overflow: hidden;
+            transform: translate3d(0, 0, 0);
+            -webkit-transform: translate3d(0, 0, 0);
         }
+
         .flip-card-back {
-            transform: rotateY(180deg);
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 2rem;
+            overflow: hidden;
+            transform: rotateY(180deg) translate3d(0, 0, 0);
+            -webkit-transform: rotateY(180deg) translate3d(0, 0, 0);
         }
 
         /* Shimmering Hologram Effect */
@@ -70,18 +93,17 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(
-                circle 150px at var(--mouse-x, 50%) var(--mouse-y, 50%),
-                rgba(255, 255, 255, 0.18) 0%,
-                rgba(255, 215, 0, 0.08) 30%,
-                rgba(0, 229, 255, 0.05) 50%,
-                transparent 80%
-            );
+            background: radial-gradient(circle 150px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                    rgba(255, 255, 255, 0.18) 0%,
+                    rgba(255, 215, 0, 0.08) 30%,
+                    rgba(0, 229, 255, 0.05) 50%,
+                    transparent 80%);
             pointer-events: none;
             z-index: 10;
             opacity: 0;
             transition: opacity 0.4s ease;
         }
+
         .hologram-shine:hover::before {
             opacity: 1;
         }
@@ -101,9 +123,12 @@
             body * {
                 visibility: hidden;
             }
-            #printablePassport, #printablePassport * {
+
+            #printablePassport,
+            #printablePassport * {
                 visibility: visible;
             }
+
             #printablePassport {
                 position: absolute;
                 left: 0;
@@ -113,60 +138,82 @@
         }
     </style>
 </head>
-<body class="bg-brand-cream font-['Inter'] text-brand-dark selection:bg-brand-gold selection:text-white overflow-x-hidden">
+
+<body
+    class="bg-brand-cream font-['Inter'] text-brand-dark selection:bg-brand-gold selection:text-white overflow-x-hidden">
     <!-- Floating Background Shapes -->
-    <div class="floating-shape bg-brand-gold/10 w-96 h-96 top-[-10%] left-[-10%]"></div>
-    <div class="floating-shape bg-brand-emerald/5 w-[600px] h-[600px] top-[20%] right-[-15%]"></div>
-    <div class="floating-shape bg-brand-gold/5 w-80 h-80 bottom-[10%] left-[20%]"></div>
+    <div class="absolute inset-0 pointer-events-none overflow-hidden z-[-1]">
+        <div class="floating-shape bg-brand-gold/10 w-96 h-96 top-[-10%] left-[-10%]"></div>
+        <div class="floating-shape bg-brand-emerald/5 w-[600px] h-[600px] top-[20%] right-[-15%]"></div>
+        <div class="floating-shape bg-brand-gold/5 w-80 h-80 bottom-[10%] left-[20%]"></div>
+    </div>
 
     <header class="fixed w-full top-0 z-50 px-4 transition-all duration-300" id="mainHeader"></header>
-    <div id="mobileMenu" class="fixed inset-0 z-[60] bg-brand-cream transform translate-x-full transition-transform duration-300 md:hidden"></div>
+    <div id="mobileMenu"
+        class="fixed inset-0 z-[60] bg-brand-cream transform translate-x-full transition-transform duration-300 md:hidden">
+    </div>
 
     <main class="pt-32 pb-24">
         <div class="container mx-auto max-w-7xl px-4 md:px-10">
             <!-- Header Section -->
             <div class="text-center mb-16">
-                <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-brand-gold/5 border border-brand-gold/10 mb-6">
-                    <span class="text-[10px] font-black uppercase tracking-[0.2em] text-brand-gold">Две стороны одного шедевра</span>
+                <div
+                    class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-brand-gold/5 border border-brand-gold/10 mb-6">
+                    <span class="text-[10px] font-black uppercase tracking-[0.2em] text-brand-gold">Две стороны одного
+                        шедевра</span>
                 </div>
                 <h1 class="text-4xl md:text-7xl font-light uppercase tracking-tight text-brand-dark mb-6 font-serif">
-                    Паспорт <span class="text-brand-gold font-bold">Настоящего Казаха</span>
+                    Паспорт <span class="text-brand-gold font-bold">Нағыз Қазақ</span>
                 </h1>
                 <p class="text-brand-clay font-medium max-w-3xl mx-auto leading-relaxed text-sm md:text-base">
-                    Каждая созданная нами домбра — это больше, чем музыкальный инструмент с 3-летней гарантией подлинности. Это ваш официальный пропуск в великую степную культуру.
+                    Каждая созданная нами домбра — это больше, чем музыкальный инструмент с 3-летней гарантией
+                    подлинности. Это ваш официальный пропуск в великую степную культуру.
                 </p>
             </div>
 
             <!-- Double-Sided Digital Certificate Showcase -->
             <section class="mb-32 relative z-10">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-                    
+
                     <!-- Left Column: Explanatory & Controls -->
                     <div class="lg:col-span-5 space-y-8">
-                        <span class="inline-block bg-brand-gold/10 text-brand-gold text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-widest border border-brand-gold/20">Интерактивный документ</span>
-                        <h2 class="text-3xl md:text-4xl font-light uppercase tracking-tight text-brand-dark leading-tight font-serif">
+                        <span
+                            class="inline-block bg-brand-gold/10 text-brand-gold text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-widest border border-brand-gold/20">Интерактивный
+                            документ</span>
+                        <h2
+                            class="text-3xl md:text-4xl font-light uppercase tracking-tight text-brand-dark leading-tight font-serif">
                             Подлинность домбры и <br><span class="text-brand-gold italic">подтверждение духа</span>
                         </h2>
-                        
+
                         <div class="text-brand-clay font-medium text-sm leading-relaxed space-y-4">
                             <p>
-                                Наш паспорт объединяет два священных смысла. <strong>Первая сторона</strong> — техническая верификация: уникальный номер, ценные породы дерева деки и имя мастера.
+                                Наш паспорт объединяет два священных смысла. <strong>Первая сторона</strong> —
+                                техническая верификация: уникальный номер, ценные породы дерева деки и имя мастера.
                             </p>
                             <p>
-                                <strong>Вторая сторона</strong> — манифест степи. По древней казахской пословице: <span class="text-brand-dark font-bold italic">«Нағыз қазақ — қазақ емес, нағыз қазақ — Домбыра!»</span> (Настоящий казах — это не просто казах, настоящий казах — это Домбра).
+                                <strong>Вторая сторона</strong> — манифест степи. По древней казахской пословице: <span
+                                    class="text-brand-dark font-bold italic">«Нағыз қазақ — қазақ емес, нағыз қазақ —
+                                    Домбыра!»</span> (Настоящий казах — это не просто казах, настоящий казах — это
+                                Домбра).
                             </p>
                             <p class="text-xs italic border-l-2 border-brand-gold pl-4 text-brand-clay/80">
-                                Вне зависимости от вашей национальности, гражданства и знания языка — если у вас в руках Домбра, вы официально признаны Настоящим Казахом с полным правом этим гордиться («понтануться»)!
+                                Вне зависимости от вашей национальности, гражданства и знания языка — если у вас в руках
+                                Домбра, вы официально признаны Настоящим Казахом с полным правом этим гордиться!
                             </p>
                         </div>
 
                         <!-- Card Flips Controls & Generator Buttons -->
                         <div class="flex flex-wrap items-stretch gap-4 pt-4">
-                            <button onclick="flipPassport(false)" class="flex-1 px-6 py-4 rounded-xl border border-brand-gold text-[10px] font-black uppercase tracking-widest text-white transition-all flex items-center justify-center gap-2 bg-brand-gold shadow-sm" id="btnSideA">
-                                <span class="w-2 h-2 rounded-full bg-white transition-all animate-pulse" id="dotSideA"></span>
+                            <button onclick="flipPassport(false)"
+                                class="flex-1 px-6 py-4 rounded-xl border border-brand-gold text-[10px] font-black uppercase tracking-widest text-white transition-all flex items-center justify-center gap-2 bg-brand-gold shadow-sm"
+                                id="btnSideA">
+                                <span class="w-2 h-2 rounded-full bg-white transition-all animate-pulse"
+                                    id="dotSideA"></span>
                                 Сторона А: Подлинность
                             </button>
-                            <button onclick="flipPassport(true)" class="flex-1 px-6 py-4 rounded-xl border border-brand-dark/10 hover:border-brand-gold text-[10px] font-black uppercase tracking-widest text-brand-dark transition-all flex items-center justify-center gap-2 bg-white shadow-sm" id="btnSideB">
+                            <button onclick="flipPassport(true)"
+                                class="flex-1 px-6 py-4 rounded-xl border border-brand-dark/10 hover:border-brand-gold text-[10px] font-black uppercase tracking-widest text-brand-dark transition-all flex items-center justify-center gap-2 bg-white shadow-sm"
+                                id="btnSideB">
                                 <span class="w-2 h-2 rounded-full bg-brand-emerald transition-all" id="dotSideB"></span>
                                 Сторона Б: Нағыз Қазақ
                             </button>
@@ -175,27 +222,40 @@
 
                     <!-- Right Column: Interactive Holographic 3D Flip Card Container -->
                     <div class="lg:col-span-7 flex flex-col items-center">
-                        <div class="card-perspective w-full max-w-[540px] h-[220px] sm:h-[340px] relative group select-none">
+                        <div
+                            class="card-perspective w-full max-w-[540px] h-[290px] sm:h-[340px] relative group select-none cursor-pointer">
                             <div class="flip-card-inner w-full h-full" id="passportCardInner">
-                                
+
                                 <!-- SIDE A: TECHNICAL PASSPORT (FRONT) -->
-                                <div class="flip-card-front bg-gradient-to-tr from-brand-dark to-[#25221F] border border-brand-gold/30 text-white p-6 flex flex-col justify-between shadow-2xl absolute top-0 left-0 w-full h-full hologram-shine">
-                                    <div class="absolute inset-0 bg-ornament-watermark opacity-[0.03] pointer-events-none"></div>
-                                    
+                                <div
+                                    class="flip-card-front bg-gradient-to-tr from-brand-dark to-[#25221F] border border-brand-gold/30 text-white p-6 flex flex-col justify-between shadow-2xl absolute top-0 left-0 w-full h-full hologram-shine">
+                                    <div
+                                        class="absolute inset-0 bg-ornament-watermark opacity-[0.03] pointer-events-none">
+                                    </div>
+
                                     <!-- Header -->
                                     <div class="flex justify-between items-start relative z-10">
                                         <div>
-                                            <p class="text-[8px] uppercase tracking-[0.2em] text-brand-gold/60 font-bold mb-1">МАНУФАКТУРА</p>
-                                            <h4 class="text-xl font-bold tracking-widest font-serif leading-none text-white">DOMBYRA.KZ</h4>
-                                            <p class="text-[7px] uppercase tracking-widest text-white/40 mt-1">by Aiym ERNST</p>
+                                            <p
+                                                class="text-[8px] uppercase tracking-[0.2em] text-brand-gold/60 font-bold mb-1">
+                                                МАНУФАКТУРА</p>
+                                            <h4
+                                                class="text-xl font-bold tracking-widest font-serif leading-none text-white">
+                                                DOMBYRA.KZ</h4>
+                                            <p class="text-[7px] uppercase tracking-widest text-white/40 mt-1">by Aiym
+                                                ERNST</p>
                                         </div>
-                                        <div class="w-12 h-12 rounded-full border border-brand-gold/30 flex items-center justify-center text-brand-gold bg-white/5 relative group">
-                                            <svg class="w-8 h-8 fill-none stroke-current opacity-70" viewBox="0 0 100 100">
-                                                <circle cx="50" cy="50" r="45" stroke-width="1.5" stroke-dasharray="3 3"/>
-                                                <circle cx="50" cy="50" r="30" stroke-width="1"/>
-                                                <path d="M50 15V85M15 50H85" stroke-width="1.5"/>
+                                        <div
+                                            class="w-12 h-12 rounded-full border border-brand-gold/30 flex items-center justify-center text-brand-gold bg-white/5 relative group">
+                                            <svg class="w-8 h-8 fill-none stroke-current opacity-70"
+                                                viewBox="0 0 100 100">
+                                                <circle cx="50" cy="50" r="45" stroke-width="1.5"
+                                                    stroke-dasharray="3 3" />
+                                                <circle cx="50" cy="50" r="30" stroke-width="1" />
+                                                <path d="M50 15V85M15 50H85" stroke-width="1.5" />
                                             </svg>
-                                            <span class="absolute text-[8px] font-black uppercase text-brand-gold">QR</span>
+                                            <span
+                                                class="absolute text-[8px] font-black uppercase text-brand-gold">QR</span>
                                         </div>
                                     </div>
 
@@ -203,45 +263,69 @@
                                     <div class="grid grid-cols-12 gap-4 my-4 relative z-10">
                                         <div class="col-span-8 space-y-2.5">
                                             <div>
-                                                <p class="text-[7px] uppercase tracking-[0.25em] text-white/50 leading-none mb-1">Модель инструмента</p>
-                                                <h3 class="text-sm font-serif font-bold text-brand-goldLight leading-tight" id="displayModel">Домбра "Толқын" (Премиум)</h3>
+                                                <p
+                                                    class="text-[7px] uppercase tracking-[0.25em] text-white/50 leading-none mb-1">
+                                                    Модель инструмента</p>
+                                                <h3 class="text-sm font-serif font-bold text-brand-goldLight leading-tight"
+                                                    id="displayModel">Домбра "Толқын" (Премиум)</h3>
                                             </div>
                                             <div>
-                                                <p class="text-[7px] uppercase tracking-[0.25em] text-white/50 leading-none mb-1">Материалы</p>
-                                                <p class="text-[10px] font-bold text-white/90 leading-tight" id="displayWood">Африканский орех, горная сосна Тянь-Шаня</p>
+                                                <p
+                                                    class="text-[7px] uppercase tracking-[0.25em] text-white/50 leading-none mb-1">
+                                                    Материалы</p>
+                                                <p class="text-[10px] font-bold text-white/90 leading-tight"
+                                                    id="displayWood">Африканский орех, горная сосна Тянь-Шаня</p>
                                             </div>
                                         </div>
                                         <div class="col-span-4 border-l border-white/10 pl-4 space-y-2.5">
                                             <div>
-                                                <p class="text-[7px] uppercase tracking-[0.25em] text-white/50 leading-none mb-1">Мастер</p>
-                                                <p class="text-[10px] font-bold text-white" id="displayMaster">Серик Ербол</p>
+                                                <p
+                                                    class="text-[7px] uppercase tracking-[0.25em] text-white/50 leading-none mb-1">
+                                                    Мастер</p>
+                                                <p class="text-[10px] font-bold text-white" id="displayMaster">Серик
+                                                    Ербол</p>
                                             </div>
                                             <div>
-                                                <p class="text-[7px] uppercase tracking-[0.25em] text-white/50 leading-none mb-1">Дата сборки</p>
-                                                <p class="text-[10px] font-mono font-bold text-white" id="displayDate">12.02.2024</p>
+                                                <p
+                                                    class="text-[7px] uppercase tracking-[0.25em] text-white/50 leading-none mb-1">
+                                                    Дата сборки</p>
+                                                <p class="text-[10px] font-mono font-bold text-white" id="displayDate">
+                                                    12.02.2024</p>
                                             </div>
                                         </div>
                                     </div>
 
                                     <!-- Bottom Info -->
-                                    <div class="pt-4 border-t border-white/5 flex justify-between items-end relative z-10">
+                                    <div
+                                        class="pt-4 border-t border-white/5 flex justify-between items-end relative z-10">
                                         <div>
-                                            <p class="text-[7px] uppercase tracking-[0.25em] text-white/40 leading-none mb-1">Номер паспорта</p>
-                                            <h3 class="text-sm font-mono font-bold tracking-widest text-brand-gold" id="displaySerial">DKZ-2026-001</h3>
+                                            <p
+                                                class="text-[7px] uppercase tracking-[0.25em] text-white/40 leading-none mb-1">
+                                                Номер паспорта</p>
+                                            <h3 class="text-sm font-mono font-bold tracking-widest text-brand-gold"
+                                                id="displaySerial">DKZ-2026-001</h3>
                                         </div>
                                         <div class="text-right">
-                                            <p class="text-[7px] uppercase tracking-[0.25em] text-white/40 leading-none mb-1">Первый владелец</p>
-                                            <p class="text-[10px] font-bold text-white uppercase tracking-wider font-serif" id="displayOwner">Бауыржан Каримов</p>
+                                            <p
+                                                class="text-[7px] uppercase tracking-[0.25em] text-white/40 leading-none mb-1">
+                                                Первый владелец</p>
+                                            <p class="text-[10px] font-bold text-white uppercase tracking-wider font-serif"
+                                                id="displayOwner">Бауыржан Каримов</p>
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- SIDE B: REAL KAZAKH CERTIFICATE (BACK) -->
-                                <div class="flip-card-back bg-gradient-to-tr from-brand-emerald to-[#041F21] border border-brand-gold/40 text-white p-6 flex flex-col justify-between shadow-2xl absolute top-0 left-0 w-full h-full hologram-shine">
+                                <div
+                                    class="flip-card-back bg-gradient-to-tr from-brand-emerald to-[#041F21] border border-brand-gold/40 text-white p-6 flex flex-col justify-between shadow-2xl absolute top-0 left-0 w-full h-full hologram-shine">
                                     <!-- Beautiful Glowing Golden Shanyrak Watermark in the background -->
-                                    <div class="absolute inset-0 bg-ornament-watermark opacity-[0.05] pointer-events-none"></div>
-                                    <div class="absolute right-[-10%] bottom-[-10%] w-56 h-56 rounded-full border border-brand-gold/10 flex items-center justify-center opacity-30 pointer-events-none">
-                                        <div class="w-48 h-48 rounded-full border border-brand-gold/20 flex items-center justify-center">
+                                    <div
+                                        class="absolute inset-0 bg-ornament-watermark opacity-[0.05] pointer-events-none">
+                                    </div>
+                                    <div
+                                        class="absolute right-[-10%] bottom-[-10%] w-56 h-56 rounded-full border border-brand-gold/10 flex items-center justify-center opacity-30 pointer-events-none">
+                                        <div
+                                            class="w-48 h-48 rounded-full border border-brand-gold/20 flex items-center justify-center">
                                             <div class="w-40 h-40 rounded-full border border-brand-gold/30"></div>
                                         </div>
                                     </div>
@@ -249,44 +333,61 @@
                                     <!-- Header -->
                                     <div class="flex justify-between items-center relative z-10">
                                         <div>
-                                            <h4 class="text-xs font-black tracking-[0.3em] text-brand-gold font-sans leading-none">НАҒЫЗ ҚАЗАҚ</h4>
-                                            <p class="text-[7px] uppercase tracking-widest text-white/50 mt-1">Официальный Паспорт Духа</p>
+                                            <h4
+                                                class="text-xs font-black tracking-[0.3em] text-brand-gold font-sans leading-none">
+                                                НАҒЫЗ ҚАЗАҚ</h4>
+                                            <p class="text-[7px] uppercase tracking-widest text-white/50 mt-1">
+                                                Официальный Паспорт Духа</p>
                                         </div>
-                                        <div class="px-3 py-1 rounded bg-brand-gold/15 border border-brand-gold/30 flex items-center gap-1.5">
+                                        <div
+                                            class="px-3 py-1 rounded bg-brand-gold/15 border border-brand-gold/30 flex items-center gap-1.5">
                                             <span class="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-ping"></span>
-                                            <span class="text-[8px] font-bold text-brand-goldLight uppercase tracking-widest font-mono">100% Legit</span>
+                                            <span
+                                                class="text-[8px] font-bold text-brand-goldLight uppercase tracking-widest font-mono">100%
+                                                Legit</span>
                                         </div>
                                     </div>
 
                                     <!-- Main Statement -->
                                     <div class="my-2 space-y-1.5 relative z-10">
-                                        <p class="text-[7px] uppercase tracking-[0.25em] text-white/50 leading-none">Присвоенный статус</p>
-                                        <h2 class="text-xl sm:text-2xl font-black tracking-tight text-white font-serif uppercase">
-                                            НАСТОЯЩИЙ КАЗАХ
+                                        <p class="text-[7px] uppercase tracking-[0.25em] text-white/50 leading-none">
+                                            Присвоенный статус</p>
+                                        <h2
+                                            class="text-xl sm:text-2xl font-black tracking-tight text-white font-serif uppercase">
+                                            НАҒЫЗ ҚАЗАҚ
                                         </h2>
                                         <div class="text-[9px] text-white/80 leading-normal max-w-md font-sans italic">
-                                            «Владелец сего документа <strong class="text-brand-gold" id="kazakhName">БАУЫРЖАН КАРИМОВ</strong> официально наделен статусом Настоящего Казаха с правом искренне гордиться ("понтануться") перед близкими и коллегами. Владение Домброй наделяет его духом свободы и великих степей!»
+                                            «Владелец сего документа <strong class="text-brand-gold"
+                                                id="kazakhName">БАУЫРЖАН КАРИМОВ</strong> официально наделен статусом
+                                            Нағыз Қазақ с правом искренне гордиться перед близкими и коллегами. Владение
+                                            Домброй наделяет его духом свободы и великих степей!»
                                         </div>
                                     </div>
 
                                     <!-- Proverb Banner -->
-                                    <div class="bg-brand-emeraldLight/30 border border-brand-gold/15 rounded-xl px-4 py-2 text-center relative z-10">
+                                    <div
+                                        class="bg-brand-emeraldLight/30 border border-brand-gold/15 rounded-xl px-4 py-2 text-center relative z-10">
                                         <p class="text-[8px] font-serif italic text-brand-goldLight">
                                             «Нағыз қазақ — қазақ емес, нағыз қазақ — Домбыра!»
                                         </p>
                                     </div>
 
                                     <!-- Signatures -->
-                                    <div class="pt-2 border-t border-white/10 flex justify-between items-center text-[7px] uppercase tracking-widest text-white/40 relative z-10">
+                                    <div
+                                        class="pt-2 border-t border-white/10 flex justify-between items-center text-[7px] uppercase tracking-widest text-white/40 relative z-10">
                                         <div>
                                             <span>Основание: Покупка Домбры</span>
                                         </div>
                                         <div class="text-right flex items-center gap-2">
                                             <div class="flex flex-col items-end">
                                                 <span class="text-[6px] text-white/30">Подпись мануфактуры</span>
-                                                <span class="font-serif italic text-brand-goldLight text-[8px] font-bold tracking-wide">Aiym Ernst</span>
+                                                <span
+                                                    class="font-serif italic text-brand-goldLight text-[8px] font-bold tracking-wide">Aiym
+                                                    Ernst</span>
                                             </div>
-                                            <div class="w-5 h-5 rounded-full border border-brand-gold/30 bg-brand-gold/10 flex items-center justify-center text-brand-gold font-bold text-[7px]">✓</div>
+                                            <div
+                                                class="w-5 h-5 rounded-full border border-brand-gold/30 bg-brand-gold/10 flex items-center justify-center text-brand-gold font-bold text-[7px]">
+                                                ✓</div>
                                         </div>
                                     </div>
                                 </div>
@@ -296,10 +397,12 @@
 
                         <!-- Card Action Buttons -->
                         <div class="flex gap-4 mt-6 w-full max-w-[540px]">
-                            <button onclick="window.print()" class="flex-1 py-4 bg-white border border-brand-dark/10 hover:border-brand-gold rounded-2xl font-bold uppercase tracking-widest text-[9px] text-brand-dark active:scale-95 transition-all flex items-center justify-center gap-2 shadow-sm">
-                                🖨️ Печать паспорта
+                            <button onclick="downloadCertificateAsJPEG()" id="btnDownloadJPEG"
+                                class="flex-1 py-4 bg-white border border-brand-dark/10 hover:border-brand-gold rounded-2xl font-bold uppercase tracking-widest text-[9px] text-brand-dark active:scale-95 transition-all flex items-center justify-center gap-2 shadow-sm">
+                                📥 Скачать JPEG
                             </button>
-                            <button onclick="copyShareLink()" class="flex-1 py-4 bg-brand-gold text-white rounded-2xl font-bold uppercase tracking-widest text-[9px] active:scale-95 hover:bg-brand-dark transition-all flex items-center justify-center gap-2 shadow-lg">
+                            <button onclick="copyShareLink()"
+                                class="flex-1 py-4 bg-brand-gold text-white rounded-2xl font-bold uppercase tracking-widest text-[9px] active:scale-95 hover:bg-brand-dark transition-all flex items-center justify-center gap-2 shadow-lg">
                                 🔗 Скопировать ссылку
                             </button>
                         </div>
@@ -310,16 +413,20 @@
 
             <!-- Interactive Passport Verification & Generator Form -->
             <section class="max-w-4xl mx-auto mb-28">
-                <div class="glass-card rounded-[3.5rem] p-8 md:p-16 border-2 border-brand-gold/25 shadow-2xl relative overflow-hidden form-with-ornaments">
+                <div
+                    class="glass-card rounded-[3.5rem] p-8 md:p-16 border-2 border-brand-gold/25 shadow-2xl relative overflow-hidden form-with-ornaments">
                     <div class="absolute inset-0 bg-brand-gold/5 pointer-events-none"></div>
-                    
+
                     <!-- Form Tabs -->
                     <div class="flex justify-center border-b border-brand-gold/15 pb-6 mb-10 relative z-10">
-                        <div class="flex gap-2 sm:gap-6 bg-brand-accent/50 p-1.5 rounded-2xl border border-brand-gold/10">
-                            <button onclick="switchFormTab('verify')" id="tabBtnVerify" class="px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-[9px] sm:text-[10px] bg-brand-gold text-white transition-all">
+                        <div
+                            class="flex gap-2 sm:gap-6 bg-brand-accent/50 p-1.5 rounded-2xl border border-brand-gold/10">
+                            <button onclick="switchFormTab('verify')" id="tabBtnVerify"
+                                class="px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-[9px] sm:text-[10px] bg-brand-gold text-white transition-all">
                                 ✓ Проверить домбру
                             </button>
-                            <button onclick="switchFormTab('generate')" id="tabBtnGenerate" class="px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-[9px] sm:text-[10px] text-brand-clay hover:text-brand-dark transition-all">
+                            <button onclick="switchFormTab('generate')" id="tabBtnGenerate"
+                                class="px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-[9px] sm:text-[10px] text-brand-clay hover:text-brand-dark transition-all">
                                 ✍ Создать Именной Паспорт
                             </button>
                         </div>
@@ -332,15 +439,20 @@
                                 Проверка <span class="text-brand-gold font-bold">оригинальности</span>
                             </h3>
                             <p class="text-brand-clay text-xs leading-relaxed">
-                                Введите серийный номер вашего инструмента (например: <span class="font-mono font-bold text-brand-dark">DKZ-2026-001</span> или просто <span class="font-mono font-bold text-brand-dark">002</span>) для моментальной цифровой верификации.
+                                Введите серийный номер вашего инструмента (например: <span
+                                    class="font-mono font-bold text-brand-dark">DKZ-2026-001</span> или просто <span
+                                    class="font-mono font-bold text-brand-dark">002</span>) для моментальной цифровой
+                                верификации.
                             </p>
                         </div>
 
                         <div class="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto w-full">
                             <div class="relative flex-1 w-full group input-ornament">
-                                <input type="text" id="certInput" placeholder="Например: DKZ-2026-001" class="w-full bg-white border border-brand-gold/25 rounded-2xl pl-6 pr-14 py-5 text-brand-dark font-bold text-sm focus:outline-none focus:border-brand-gold transition-colors shadow-inner">
+                                <input type="text" id="certInput" placeholder="Например: DKZ-2026-001"
+                                    class="w-full bg-white border border-brand-gold/25 rounded-2xl pl-6 pr-14 py-5 text-brand-dark font-bold text-sm focus:outline-none focus:border-brand-gold transition-colors shadow-inner">
                             </div>
-                            <button onclick="checkPassportSerial()" id="checkBtn" class="btn-gold px-10 py-5 rounded-2xl font-bold uppercase tracking-widest text-[9px] active:scale-95 transition-transform flex items-center justify-center gap-2 shrink-0">
+                            <button onclick="checkPassportSerial()" id="checkBtn"
+                                class="btn-gold px-10 py-5 rounded-2xl font-bold uppercase tracking-widest text-[9px] active:scale-95 transition-transform flex items-center justify-center gap-2 shrink-0">
                                 Верифицировать
                             </button>
                         </div>
@@ -353,28 +465,40 @@
                                 Создать <span class="text-brand-gold font-bold">персональный паспорт</span>
                             </h3>
                             <p class="text-brand-clay text-xs leading-relaxed">
-                                Сделайте подарок себе или близким! Введите имя, чтобы сгенерировать роскошное интерактивное удостоверение «Нағыз Қазақ» с правом похвастаться перед всем миром.
+                                Сделайте подарок себе или близким! Введите имя, чтобы сгенерировать роскошное
+                                интерактивное удостоверение «Нағыз Қазақ» с правом похвастаться перед всем миром.
                             </p>
                         </div>
 
                         <div class="max-w-2xl mx-auto space-y-5">
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div class="space-y-1">
-                                    <label class="text-[8px] uppercase tracking-widest font-black text-brand-clay pl-2">Имя владельца (на русском или казахском)</label>
-                                    <input type="text" id="genNameInput" placeholder="Например: Аскар Сапаров" class="w-full bg-white border border-brand-gold/25 rounded-2xl px-6 py-4 text-brand-dark font-bold text-sm focus:outline-none focus:border-brand-gold transition-colors shadow-inner">
+                                    <label
+                                        class="text-[8px] uppercase tracking-widest font-black text-brand-clay pl-2">Имя
+                                        владельца (на русском или казахском)</label>
+                                    <input type="text" id="genNameInput" placeholder="Например: Аскар Сапаров"
+                                        class="w-full bg-white border border-brand-gold/25 rounded-2xl px-6 py-4 text-brand-dark font-bold text-sm focus:outline-none focus:border-brand-gold transition-colors shadow-inner">
                                 </div>
                                 <div class="space-y-1">
-                                    <label class="text-[8px] uppercase tracking-widest font-black text-brand-clay pl-2">Модель вашей Домбры</label>
-                                    <select id="genModelSelect" class="w-full bg-white border border-brand-gold/25 rounded-2xl px-6 py-4 text-brand-dark font-bold text-sm focus:outline-none focus:border-brand-gold transition-colors shadow-inner">
-                                        <option value="Домбра 'Толқын' (Премиум акустика)">Домбра "Толқын" (Премиум)</option>
-                                        <option value="Домбра 'Бастау' (Концертный инструмент)">Домбра "Бастау" (Концертная)</option>
-                                        <option value="Домбра 'Аруах' (Инструмент мастера)">Домбра "Аруах" (Шедевр мастера)</option>
-                                        <option value="Домбра 'Nomad Global' (Экспортная)">Домбра "Nomad" (Международная)</option>
+                                    <label
+                                        class="text-[8px] uppercase tracking-widest font-black text-brand-clay pl-2">Модель
+                                        вашей Домбры</label>
+                                    <select id="genModelSelect"
+                                        class="w-full bg-white border border-brand-gold/25 rounded-2xl px-6 py-4 text-brand-dark font-bold text-sm focus:outline-none focus:border-brand-gold transition-colors shadow-inner">
+                                        <option value="Домбра 'Толқын' (Премиум акустика)">Домбра "Толқын" (Премиум)
+                                        </option>
+                                        <option value="Домбра 'Бастау' (Концертный инструмент)">Домбра "Бастау"
+                                            (Концертная)</option>
+                                        <option value="Домбра 'Аруах' (Инструмент мастера)">Домбра "Аруах" (Шедевр
+                                            мастера)</option>
+                                        <option value="Домбра 'Nomad Global' (Экспортная)">Домбра "Nomad"
+                                            (Международная)</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="flex justify-center pt-2">
-                                <button onclick="generateCustomPassport()" class="btn-gold px-12 py-5 rounded-2xl font-bold uppercase tracking-widest text-[9px] active:scale-95 transition-transform flex items-center justify-center gap-2">
+                                <button onclick="generateCustomPassport()"
+                                    class="btn-gold px-12 py-5 rounded-2xl font-bold uppercase tracking-widest text-[9px] active:scale-95 transition-transform flex items-center justify-center gap-2">
                                     ⚡ Сгенерировать и сыграть победный аккорд
                                 </button>
                             </div>
@@ -382,60 +506,84 @@
                     </div>
 
                     <!-- Dynamic Verification Status Message -->
-                    <div id="statusAlert" class="mt-8 max-w-xl mx-auto hidden p-4 rounded-2xl text-center font-bold text-xs uppercase tracking-wider transition-all duration-300"></div>
+                    <div id="statusAlert"
+                        class="mt-8 max-w-xl mx-auto hidden p-4 rounded-2xl text-center font-bold text-xs uppercase tracking-wider transition-all duration-300">
+                    </div>
                 </div>
             </section>
 
             <!-- INTERACTIVE WOW FEATURE: PLAY INTERNATIONAL HITS ON DOMBYRA -->
             <section class="mb-28">
                 <div class="text-center mb-16">
-                    <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-brand-emerald/5 border border-brand-emerald/10 mb-6">
-                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-brand-emerald">Виртуальный симулятор</span>
+                    <div
+                        class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-brand-emerald/5 border border-brand-emerald/10 mb-6">
+                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-brand-emerald">Виртуальный
+                            симулятор</span>
                     </div>
-                    <h2 class="text-3xl md:text-5xl font-light uppercase tracking-tight text-brand-dark mb-4 font-serif">
+                    <h2
+                        class="text-3xl md:text-5xl font-light uppercase tracking-tight text-brand-dark mb-4 font-serif">
                         Сыграйте мировые хиты <br><span class="text-brand-gold italic">на 2 струнах!</span>
                     </h2>
                     <p class="text-brand-clay font-medium max-w-2xl mx-auto leading-relaxed text-xs md:text-sm">
-                        Наш бренд стремительно выходит на международную arena. Докажем, что на простой и элегантной казахской домбре можно сыграть абсолютно любой мировой хит!
+                        Наш бренд стремительно выходит на международную arena. Докажем, что на простой и элегантной
+                        казахской домбре можно сыграть абсолютно любой мировой хит!
                     </p>
                 </div>
 
                 <!-- Simulator Layout Grid -->
-                <div class="glass-card rounded-[3rem] border border-brand-gold/15 overflow-hidden shadow-xl p-6 md:p-12 relative bg-ornament-watermark">
+                <div
+                    class="glass-card rounded-[3rem] border border-brand-gold/15 overflow-hidden shadow-xl p-6 md:p-12 relative bg-ornament-watermark">
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-                        
+
                         <!-- Song Picker Column -->
                         <div class="lg:col-span-4 space-y-4">
-                            <h4 class="text-[10px] font-black uppercase tracking-[0.25em] text-brand-gold mb-6 border-b border-brand-gold/15 pb-2">Выберите композицию</h4>
-                            
-                            <button onclick="selectMelody('smoke')" id="songBtn_smoke" class="w-full text-left p-5 rounded-2xl border border-brand-gold/15 bg-brand-accent/30 hover:border-brand-gold transition-all duration-300 flex items-center justify-between group">
+                            <h4
+                                class="text-[10px] font-black uppercase tracking-[0.25em] text-brand-gold mb-6 border-b border-brand-gold/15 pb-2">
+                                Выберите композицию</h4>
+
+                            <button onclick="selectMelody('smoke')" id="songBtn_smoke"
+                                class="w-full text-left p-5 rounded-2xl border border-brand-gold/15 bg-brand-accent/30 hover:border-brand-gold transition-all duration-300 flex items-center justify-between group">
                                 <div>
-                                    <h5 class="text-xs font-black uppercase text-brand-dark group-hover:text-brand-gold transition-colors">Smoke on the Water</h5>
+                                    <h5
+                                        class="text-xs font-black uppercase text-brand-dark group-hover:text-brand-gold transition-colors">
+                                        Smoke on the Water</h5>
                                     <p class="text-[9px] text-brand-clay mt-1">Deep Purple • Рок-классика на домбре</p>
                                 </div>
                                 <span class="text-xs">🎸</span>
                             </button>
 
-                            <button onclick="selectMelody('bella')" id="songBtn_bella" class="w-full text-left p-5 rounded-2xl border border-brand-gold/10 hover:border-brand-gold transition-all duration-300 flex items-center justify-between group">
+                            <button onclick="selectMelody('bella')" id="songBtn_bella"
+                                class="w-full text-left p-5 rounded-2xl border border-brand-gold/10 hover:border-brand-gold transition-all duration-300 flex items-center justify-between group">
                                 <div>
-                                    <h5 class="text-xs font-black uppercase text-brand-dark group-hover:text-brand-gold transition-colors">Bella Ciao</h5>
-                                    <p class="text-[9px] text-brand-clay mt-1">Итальянский гимн • Очень легко и задорно</p>
+                                    <h5
+                                        class="text-xs font-black uppercase text-brand-dark group-hover:text-brand-gold transition-colors">
+                                        Bella Ciao</h5>
+                                    <p class="text-[9px] text-brand-clay mt-1">Итальянский гимн • Очень легко и задорно
+                                    </p>
                                 </div>
                                 <span class="text-xs">🇮🇹</span>
                             </button>
 
-                            <button onclick="selectMelody('kozim')" id="songBtn_kozim" class="w-full text-left p-5 rounded-2xl border border-brand-gold/10 hover:border-brand-gold transition-all duration-300 flex items-center justify-between group">
+                            <button onclick="selectMelody('kozim')" id="songBtn_kozim"
+                                class="w-full text-left p-5 rounded-2xl border border-brand-gold/10 hover:border-brand-gold transition-all duration-300 flex items-center justify-between group">
                                 <div>
-                                    <h5 class="text-xs font-black uppercase text-brand-dark group-hover:text-brand-gold transition-colors">Көзімнің қарасы</h5>
-                                    <p class="text-[9px] text-brand-clay mt-1">Абай Кунанбаев • Чувственная степная классика</p>
+                                    <h5
+                                        class="text-xs font-black uppercase text-brand-dark group-hover:text-brand-gold transition-colors">
+                                        Көзімнің қарасы</h5>
+                                    <p class="text-[9px] text-brand-clay mt-1">Абай Кунанбаев • Чувственная степная
+                                        классика</p>
                                 </div>
                                 <span class="text-xs">🇰🇿</span>
                             </button>
 
-                            <button onclick="selectMelody('adai')" id="songBtn_adai" class="w-full text-left p-5 rounded-2xl border border-brand-gold/10 hover:border-brand-gold transition-all duration-300 flex items-center justify-between group">
+                            <button onclick="selectMelody('adai')" id="songBtn_adai"
+                                class="w-full text-left p-5 rounded-2xl border border-brand-gold/10 hover:border-brand-gold transition-all duration-300 flex items-center justify-between group">
                                 <div>
-                                    <h5 class="text-xs font-black uppercase text-brand-dark group-hover:text-brand-gold transition-colors">Адай (Күй фрагмент)</h5>
-                                    <p class="text-[9px] text-brand-clay mt-1">Курмангазы • Ураганная энергия кочевников</p>
+                                    <h5
+                                        class="text-xs font-black uppercase text-brand-dark group-hover:text-brand-gold transition-colors">
+                                        Адай (Күй фрагмент)</h5>
+                                    <p class="text-[9px] text-brand-clay mt-1">Курмангазы • Ураганная энергия кочевников
+                                    </p>
                                 </div>
                                 <span class="text-xs">🌪️</span>
                             </button>
@@ -443,95 +591,182 @@
 
                         <!-- Fretboard / Interactive Strings Simulator Column -->
                         <div class="lg:col-span-8 flex flex-col items-center justify-center space-y-8">
-                            
+
                             <!-- Interactive Visual Neck of Dombyra -->
-                            <div class="w-full max-w-[680px] bg-[#2E2824] rounded-2xl p-8 py-10 shadow-2xl relative overflow-hidden border border-brand-gold/30">
+                            <div
+                                class="w-full max-w-[680px] bg-[#2E2824] rounded-2xl p-4 py-8 md:p-8 md:py-10 shadow-2xl relative border border-brand-gold/30">
                                 <!-- Soundhole representation -->
-                                <div class="absolute right-6 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-brand-dark border-2 border-brand-gold/20 flex items-center justify-center">
+                                <div
+                                    class="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 w-10 h-10 md:w-14 md:h-14 rounded-full bg-brand-dark border-2 border-brand-gold/20 flex items-center justify-center">
                                     <div class="w-2 h-2 rounded-full bg-black"></div>
                                 </div>
 
                                 <!-- Dynamic neck lines and frets -->
-                                <div class="relative h-24 flex items-center">
+                                <div class="w-full relative h-24 flex items-center shrink-0">
                                     <!-- Fingerboard Wood Strip -->
-                                    <div class="absolute inset-x-8 h-12 bg-gradient-to-r from-[#1C1815] via-[#2D231E] to-[#1C1815] border-y border-brand-gold/30 top-1/2 -translate-y-1/2 rounded-sm shadow-inner pointer-events-none"></div>
+                                    <div
+                                        class="absolute inset-x-4 md:inset-x-8 h-12 bg-gradient-to-r from-[#1C1815] via-[#2D231E] to-[#1C1815] border-y border-brand-gold/30 top-1/2 -translate-y-1/2 rounded-sm shadow-inner pointer-events-none">
+                                    </div>
 
                                     <!-- Strings (G & D) -->
-                                    <div class="absolute inset-x-8 h-[2px] bg-gradient-to-r from-[#E5C49F] via-brand-goldLight to-[#C5A377] top-[42%] pointer-events-none shadow-[0_1px_3px_rgba(197,163,119,0.4)]" id="string1"></div>
-                                    <div class="absolute inset-x-8 h-[2px] bg-gradient-to-r from-[#E5C49F] via-brand-goldLight to-[#C5A377] top-[58%] pointer-events-none shadow-[0_1px_3px_rgba(197,163,119,0.4)]" id="string2"></div>
+                                    <div class="absolute inset-x-4 md:inset-x-8 h-[2px] bg-gradient-to-r from-[#E5C49F] via-brand-goldLight to-[#C5A377] top-[42%] pointer-events-none shadow-[0_1px_3px_rgba(197,163,119,0.4)]"
+                                        id="string1"></div>
+                                    <div class="absolute inset-x-4 md:inset-x-8 h-[2px] bg-gradient-to-r from-[#E5C49F] via-brand-goldLight to-[#C5A377] top-[58%] pointer-events-none shadow-[0_1px_3px_rgba(197,163,119,0.4)]"
+                                        id="string2"></div>
 
                                     <!-- Fret markers -->
-                                    <div class="absolute w-full h-full flex justify-between px-8 z-10">
+                                    <div class="absolute w-full h-full flex px-4 md:px-8 z-10">
                                         <!-- Open Fret (0) -->
-                                        <div onclick="playFret(0)" class="relative h-full w-8 flex flex-col justify-between items-center cursor-pointer group">
-                                            <span class="text-[7px] text-white/50 group-hover:text-brand-gold font-bold">Ашық</span>
-                                            <div class="w-3.5 h-3.5 rounded-full bg-white/20 group-hover:bg-brand-gold transition-colors border border-white/20 flex items-center justify-center mt-3 shadow-inner"><div class="w-1.5 h-1.5 rounded-full bg-transparent"></div></div>
-                                            <span class="text-[8px] text-brand-goldLight font-bold">G (Соль)</span>
-                                            <div class="absolute right-0 top-1/4 bottom-1/4 w-0.5 bg-brand-gold/50 pointer-events-none"></div>
+                                        <div onclick="playFret(0)" id="fret_0"
+                                            class="flex-1 h-full cursor-pointer group relative">
+                                            <span
+                                                class="absolute top-2 left-0 right-0 text-center text-[7px] text-white/50 group-hover:text-brand-gold font-bold whitespace-nowrap transition-colors">Ашық</span>
+                                            <div
+                                                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-white/25 group-hover:bg-brand-gold transition-all border border-white/20 flex items-center justify-center shadow-inner group-hover:scale-125 group-hover:shadow-[0_0_8px_#C5A377]">
+                                                <div class="w-1.5 h-1.5 rounded-full bg-transparent"></div>
+                                            </div>
+                                            <span
+                                                class="absolute bottom-2 left-0 right-0 text-center text-[8px] text-brand-goldLight font-bold whitespace-nowrap transition-colors">G
+                                                (Соль)</span>
+                                            <div
+                                                class="absolute right-0 top-1/4 bottom-1/4 w-0.5 bg-brand-gold/50 pointer-events-none">
+                                            </div>
                                         </div>
 
                                         <!-- Fret 2 -->
-                                        <div onclick="playFret(2)" id="fret_2" class="relative h-full w-8 flex flex-col justify-between items-center cursor-pointer group">
-                                            <span class="text-[7px] text-white/50 group-hover:text-brand-gold font-bold">2 перне</span>
-                                            <div class="w-3 h-3 rounded-full bg-white/10 group-hover:bg-brand-gold transition-colors border border-white/10 flex items-center justify-center mt-3.5"></div>
-                                            <span class="text-[8px] text-brand-goldLight font-bold">A (Ля)</span>
-                                            <div class="absolute right-0 top-1/4 bottom-1/4 w-px bg-brand-gold/25 pointer-events-none"></div>
+                                        <div onclick="playFret(2)" id="fret_2"
+                                            class="flex-1 h-full cursor-pointer group relative">
+                                            <span
+                                                class="absolute top-2 left-0 right-0 text-center text-[7px] text-white/50 group-hover:text-brand-gold font-bold whitespace-nowrap transition-colors">2
+                                                перне</span>
+                                            <div
+                                                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white/10 group-hover:bg-brand-gold transition-all border border-white/10 flex items-center justify-center group-hover:scale-125 group-hover:shadow-[0_0_8px_#C5A377]">
+                                            </div>
+                                            <span
+                                                class="absolute bottom-2 left-0 right-0 text-center text-[8px] text-brand-goldLight font-bold whitespace-nowrap transition-colors">A
+                                                (Ля)</span>
+                                            <div
+                                                class="absolute right-0 top-1/4 bottom-1/4 w-px bg-brand-gold/25 pointer-events-none">
+                                            </div>
                                         </div>
 
                                         <!-- Fret 3 -->
-                                        <div onclick="playFret(3)" id="fret_3" class="relative h-full w-8 flex flex-col justify-between items-center cursor-pointer group">
-                                            <span class="text-[7px] text-white/50 group-hover:text-brand-gold font-bold">3 перне</span>
-                                            <div class="w-3 h-3 rounded-full bg-white/10 group-hover:bg-brand-gold transition-colors border border-white/10 flex items-center justify-center mt-3.5"></div>
-                                            <span class="text-[8px] text-brand-goldLight font-bold">B♭ (Си♭)</span>
-                                            <div class="absolute right-0 top-1/4 bottom-1/4 w-px bg-brand-gold/25 pointer-events-none"></div>
+                                        <div onclick="playFret(3)" id="fret_3"
+                                            class="flex-1 h-full cursor-pointer group relative">
+                                            <span
+                                                class="absolute top-2 left-0 right-0 text-center text-[7px] text-white/50 group-hover:text-brand-gold font-bold whitespace-nowrap transition-colors">3
+                                                перне</span>
+                                            <div
+                                                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white/10 group-hover:bg-brand-gold transition-all border border-white/10 flex items-center justify-center group-hover:scale-125 group-hover:shadow-[0_0_8px_#C5A377]">
+                                            </div>
+                                            <span
+                                                class="absolute bottom-2 left-0 right-0 text-center text-[8px] text-brand-goldLight font-bold whitespace-nowrap transition-colors">B♭
+                                                (Си♭)</span>
+                                            <div
+                                                class="absolute right-0 top-1/4 bottom-1/4 w-px bg-brand-gold/25 pointer-events-none">
+                                            </div>
                                         </div>
 
                                         <!-- Fret 5 -->
-                                        <div onclick="playFret(5)" id="fret_5" class="relative h-full w-8 flex flex-col justify-between items-center cursor-pointer group">
-                                            <span class="text-[7px] text-white/50 group-hover:text-brand-gold font-bold">5 перне</span>
-                                            <div class="w-3 h-3 rounded-full bg-white/10 group-hover:bg-brand-gold transition-colors border border-white/10 flex items-center justify-center mt-3.5"></div>
-                                            <span class="text-[8px] text-brand-goldLight font-bold">C (До)</span>
-                                            <div class="absolute right-0 top-1/4 bottom-1/4 w-px bg-brand-gold/25 pointer-events-none"></div>
+                                        <div onclick="playFret(5)" id="fret_5"
+                                            class="flex-1 h-full cursor-pointer group relative">
+                                            <span
+                                                class="absolute top-2 left-0 right-0 text-center text-[7px] text-white/50 group-hover:text-brand-gold font-bold whitespace-nowrap transition-colors">5
+                                                перне</span>
+                                            <div
+                                                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white/10 group-hover:bg-brand-gold transition-all border border-white/10 flex items-center justify-center group-hover:scale-125 group-hover:shadow-[0_0_8px_#C5A377]">
+                                            </div>
+                                            <span
+                                                class="absolute bottom-2 left-0 right-0 text-center text-[8px] text-brand-goldLight font-bold whitespace-nowrap transition-colors">C
+                                                (До)</span>
+                                            <div
+                                                class="absolute right-0 top-1/4 bottom-1/4 w-px bg-brand-gold/25 pointer-events-none">
+                                            </div>
                                         </div>
 
                                         <!-- Fret 6 -->
-                                        <div onclick="playFret(6)" id="fret_6" class="relative h-full w-8 flex flex-col justify-between items-center cursor-pointer group">
-                                            <span class="text-[7px] text-white/50 group-hover:text-brand-gold font-bold">6 перне</span>
-                                            <div class="w-3 h-3 rounded-full bg-white/10 group-hover:bg-brand-gold transition-colors border border-white/10 flex items-center justify-center mt-3.5"></div>
-                                            <span class="text-[8px] text-brand-goldLight font-bold">C♯ (До♯)</span>
-                                            <div class="absolute right-0 top-1/4 bottom-1/4 w-px bg-brand-gold/25 pointer-events-none"></div>
+                                        <div onclick="playFret(6)" id="fret_6"
+                                            class="flex-1 h-full cursor-pointer group relative">
+                                            <span
+                                                class="absolute top-2 left-0 right-0 text-center text-[7px] text-white/50 group-hover:text-brand-gold font-bold whitespace-nowrap transition-colors">6
+                                                перне</span>
+                                            <div
+                                                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white/10 group-hover:bg-brand-gold transition-all border border-white/10 flex items-center justify-center group-hover:scale-125 group-hover:shadow-[0_0_8px_#C5A377]">
+                                            </div>
+                                            <span
+                                                class="absolute bottom-2 left-0 right-0 text-center text-[8px] text-brand-goldLight font-bold whitespace-nowrap transition-colors">C♯
+                                                (До♯)</span>
+                                            <div
+                                                class="absolute right-0 top-1/4 bottom-1/4 w-px bg-brand-gold/25 pointer-events-none">
+                                            </div>
                                         </div>
 
                                         <!-- Fret 7 -->
-                                        <div onclick="playFret(7)" id="fret_7" class="relative h-full w-8 flex flex-col justify-between items-center cursor-pointer group">
-                                            <span class="text-[7px] text-white/50 group-hover:text-brand-gold font-bold">7 перне</span>
-                                            <div class="w-3 h-3 rounded-full bg-white/10 group-hover:bg-brand-gold transition-colors border border-white/10 flex items-center justify-center mt-3.5"></div>
-                                            <span class="text-[8px] text-brand-goldLight font-bold">D (Ре)</span>
-                                            <div class="absolute right-0 top-1/4 bottom-1/4 w-px bg-brand-gold/25 pointer-events-none"></div>
+                                        <div onclick="playFret(7)" id="fret_7"
+                                            class="flex-1 h-full cursor-pointer group relative">
+                                            <span
+                                                class="absolute top-2 left-0 right-0 text-center text-[7px] text-white/50 group-hover:text-brand-gold font-bold whitespace-nowrap transition-colors">7
+                                                перне</span>
+                                            <div
+                                                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white/10 group-hover:bg-brand-gold transition-all border border-white/10 flex items-center justify-center group-hover:scale-125 group-hover:shadow-[0_0_8px_#C5A377]">
+                                            </div>
+                                            <span
+                                                class="absolute bottom-2 left-0 right-0 text-center text-[8px] text-brand-goldLight font-bold whitespace-nowrap transition-colors">D
+                                                (Ре)</span>
+                                            <div
+                                                class="absolute right-0 top-1/4 bottom-1/4 w-px bg-brand-gold/25 pointer-events-none">
+                                            </div>
                                         </div>
 
                                         <!-- Fret 8 -->
-                                        <div onclick="playFret(8)" id="fret_8" class="relative h-full w-8 flex flex-col justify-between items-center cursor-pointer group">
-                                            <span class="text-[7px] text-white/50 group-hover:text-brand-gold font-bold">8 перне</span>
-                                            <div class="w-3 h-3 rounded-full bg-white/10 group-hover:bg-brand-gold transition-colors border border-white/10 flex items-center justify-center mt-3.5"></div>
-                                            <span class="text-[8px] text-brand-goldLight font-bold">E♭ (Ми♭)</span>
-                                            <div class="absolute right-0 top-1/4 bottom-1/4 w-px bg-brand-gold/25 pointer-events-none"></div>
+                                        <div onclick="playFret(8)" id="fret_8"
+                                            class="flex-1 h-full cursor-pointer group relative">
+                                            <span
+                                                class="absolute top-2 left-0 right-0 text-center text-[7px] text-white/50 group-hover:text-brand-gold font-bold whitespace-nowrap transition-colors">8
+                                                перне</span>
+                                            <div
+                                                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white/10 group-hover:bg-brand-gold transition-all border border-white/10 flex items-center justify-center group-hover:scale-125 group-hover:shadow-[0_0_8px_#C5A377]">
+                                            </div>
+                                            <span
+                                                class="absolute bottom-2 left-0 right-0 text-center text-[8px] text-brand-goldLight font-bold whitespace-nowrap transition-colors">E♭
+                                                (Ми♭)</span>
+                                            <div
+                                                class="absolute right-0 top-1/4 bottom-1/4 w-px bg-brand-gold/25 pointer-events-none">
+                                            </div>
                                         </div>
 
                                         <!-- Fret 10 -->
-                                        <div onclick="playFret(10)" id="fret_10" class="relative h-full w-8 flex flex-col justify-between items-center cursor-pointer group">
-                                            <span class="text-[7px] text-white/50 group-hover:text-brand-gold font-bold">10 перне</span>
-                                            <div class="w-3 h-3 rounded-full bg-white/10 group-hover:bg-brand-gold transition-colors border border-white/10 flex items-center justify-center mt-3.5"></div>
-                                            <span class="text-[8px] text-brand-goldLight font-bold">F (Фа)</span>
-                                            <div class="absolute right-0 top-1/4 bottom-1/4 w-px bg-brand-gold/25 pointer-events-none"></div>
+                                        <div onclick="playFret(10)" id="fret_10"
+                                            class="flex-1 h-full cursor-pointer group relative">
+                                            <span
+                                                class="absolute top-2 left-0 right-0 text-center text-[7px] text-white/50 group-hover:text-brand-gold font-bold whitespace-nowrap transition-colors">10
+                                                перне</span>
+                                            <div
+                                                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white/10 group-hover:bg-brand-gold transition-all border border-white/10 flex items-center justify-center group-hover:scale-125 group-hover:shadow-[0_0_8px_#C5A377]">
+                                            </div>
+                                            <span
+                                                class="absolute bottom-2 left-0 right-0 text-center text-[8px] text-brand-goldLight font-bold whitespace-nowrap transition-colors">F
+                                                (Фа)</span>
+                                            <div
+                                                class="absolute right-0 top-1/4 bottom-1/4 w-px bg-brand-gold/25 pointer-events-none">
+                                            </div>
                                         </div>
 
                                         <!-- Fret 12 -->
-                                        <div onclick="playFret(12)" id="fret_12" class="relative h-full w-8 flex flex-col justify-between items-center cursor-pointer group">
-                                            <span class="text-[7px] text-white/50 group-hover:text-brand-gold font-bold">12 перне</span>
-                                            <div class="w-3 h-3 rounded-full bg-white/10 group-hover:bg-brand-gold transition-colors border border-white/10 flex items-center justify-center mt-3.5"></div>
-                                            <span class="text-[8px] text-brand-goldLight font-bold">G (Соль)</span>
-                                            <div class="absolute right-0 top-1/4 bottom-1/4 w-0.5 bg-brand-gold/40 pointer-events-none"></div>
+                                        <div onclick="playFret(12)" id="fret_12"
+                                            class="flex-1 h-full cursor-pointer group relative">
+                                            <span
+                                                class="absolute top-2 left-0 right-0 text-center text-[7px] text-white/50 group-hover:text-brand-gold font-bold whitespace-nowrap transition-colors">12
+                                                перне</span>
+                                            <div
+                                                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white/10 group-hover:bg-brand-gold transition-all border border-white/10 flex items-center justify-center group-hover:scale-125 group-hover:shadow-[0_0_8px_#C5A377]">
+                                            </div>
+                                            <span
+                                                class="absolute bottom-2 left-0 right-0 text-center text-[8px] text-brand-goldLight font-bold whitespace-nowrap transition-colors">G
+                                                (Соль)</span>
+                                            <div
+                                                class="absolute right-0 top-1/4 bottom-1/4 w-0.5 bg-brand-gold/40 pointer-events-none">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -539,15 +774,21 @@
 
                             <!-- Tabs Display & Auto-Play Control -->
                             <div class="w-full text-center space-y-4">
-                                <div class="bg-brand-accent/50 border border-brand-gold/15 rounded-2xl p-5 inline-block w-full">
-                                    <span class="text-[8px] font-black uppercase tracking-[0.25em] text-brand-gold block mb-2">Визуальные Табы (Номер лада)</span>
-                                    <div class="font-mono text-sm md:text-base font-bold text-brand-dark" id="displayTabs">
-                                        Струна 1:  0 (Ашық) - 3 (Си♭) - 5 (До)  |  0 (Ашық) - 3 (Си♭) - 6 (До♯) - 5 (До)  |  0 (Ашық) - 3 (Си♭) - 5 (До) - 3 (Си♭) - 0 (Ашық)
+                                <div
+                                    class="bg-brand-accent/50 border border-brand-gold/15 rounded-2xl p-5 inline-block w-full">
+                                    <span
+                                        class="text-[8px] font-black uppercase tracking-[0.25em] text-brand-gold block mb-2">Визуальные
+                                        Табы (Номер лада)</span>
+                                    <div class="font-mono text-sm md:text-base font-bold text-brand-dark"
+                                        id="displayTabs">
+                                        Струна 1: 0 (Ашық) - 3 (Си♭) - 5 (До) | 0 (Ашық) - 3 (Си♭) - 6 (До♯) - 5 (До) |
+                                        0 (Ашық) - 3 (Си♭) - 5 (До) - 3 (Си♭) - 0 (Ашық)
                                     </div>
                                 </div>
 
                                 <div class="flex gap-4 justify-center">
-                                    <button onclick="playSongDemo()" id="btnPlayDemo" class="px-8 py-4 bg-brand-emerald text-white font-bold uppercase tracking-widest text-[9.5px] rounded-2xl active:scale-95 hover:bg-brand-dark transition-all flex items-center gap-2 shadow-lg">
+                                    <button onclick="playSongDemo()" id="btnPlayDemo"
+                                        class="px-8 py-4 bg-brand-emerald text-white font-bold uppercase tracking-widest text-[9.5px] rounded-2xl active:scale-95 hover:bg-brand-dark transition-all flex items-center gap-2 shadow-lg">
                                         ▶ Сыграть Авто-Демо
                                     </button>
                                 </div>
@@ -561,106 +802,142 @@
             <!-- DESIGNER CITIES COLLECTION: EXCLUSIVE PATTERNS FOR GLOBAL MARKET -->
             <section class="mb-28">
                 <div class="text-center mb-16">
-                    <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-brand-gold/5 border border-brand-gold/10 mb-6">
-                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-brand-gold">Спецвыпуск мануфактуры</span>
+                    <div
+                        class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-brand-gold/5 border border-brand-gold/10 mb-6">
+                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-brand-gold">Спецвыпуск
+                            мануфактуры</span>
                     </div>
-                    <h2 class="text-3xl md:text-5xl font-light uppercase tracking-tight text-brand-dark mb-4 font-serif">
+                    <h2
+                        class="text-3xl md:text-5xl font-light uppercase tracking-tight text-brand-dark mb-4 font-serif">
                         Городские и лимитированные <br><span class="text-brand-gold italic">дизайнерские серии</span>
                     </h2>
                     <p class="text-brand-clay font-medium max-w-3xl mx-auto leading-relaxed text-xs md:text-sm">
-                        Наш ответ международному дизайнерскому рынку. Роскошные инструменты с уникальными орнаментами, посвященные великим городам Казахстана и мировым культурным узлам.
+                        Наш ответ международному дизайнерскому рынку. Роскошные инструменты с уникальными орнаментами,
+                        посвященные великим городам Казахстана и мировым культурным узлам.
                     </p>
                 </div>
 
                 <!-- Showcase Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    
+
                     <!-- City Card 1: Almaty -->
-                    <div class="glass-card rounded-[2.5rem] border border-brand-gold/10 p-6 flex flex-col justify-between hover:scale-[1.03] transition-transform duration-500 shadow-md">
+                    <div
+                        class="glass-card rounded-[2.5rem] border border-brand-gold/10 p-6 flex flex-col justify-between hover:scale-[1.03] transition-transform duration-500 shadow-md">
                         <div>
-                            <div class="aspect-square bg-gradient-to-tr from-green-950 to-brand-emerald rounded-3xl mb-6 relative overflow-hidden flex items-center justify-center p-8">
+                            <div
+                                class="aspect-square bg-gradient-to-tr from-green-950 to-brand-emerald rounded-3xl mb-6 relative overflow-hidden flex items-center justify-center p-8">
                                 <!-- Minimal elegant graphics representing Almaty: apple blossom & mountain silhouette -->
                                 <div class="absolute inset-0 bg-ornament-watermark opacity-[0.04]"></div>
-                                <svg class="w-24 h-24 text-brand-goldLight opacity-85" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M10 80 L35 45 L50 65 L70 35 L90 80 Z" stroke-linecap="round"/>
-                                    <circle cx="50" cy="35" r="5" fill="currentColor"/>
-                                    <circle cx="25" cy="55" r="3" fill="currentColor"/>
-                                    <circle cx="75" cy="45" r="3.5" fill="currentColor"/>
+                                <svg class="w-24 h-24 text-brand-goldLight opacity-85" viewBox="0 0 100 100" fill="none"
+                                    stroke="currentColor" stroke-width="1.5">
+                                    <path d="M10 80 L35 45 L50 65 L70 35 L90 80 Z" stroke-linecap="round" />
+                                    <circle cx="50" cy="35" r="5" fill="currentColor" />
+                                    <circle cx="25" cy="55" r="3" fill="currentColor" />
+                                    <circle cx="75" cy="45" r="3.5" fill="currentColor" />
                                 </svg>
                             </div>
-                            <span class="text-[8px] font-black uppercase tracking-widest text-brand-gold">В честь Южной Столицы</span>
-                            <h4 class="text-xl font-bold uppercase text-brand-dark mt-2 mb-3 font-serif">Almaty Edition</h4>
+                            <span class="text-[8px] font-black uppercase tracking-widest text-brand-gold">В честь Южной
+                                Столицы</span>
+                            <h4 class="text-xl font-bold uppercase text-brand-dark mt-2 mb-3 font-serif">Almaty Edition
+                            </h4>
                             <p class="text-[11px] text-brand-clay leading-relaxed mb-6">
-                                Эксклюзивная серия из ценного ореха с изумрудным градиентом и узорами цветущей яблони. Цветущая прохлада предгорий Алатау в каждой струне.
+                                Эксклюзивная серия из ценного ореха с изумрудным градиентом и узорами цветущей яблони.
+                                Цветущая прохлада предгорий Алатау в каждой струне.
                             </p>
                         </div>
-                        <a href="https://wa.me/77755226901?text=Здравствуйте!%20Меня%20интересует%20лимитированная%20серия%20домбры%20Almaty%20Edition" target="_blank" class="w-full text-center py-4 bg-brand-gold/10 border border-brand-gold/20 hover:bg-brand-gold hover:text-white rounded-xl text-[9px] font-black uppercase tracking-widest text-brand-gold transition-all">
+                        <a href="https://wa.me/77755226901?text=Здравствуйте!%20Меня%20интересует%20лимитированная%20серия%20домбры%20Almaty%20Edition"
+                            target="_blank"
+                            class="w-full text-center py-4 bg-brand-gold/10 border border-brand-gold/20 hover:bg-brand-gold hover:text-white rounded-xl text-[9px] font-black uppercase tracking-widest text-brand-gold transition-all">
                             Заказать серию
                         </a>
                     </div>
 
                     <!-- City Card 2: Astana -->
-                    <div class="glass-card rounded-[2.5rem] border border-brand-gold/10 p-6 flex flex-col justify-between hover:scale-[1.03] transition-transform duration-500 shadow-md">
+                    <div
+                        class="glass-card rounded-[2.5rem] border border-brand-gold/10 p-6 flex flex-col justify-between hover:scale-[1.03] transition-transform duration-500 shadow-md">
                         <div>
-                            <div class="aspect-square bg-gradient-to-tr from-cyan-950 to-[#0A435C] rounded-3xl mb-6 relative overflow-hidden flex items-center justify-center p-8">
+                            <div
+                                class="aspect-square bg-gradient-to-tr from-cyan-950 to-[#0A435C] rounded-3xl mb-6 relative overflow-hidden flex items-center justify-center p-8">
                                 <div class="absolute inset-0 bg-ornament-watermark opacity-[0.04]"></div>
-                                <svg class="w-24 h-24 text-brand-goldLight opacity-85" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="50" cy="50" r="28" stroke-dasharray="3 3"/>
-                                    <line x1="50" y1="22" x2="50" y2="78"/>
-                                    <line x1="22" y1="50" x2="78" y2="50"/>
-                                    <circle cx="50" cy="50" r="8" fill="currentColor"/>
+                                <svg class="w-24 h-24 text-brand-goldLight opacity-85" viewBox="0 0 100 100" fill="none"
+                                    stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="50" cy="50" r="28" stroke-dasharray="3 3" />
+                                    <line x1="50" y1="22" x2="50" y2="78" />
+                                    <line x1="22" y1="50" x2="78" y2="50" />
+                                    <circle cx="50" cy="50" r="8" fill="currentColor" />
                                 </svg>
                             </div>
-                            <span class="text-[8px] font-black uppercase tracking-widest text-brand-gold">В честь Столицы Свободы</span>
-                            <h4 class="text-xl font-bold uppercase text-brand-dark mt-2 mb-3 font-serif">Astana Edition</h4>
+                            <span class="text-[8px] font-black uppercase tracking-widest text-brand-gold">В честь
+                                Столицы Свободы</span>
+                            <h4 class="text-xl font-bold uppercase text-brand-dark mt-2 mb-3 font-serif">Astana Edition
+                            </h4>
                             <p class="text-[11px] text-brand-clay leading-relaxed mb-6">
-                                Футуристичный дизайн, вдохновленный космической геометрией Хан-Шатыра и Байтерека. Небесно-голубой и платиновый декор на корпусе из клена.
+                                Футуристичный дизайн, вдохновленный космической геометрией Хан-Шатыра и Байтерека.
+                                Небесно-голубой и платиновый декор на корпусе из клена.
                             </p>
                         </div>
-                        <a href="https://wa.me/77755226901?text=Здравствуйте!%20Меня%20интересует%20лимитированная%20серия%20домбры%20Astana%20Edition" target="_blank" class="w-full text-center py-4 bg-brand-gold/10 border border-brand-gold/20 hover:bg-brand-gold hover:text-white rounded-xl text-[9px] font-black uppercase tracking-widest text-brand-gold transition-all">
+                        <a href="https://wa.me/77755226901?text=Здравствуйте!%20Меня%20интересует%20лимитированная%20серия%20домбры%20Astana%20Edition"
+                            target="_blank"
+                            class="w-full text-center py-4 bg-brand-gold/10 border border-brand-gold/20 hover:bg-brand-gold hover:text-white rounded-xl text-[9px] font-black uppercase tracking-widest text-brand-gold transition-all">
                             Заказать серию
                         </a>
                     </div>
 
                     <!-- City Card 3: Silk Road -->
-                    <div class="glass-card rounded-[2.5rem] border border-brand-gold/10 p-6 flex flex-col justify-between hover:scale-[1.03] transition-transform duration-500 shadow-md">
+                    <div
+                        class="glass-card rounded-[2.5rem] border border-brand-gold/10 p-6 flex flex-col justify-between hover:scale-[1.03] transition-transform duration-500 shadow-md">
                         <div>
-                            <div class="aspect-square bg-gradient-to-tr from-[#3A1E14] to-[#70301B] rounded-3xl mb-6 relative overflow-hidden flex items-center justify-center p-8">
+                            <div
+                                class="aspect-square bg-gradient-to-tr from-[#3A1E14] to-[#70301B] rounded-3xl mb-6 relative overflow-hidden flex items-center justify-center p-8">
                                 <div class="absolute inset-0 bg-ornament-watermark opacity-[0.04]"></div>
-                                <svg class="w-24 h-24 text-brand-goldLight opacity-85" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M15 50 Q30 20 50 50 T85 50" stroke-linecap="round"/>
-                                    <path d="M15 60 Q30 30 50 60 T85 60" stroke-linecap="round"/>
-                                    <circle cx="50" cy="55" r="4" fill="currentColor"/>
+                                <svg class="w-24 h-24 text-brand-goldLight opacity-85" viewBox="0 0 100 100" fill="none"
+                                    stroke="currentColor" stroke-width="1.5">
+                                    <path d="M15 50 Q30 20 50 50 T85 50" stroke-linecap="round" />
+                                    <path d="M15 60 Q30 30 50 60 T85 60" stroke-linecap="round" />
+                                    <circle cx="50" cy="55" r="4" fill="currentColor" />
                                 </svg>
                             </div>
-                            <span class="text-[8px] font-black uppercase tracking-widest text-brand-gold">В честь легендарного пути</span>
-                            <h4 class="text-xl font-bold uppercase text-brand-dark mt-2 mb-3 font-serif">Silk Road Edition</h4>
+                            <span class="text-[8px] font-black uppercase tracking-widest text-brand-gold">В честь
+                                легендарного пути</span>
+                            <h4 class="text-xl font-bold uppercase text-brand-dark mt-2 mb-3 font-serif">Silk Road
+                                Edition</h4>
                             <p class="text-[11px] text-brand-clay leading-relaxed mb-6">
-                                Терракотово-песчаные оттенки на корпусе из благородного красного дерева. Тончайшая роспись, изображающая песчаные дюны и караваны великих кочевников.
+                                Терракотово-песчаные оттенки на корпусе из благородного красного дерева. Тончайшая
+                                роспись, изображающая песчаные дюны и караваны великих кочевников.
                             </p>
                         </div>
-                        <a href="https://wa.me/77755226901?text=Здравствуйте!%20Меня%20интересует%20лимитированная%20серия%20домбры%20Silk%20Road%20Edition" target="_blank" class="w-full text-center py-4 bg-brand-gold/10 border border-brand-gold/20 hover:bg-brand-gold hover:text-white rounded-xl text-[9px] font-black uppercase tracking-widest text-brand-gold transition-all">
+                        <a href="https://wa.me/77755226901?text=Здравствуйте!%20Меня%20интересует%20лимитированная%20серия%20домбры%20Silk%20Road%20Edition"
+                            target="_blank"
+                            class="w-full text-center py-4 bg-brand-gold/10 border border-brand-gold/20 hover:bg-brand-gold hover:text-white rounded-xl text-[9px] font-black uppercase tracking-widest text-brand-gold transition-all">
                             Заказать серию
                         </a>
                     </div>
 
                     <!-- City Card 4: Nomad Global -->
-                    <div class="glass-card rounded-[2.5rem] border border-brand-gold/10 p-6 flex flex-col justify-between hover:scale-[1.03] transition-transform duration-500 shadow-md">
+                    <div
+                        class="glass-card rounded-[2.5rem] border border-brand-gold/10 p-6 flex flex-col justify-between hover:scale-[1.03] transition-transform duration-500 shadow-md">
                         <div>
-                            <div class="aspect-square bg-gradient-to-tr from-[#1C1816] to-[#302824] rounded-3xl mb-6 relative overflow-hidden flex items-center justify-center p-8">
+                            <div
+                                class="aspect-square bg-gradient-to-tr from-[#1C1816] to-[#302824] rounded-3xl mb-6 relative overflow-hidden flex items-center justify-center p-8">
                                 <div class="absolute inset-0 bg-ornament-watermark opacity-[0.04]"></div>
-                                <svg class="w-24 h-24 text-brand-goldLight opacity-85" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="50" cy="50" r="30" stroke-width="2"/>
-                                    <path d="M50 20 L50 80 M20 50 L80 50" stroke-width="1"/>
+                                <svg class="w-24 h-24 text-brand-goldLight opacity-85" viewBox="0 0 100 100" fill="none"
+                                    stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="50" cy="50" r="30" stroke-width="2" />
+                                    <path d="M50 20 L50 80 M20 50 L80 50" stroke-width="1" />
                                 </svg>
                             </div>
-                            <span class="text-[8px] font-black uppercase tracking-widest text-brand-gold">Скандинавский минимализм & Степь</span>
-                            <h4 class="text-xl font-bold uppercase text-brand-dark mt-2 mb-3 font-serif">Nomad Global</h4>
+                            <span class="text-[8px] font-black uppercase tracking-widest text-brand-gold">Скандинавский
+                                минимализм & Степь</span>
+                            <h4 class="text-xl font-bold uppercase text-brand-dark mt-2 mb-3 font-serif">Nomad Global
+                            </h4>
                             <p class="text-[11px] text-brand-clay leading-relaxed mb-6">
-                                Разработано специально для международной аудитории. Матовый черный шпон с одной тончайшей латунной орнаментальной линией. Безупречный стиль хай-тек.
+                                Разработано специально для международной аудитории. Матовый черный шпон с одной
+                                тончайшей латунной орнаментальной линией. Безупречный стиль хай-тек.
                             </p>
                         </div>
-                        <a href="https://wa.me/77755226901?text=Здравствуйте!%20Меня%20интересует%20лимитированная%20серия%20домбры%20Nomad%20Global" target="_blank" class="w-full text-center py-4 bg-brand-gold/10 border border-brand-gold/20 hover:bg-brand-gold hover:text-white rounded-xl text-[9px] font-black uppercase tracking-widest text-brand-gold transition-all">
+                        <a href="https://wa.me/77755226901?text=Здравствуйте!%20Меня%20интересует%20лимитированная%20серия%20домбры%20Nomad%20Global"
+                            target="_blank"
+                            class="w-full text-center py-4 bg-brand-gold/10 border border-brand-gold/20 hover:bg-brand-gold hover:text-white rounded-xl text-[9px] font-black uppercase tracking-widest text-brand-gold transition-all">
                             Заказать серию
                         </a>
                     </div>
@@ -670,55 +947,71 @@
 
             <!-- Care Guidelines Grid -->
             <section class="mb-24">
-                <h3 class="text-2xl md:text-4xl font-light uppercase tracking-tight text-brand-dark mb-16 text-center font-serif">
+                <h3
+                    class="text-2xl md:text-4xl font-light uppercase tracking-tight text-brand-dark mb-16 text-center font-serif">
                     Как сохранить <span class="text-brand-gold font-bold">инструмент века</span>
                 </h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     <!-- Care 1 -->
                     <div class="glass-card p-8 rounded-3xl border border-brand-gold/5 shadow-md">
-                        <h4 class="font-bold text-brand-dark text-xs uppercase mb-3 tracking-wider">Влажность 40-60%</h4>
-                        <p class="text-[11px] text-brand-clay leading-relaxed">Древесина чрезвычайно чувствительна к сухому воздуху. Во время отопительного сезона обязательно используйте комнатный увлажнитель воздуха.</p>
+                        <h4 class="font-bold text-brand-dark text-xs uppercase mb-3 tracking-wider">Влажность 40-60%
+                        </h4>
+                        <p class="text-[11px] text-brand-clay leading-relaxed">Древесина чрезвычайно чувствительна к
+                            сухому воздуху. Во время отопительного сезона обязательно используйте комнатный увлажнитель
+                            воздуха.</p>
                     </div>
 
                     <!-- Care 2 -->
                     <div class="glass-card p-8 rounded-3xl border border-brand-gold/5 shadow-md">
-                        <h4 class="font-bold text-brand-dark text-xs uppercase mb-3 tracking-wider">Температура 18-24°C</h4>
-                        <p class="text-[11px] text-brand-clay leading-relaxed">Избегайте близости к батареям отопления, сквознякам или кондиционерам. Не оставляйте инструмент в машине под открытым солнцем.</p>
+                        <h4 class="font-bold text-brand-dark text-xs uppercase mb-3 tracking-wider">Температура 18-24°C
+                        </h4>
+                        <p class="text-[11px] text-brand-clay leading-relaxed">Избегайте близости к батареям отопления,
+                            сквознякам или кондиционерам. Не оставляйте инструмент в машине под открытым солнцем.</p>
                     </div>
 
                     <!-- Care 3 -->
                     <div class="glass-card p-8 rounded-3xl border border-brand-gold/5 shadow-md">
                         <h4 class="font-bold text-brand-dark text-xs uppercase mb-3 tracking-wider">Жёсткий кофр</h4>
-                        <p class="text-[11px] text-brand-clay leading-relaxed">Храните и транспортируйте домбру только в специальном жестком чехле (кофре), который гасит температурные перепады и удары.</p>
+                        <p class="text-[11px] text-brand-clay leading-relaxed">Храните и транспортируйте домбру только в
+                            специальном жестком чехле (кофре), который гасит температурные перепады и удары.</p>
                     </div>
 
                     <!-- Care 4 -->
                     <div class="glass-card p-8 rounded-3xl border border-brand-gold/5 shadow-md">
                         <h4 class="font-bold text-brand-dark text-xs uppercase mb-3 tracking-wider">Чистка и уход</h4>
-                        <p class="text-[11px] text-brand-clay leading-relaxed">Протирайте лакированные детали мягкой микрофиброй без использования спиртовых и химических чистящих растворов.</p>
+                        <p class="text-[11px] text-brand-clay leading-relaxed">Протирайте лакированные детали мягкой
+                            микрофиброй без использования спиртовых и химических чистящих растворов.</p>
                     </div>
                 </div>
             </section>
 
             <!-- Recovery & Restoration CTA Banner -->
             <section class="mt-20">
-                <div class="glass-card p-8 md:p-16 rounded-5xl border border-brand-gold/10 relative overflow-hidden bg-brand-dark text-white shadow-2xl">
+                <div
+                    class="glass-card p-8 md:p-16 rounded-5xl border border-brand-gold/10 relative overflow-hidden bg-brand-dark text-white shadow-2xl">
                     <div class="absolute top-0 right-0 w-96 h-96 bg-brand-gold/10 blur-[100px] -mr-48 -mt-48"></div>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
                         <div>
-                            <h2 class="text-3xl md:text-5xl font-light uppercase tracking-tight mb-6 leading-tight">Утеряли <span class="text-brand-gold font-bold">паспорт</span>?</h2>
+                            <h2 class="text-3xl md:text-5xl font-light uppercase tracking-tight mb-6 leading-tight">
+                                Утеряли <span class="text-brand-gold font-bold">паспорт</span>?</h2>
                             <p class="text-white/60 mb-10 text-sm md:text-base leading-relaxed max-w-lg">
-                                Не беспокойтесь! Мы поможем восстановить электронные или физические документы вашего инструмента по ФИО первого покупателя, ориентировочной дате заказа или фотографиям домбры.
+                                Не беспокойтесь! Мы поможем восстановить электронные или физические документы вашего
+                                инструмента по ФИО первого покупателя, ориентировочной дате заказа или фотографиям
+                                домбры.
                             </p>
                             <div class="flex flex-col sm:flex-row gap-6">
-                                <a href="https://wa.me/77755226901?text=Здравствуйте!%20Я%20утерял%20паспорт%20своей%20домбры%20и%20хочу%20его%20восстановить" target="_blank" class="btn-gold px-12 py-6 rounded-full font-bold uppercase text-[11px] tracking-widest shadow-2xl active:scale-95 text-center flex items-center justify-center gap-3">
+                                <a href="https://wa.me/77755226901?text=Здравствуйте!%20Я%20утерял%20паспорт%20своей%20домбры%20и%20хочу%20его%20восстановить"
+                                    target="_blank"
+                                    class="btn-gold px-12 py-6 rounded-full font-bold uppercase text-[11px] tracking-widest shadow-2xl active:scale-95 text-center flex items-center justify-center gap-3">
                                     Восстановить в WhatsApp
                                 </a>
                             </div>
                         </div>
                         <div class="relative hidden lg:block">
-                            <div class="aspect-square bg-gradient-to-tr from-brand-gold/20 to-transparent rounded-full flex items-center justify-center p-20">
-                                <img src="assets/hero_dombyra.png" alt="Custom Dombyra" class="h-full aspect-square object-contain rounded-full bg-white p-4 drop-shadow-2xl animate-float">
+                            <div
+                                class="aspect-square bg-gradient-to-tr from-brand-gold/20 to-transparent rounded-full flex items-center justify-center p-20">
+                                <img src="assets/hero_dombyra.png" alt="Custom Dombyra"
+                                    class="h-full aspect-square object-contain rounded-full bg-white p-4 drop-shadow-2xl animate-float">
                             </div>
                         </div>
                     </div>
@@ -787,7 +1080,7 @@
 
             if (showKazakhSide) {
                 passportCardInner.classList.add('flipped');
-                
+
                 // Set B active (emerald)
                 btnSideB.className = "flex-1 px-6 py-4 rounded-xl border border-brand-emerald text-[10px] font-black uppercase tracking-widest text-white transition-all flex items-center justify-center gap-2 bg-brand-emerald shadow-sm";
                 if (dotSideB) dotSideB.className = "w-2 h-2 rounded-full bg-white transition-all animate-pulse";
@@ -797,7 +1090,7 @@
                 if (dotSideA) dotSideA.className = "w-2 h-2 rounded-full bg-brand-gold transition-all";
             } else {
                 passportCardInner.classList.remove('flipped');
-                
+
                 // Set A active (gold)
                 btnSideA.className = "flex-1 px-6 py-4 rounded-xl border border-brand-gold text-[10px] font-black uppercase tracking-widest text-white transition-all flex items-center justify-center gap-2 bg-brand-gold shadow-sm";
                 if (dotSideA) dotSideA.className = "w-2 h-2 rounded-full bg-white transition-all animate-pulse";
@@ -806,6 +1099,14 @@
                 btnSideB.className = "flex-1 px-6 py-4 rounded-xl border border-brand-dark/10 hover:border-brand-gold text-[10px] font-black uppercase tracking-widest text-brand-dark transition-all flex items-center justify-center gap-2 bg-white shadow-sm";
                 if (dotSideB) dotSideB.className = "w-2 h-2 rounded-full bg-brand-emerald transition-all";
             }
+        }
+
+        // Direct tap/click on the card to flip it
+        if (passportCardInner) {
+            passportCardInner.addEventListener('click', () => {
+                const isFlipped = passportCardInner.classList.contains('flipped');
+                flipPassport(!isFlipped);
+            });
         }
 
         // Form tabs switching
@@ -901,7 +1202,7 @@
 
             const model = modelSelect.value;
             const today = new Date();
-            const dateStr = `${String(today.getDate()).padStart(2, '0')}.${String(today.getMonth()+1).padStart(2, '0')}.${today.getFullYear()}`;
+            const dateStr = `${String(today.getDate()).padStart(2, '0')}.${String(today.getMonth() + 1).padStart(2, '0')}.${today.getFullYear()}`;
             const randSerial = 'DKZ-KAZ-' + Math.floor(100 + Math.random() * 900);
 
             const generatedData = {
@@ -911,11 +1212,11 @@
                 date: dateStr,
                 master: 'Мануфактура Aiym Ernst',
                 id: 'DKZ-K' + Math.floor(10000000 + Math.random() * 90000000).toString(16).toUpperCase(),
-                warranty: `${today.getDate()}.${today.getMonth()+1}.${today.getFullYear()+3}`
+                warranty: `${today.getDate()}.${today.getMonth() + 1}.${today.getFullYear() + 3}`
             };
 
             updatePassportVisuals(randSerial, generatedData);
-            showAlert('Ваш Именной Паспорт Настоящего Казаха готов!', 'success');
+            showAlert('Ваш Именной Паспорт Нағыз Қазақ готов!', 'success');
             flipPassport(true); // Flip to show the Kazakh side!
             playBeautifulPluck(293.66); // D4 note chord
         }
@@ -935,7 +1236,7 @@
         function showAlert(msg, type) {
             statusAlert.classList.remove('hidden', 'bg-green-500/10', 'text-green-600', 'border-green-500/20', 'bg-red-500/10', 'text-red-600', 'border-red-500/20');
             statusAlert.innerText = msg;
-            
+
             if (type === 'success') {
                 statusAlert.classList.add('bg-green-500/10', 'text-green-600', 'border', 'border-green-500/20');
             } else {
@@ -956,12 +1257,78 @@
             const serial = document.getElementById('displaySerial').innerText;
             const owner = document.getElementById('displayOwner').innerText;
             const url = `${window.location.origin}${window.location.pathname}?cert=${encodeURIComponent(serial)}&name=${encodeURIComponent(owner)}`;
-            
+
             navigator.clipboard.writeText(url).then(() => {
-                alert('Ссылка скопирована! Отправьте её друзьям, чтобы показать статус Настоящего Казаха.');
+                alert('Ссылка скопирована! Отправьте её друзьям, чтобы показать статус Нағыз Қазақ.');
             }).catch(err => {
                 alert('Не удалось скопировать. Скопируйте адрес вручную: ' + url);
             });
+        }
+
+        function downloadCertificateAsJPEG() {
+            const cardInner = document.querySelector('.flip-card-inner');
+            if (!cardInner) return;
+            
+            const isFlipped = cardInner.classList.contains('flipped');
+            const targetElement = isFlipped ? document.querySelector('.flip-card-back') : document.querySelector('.flip-card-front');
+            if (!targetElement) return;
+
+            const btn = document.getElementById('btnDownloadJPEG');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '⏳ Генерация JPEG...';
+            btn.disabled = true;
+
+            // Clone the target element for perfect 2D flat rendering without 3D perspective distortion
+            const clone = targetElement.cloneNode(true);
+            clone.classList.remove('absolute', 'inset-0', 'flip-card-front', 'flip-card-back');
+            clone.style.position = 'fixed';
+            clone.style.top = '-9999px';
+            clone.style.left = '-9999px';
+            clone.style.transform = 'none';
+            clone.style.webkitTransform = 'none';
+            clone.style.backfaceVisibility = 'visible';
+            clone.style.webkitBackfaceVisibility = 'visible';
+            
+            // Render at the actual rendered dimensions to keep typography and design ratios perfectly proportioned
+            clone.style.width = targetElement.offsetWidth + 'px';
+            clone.style.height = targetElement.offsetHeight + 'px';
+            clone.style.borderRadius = '2rem';
+            clone.style.overflow = 'hidden';
+
+            document.body.appendChild(clone);
+
+            // Wait a tiny fraction of a second to ensure fonts are fully rendered in DOM layout
+            setTimeout(() => {
+                html2canvas(clone, {
+                    scale: 3.5, // Crisp high-resolution landscape output!
+                    useCORS: true,
+                    allowTaint: true,
+                    backgroundColor: null,
+                    logging: false
+                }).then(canvas => {
+                    document.body.removeChild(clone);
+
+                    const link = document.createElement('a');
+                    const serial = document.getElementById('displaySerial').innerText || 'DKZ';
+                    const sideName = isFlipped ? 'Nagyz_Qazaq' : 'Authenticity';
+                    
+                    link.download = `Dombyra_Certificate_${serial}_${sideName}.jpg`;
+                    link.href = canvas.toDataURL('image/jpeg', 0.95);
+                    link.click();
+
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    showAlert('Сертификат успешно скачан в JPEG формате!', 'success');
+                }).catch(err => {
+                    console.error('Error generating JPEG:', err);
+                    if (document.body.contains(clone)) {
+                        document.body.removeChild(clone);
+                    }
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    alert('Не удалось сгенерировать изображение. Пожалуйста, попробуйте еще раз.');
+                });
+            }, 100);
         }
 
 
@@ -1024,7 +1391,7 @@
                     { string: 1, fret: 3, delay: 1600, duration: 350 },
                     { string: 1, fret: 5, delay: 2000, duration: 350 },
                     { string: 1, fret: 7, delay: 2400, duration: 650 },
-                    
+
                     // Көңілімнің санасы (10 - 10 - 10 - 8 - 7 - 8 - 10)
                     { string: 1, fret: 10, delay: 3400, duration: 350 },
                     { string: 1, fret: 10, delay: 3800, duration: 350 },
@@ -1084,7 +1451,7 @@
                     { string: 1, fret: 8, delay: 3340, duration: 100 },
                     { string: 1, fret: 10, delay: 3460, duration: 100 },
                     { string: 1, fret: 12, delay: 3580, duration: 450 },
-                    
+
                     // Лавинообразный спуск
                     { string: 1, fret: 10, delay: 4100, duration: 100 },
                     { string: 1, fret: 8, delay: 4220, duration: 100 },
@@ -1154,7 +1521,7 @@
         function playBeautifulPluck(pitch = 196) {
             try {
                 const ctx = getAudioContext();
-                
+
                 // First String Pluck (Base tone)
                 const osc1 = ctx.createOscillator();
                 const gain1 = ctx.createGain();
@@ -1203,10 +1570,10 @@
             // Tuned base G3 frequency (196 Hz)
             const baseFreq = 196.00;
             const targetFreq = baseFreq * Math.pow(2, fretNumber / 12);
-            
+
             // Trigger visual glow
             highlightFretVisual(fretNumber);
-            
+
             // Play Dombyra Pluck sound
             playBeautifulPluck(targetFreq);
         }
@@ -1215,11 +1582,11 @@
             const el = document.getElementById('fret_' + fret);
             if (el) {
                 const indicator = el.querySelector('div');
-                indicator.classList.remove('bg-white/10', 'bg-white/20');
+                indicator.classList.remove('bg-white/10', 'bg-white/20', 'bg-white/25');
                 indicator.classList.add('bg-brand-gold', 'scale-150', 'shadow-[0_0_12px_#C5A377]');
                 setTimeout(() => {
                     indicator.classList.remove('scale-150', 'shadow-[0_0_12px_#C5A377]');
-                    indicator.classList.add('bg-white/10');
+                    indicator.classList.add(fret === 0 ? 'bg-white/25' : 'bg-white/10');
                 }, 400);
             }
         }
@@ -1301,4 +1668,5 @@
         });
     </script>
 </body>
+
 </html>
