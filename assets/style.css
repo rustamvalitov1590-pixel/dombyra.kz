@@ -1,5 +1,5 @@
-﻿html, body {
-    overflow-x: hidden;
+html, body {
+    overflow-x: clip;
     max-width: 100%;
 }
 
@@ -208,3 +208,180 @@ body {
 .product-image-blend {
     mix-blend-mode: multiply;
 }
+
+/* Mobile Menu pointer events and visibility fix */
+#mobileMenu {
+    pointer-events: none;
+    visibility: hidden;
+    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), visibility 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#mobileMenu:not(.translate-x-full) {
+    pointer-events: auto;
+    visibility: visible;
+}
+
+/* Touch Scroll Optimization for Mobile Sections */
+@media (max-width: 768px) {
+    .glass-card,
+    #catalog,
+    #constructor,
+    #map {
+        touch-action: pan-y;
+    }
+}
+
+/* Rounded corners for the actual catalog and article card photos */
+.glass-card div[class*="rounded-3xl"] > img,
+.glass-card div[class*="aspect-"] > img,
+.group div[class*="rounded-3xl"] > img,
+.group div[class*="aspect-"] > img {
+    border-radius: 1.25rem !important; /* Premium rounded corners (20px) */
+    overflow: hidden !important;
+}
+
+/* Custom Leaflet popup styling to match our design system */
+.leaflet-popup-content-wrapper {
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(197, 163, 119, 0.3) !important;
+    border-radius: 1.5rem !important;
+    padding: 0.25rem !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+}
+.leaflet-popup-tip {
+    background: rgba(255, 255, 255, 0.98) !important;
+    border: 1px solid rgba(197, 163, 119, 0.1) !important;
+}
+.leaflet-container a.leaflet-popup-close-button {
+    color: #8c7b6c !important;
+    padding: 10px 12px 0 0 !important;
+}
+
+/* Kazakh Geometric Micro-Ornament Watermark (Tengri & Shanyrak Motif) */
+.bg-ornament-watermark, footer {
+    position: relative;
+}
+.bg-ornament-watermark::before, footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.025; /* Ethereal, extremely subtle and elegant */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80' fill='none' stroke='%23C5A377' stroke-width='0.75'%3E%3Ccircle cx='40' cy='40' r='35' stroke-dasharray='2 2'/%3E%3Ccircle cx='40' cy='40' r='27'/%3E%3Cpath d='M40 5V75M5 40H75' stroke-linecap='round'/%3E%3Cpath d='M23.5 23.5C31.5 31.5 48.5 31.5 56.5 23.5M23.5 56.5C31.5 48.5 48.5 48.5 56.5 56.5' stroke-linecap='round'/%3E%3Cpath d='M23.5 23.5C31.5 31.5 31.5 48.5 23.5 56.5M56.5 23.5C48.5 31.5 48.5 48.5 56.5 56.5' stroke-linecap='round'/%3E%3Ccircle cx='40' cy='40' r='4' fill='%23C5A377'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    z-index: 1;
+}
+footer::before {
+    opacity: 0.015; /* Softened watermark for the dark footer */
+}
+
+/* Gold thin vector divider lines */
+.gold-divider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(197, 163, 119, 0.25) 50%, transparent 100%);
+    margin: 4rem 0;
+}
+.gold-divider::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #FAF9F6; /* Matches --brand-cream */
+    border: 1px solid var(--brand-gold);
+    transform: rotate(45deg);
+    z-index: 2;
+}
+
+/* Elegant micro-ornaments on card borders */
+.ornament-border {
+    position: relative;
+    border: 1px solid rgba(197, 163, 119, 0.2);
+}
+.ornament-border::before, .ornament-border::after {
+    content: '◇';
+    position: absolute;
+    font-size: 8px;
+    color: var(--brand-gold);
+    opacity: 0.6;
+    line-height: 1;
+}
+.ornament-border::before {
+    top: 6px;
+    left: 6px;
+}
+.ornament-border::after {
+    bottom: 6px;
+    right: 6px;
+}
+
+/* National ornament corner frame decorations for forms */
+.form-with-ornaments {
+    position: relative;
+    overflow: hidden;
+}
+/* Left corner ornament */
+.form-with-ornaments::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    pointer-events: none;
+    opacity: 0.12; /* Subtle and high-class */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23C5A377' stroke-width='2.5'%3E%3Cpath d='M0 0 H40 C20 0 0 20 0 40 Z M0 0 H25 C12 0 0 12 0 25 Z M0 0 H12 C6 0 0 6 0 12 Z M15 15 C20 20 30 20 35 15 M15 15 C15 20 15 30 15 35'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 1;
+}
+/* Right corner ornament */
+.form-with-ornaments::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    pointer-events: none;
+    opacity: 0.12;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23C5A377' stroke-width='2.5'%3E%3Cpath d='M100 100 H60 C80 100 100 80 100 60 Z M100 100 H75 C88 100 100 88 100 75 Z M100 100 H88 C94 100 100 94 100 88 Z M85 85 C80 80 70 80 65 85 M85 85 C85 80 85 70 85 65'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 1;
+}
+
+/* Elegant input with subtle ornament background on focus or static */
+.input-ornament {
+    position: relative;
+}
+.input-ornament::after {
+    content: '';
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23C5A377' stroke-width='1.5'%3E%3Ccircle cx='50' cy='50' r='45' stroke-dasharray='3 3'/%3E%3Ccircle cx='50' cy='50' r='35' stroke-width='1'/%3E%3Cpath d='M50 15V85M15 50H85' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M28 28C38 38 62 38 72 28M28 72C38 62 62 62 72 72' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M28 28C38 38 38 62 28 72M72 28C62 38 62 62 72 72' stroke-width='1.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='50' r='6' fill='%23C5A377'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: all 0.3s ease;
+    z-index: 5;
+}
+.input-ornament:focus-within::after {
+    opacity: 0.8;
+    transform: translateY(-50%) rotate(45deg);
+    filter: drop-shadow(0 0 3px rgba(197, 163, 119, 0.4));
+}
+
+
+
+
