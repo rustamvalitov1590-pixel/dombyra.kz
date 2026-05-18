@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сертификат подлинности | DOMBYRA.KZ</title>
+    <title>Паспорт Домбры & Сертификат Настоящего Казаха | DOMBYRA.KZ</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
@@ -19,12 +19,14 @@
                             dark: '#3A3530',
                             clay: '#8C7B6C',
                             accent: '#F3F0E9',
-                            white: '#FFFFFF'
+                            white: '#FFFFFF',
+                            emerald: '#0B3C3F',
+                            emeraldLight: '#185B5F'
                         }
                     },
                     fontFamily: {
                         sans: ['Outfit', 'sans-serif'],
-                        serif: ['Outfit', 'sans-serif'],
+                        serif: ['Lora', 'serif'],
                     },
                     borderRadius: {
                         '4xl': '2.5rem',
@@ -34,12 +36,88 @@
             }
         }
     </script>
+    <style>
+        /* Custom luxury styles for 3D flip card */
+        .card-perspective {
+            perspective: 1500px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+        .flip-card-inner.flipped {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 2rem;
+            overflow: hidden;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+
+        /* Shimmering Hologram Effect */
+        .hologram-shine::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(
+                circle 150px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                rgba(255, 255, 255, 0.18) 0%,
+                rgba(255, 215, 0, 0.08) 30%,
+                rgba(0, 229, 255, 0.05) 50%,
+                transparent 80%
+            );
+            pointer-events: none;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .hologram-shine:hover::before {
+            opacity: 1;
+        }
+
+        /* Custom fretboard styling */
+        .fret-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(197, 163, 119, 0.35);
+        }
+
+        /* Print styles */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printablePassport, #printablePassport * {
+                visibility: visible;
+            }
+            #printablePassport {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body class="bg-brand-cream font-['Inter'] text-brand-dark selection:bg-brand-gold selection:text-white overflow-x-hidden">
     <!-- Floating Background Shapes -->
     <div class="floating-shape bg-brand-gold/10 w-96 h-96 top-[-10%] left-[-10%]"></div>
-    <div class="floating-shape bg-brand-clay/5 w-[500px] h-[500px] top-[30%] right-[-15%]"></div>
-    <div class="floating-shape bg-brand-gold/10 w-80 h-80 bottom-[10%] left-[20%]"></div>
+    <div class="floating-shape bg-brand-emerald/5 w-[600px] h-[600px] top-[20%] right-[-15%]"></div>
+    <div class="floating-shape bg-brand-gold/5 w-80 h-80 bottom-[10%] left-[20%]"></div>
 
     <header class="fixed w-full top-0 z-50 px-4 transition-all duration-300" id="mainHeader"></header>
     <div id="mobileMenu" class="fixed inset-0 z-[60] bg-brand-cream transform translate-x-full transition-transform duration-300 md:hidden"></div>
@@ -47,127 +125,554 @@
     <main class="pt-32 pb-24">
         <div class="container mx-auto max-w-7xl px-4 md:px-10">
             <!-- Header Section -->
-            <div class="text-center mb-20">
+            <div class="text-center mb-16">
                 <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-brand-gold/5 border border-brand-gold/10 mb-6">
-                    <span class="text-[10px] font-black uppercase tracking-[0.2em] text-brand-gold">Защита оригинальности</span>
+                    <span class="text-[10px] font-black uppercase tracking-[0.2em] text-brand-gold">Две стороны одного шедевра</span>
                 </div>
-                <h1 class="text-4xl md:text-7xl font-light uppercase tracking-tight text-brand-dark mb-6 font-serif">Паспорт <span class="text-brand-gold font-bold">инструмента</span></h1>
-                <p class="text-brand-clay font-medium max-w-2xl mx-auto leading-relaxed text-sm md:text-base">Каждая созданная нами домбра обладает уникальным цифровым паспортом и подтвержденной трехлетней гарантией.</p>
+                <h1 class="text-4xl md:text-7xl font-light uppercase tracking-tight text-brand-dark mb-6 font-serif">
+                    Паспорт <span class="text-brand-gold font-bold">Настоящего Казаха</span>
+                </h1>
+                <p class="text-brand-clay font-medium max-w-3xl mx-auto leading-relaxed text-sm md:text-base">
+                    Каждая созданная нами домбра — это больше, чем музыкальный инструмент с 3-летней гарантией подлинности. Это ваш официальный пропуск в великую степную культуру.
+                </p>
             </div>
 
-            <!-- Cinematic Passport Showcase -->
-            <section class="mb-24">
-                <div class="glass-card rounded-5xl overflow-hidden border border-brand-gold/10 relative shadow-2xl bg-ornament-watermark">
-                    <div class="absolute top-0 right-0 w-1/3 h-full bg-brand-gold/5 pointer-events-none z-10"></div>
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                        <div class="lg:col-span-6 p-8 md:p-16">
-                            <span class="inline-block bg-brand-gold/10 text-brand-gold text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-6 border border-brand-gold/20">Подлинность</span>
-                            <h2 class="text-3xl md:text-5xl font-light uppercase tracking-tight text-brand-dark mb-8 leading-tight font-serif">
-                                Защита вашего <br><span class="text-brand-gold italic">выбора и вложений</span>
-                            </h2>
-                            <div class="space-y-6 text-brand-clay font-medium text-sm leading-relaxed max-w-lg">
-                                <p>
-                                    Мы верим, что великие музыкальные инструменты должны обладать безупречной и прозрачной историей. Поэтому мы отказались от бумажных талонов прошлых лет в пользу защищенной цифровой системы верификации.
-                                </p>
-                                <p>
-                                    Электронный паспорт подтверждает подлинность вашей домбры, фиксирует точные материалы изготовления (породу деки, корпуса, грифа), закрепляет дату выпуска и имя мастера, сотворившего этот шедевр.
-                                </p>
-                            </div>
+            <!-- Double-Sided Digital Certificate Showcase -->
+            <section class="mb-32 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                    
+                    <!-- Left Column: Explanatory & Controls -->
+                    <div class="lg:col-span-5 space-y-8">
+                        <span class="inline-block bg-brand-gold/10 text-brand-gold text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-widest border border-brand-gold/20">Интерактивный документ</span>
+                        <h2 class="text-3xl md:text-4xl font-light uppercase tracking-tight text-brand-dark leading-tight font-serif">
+                            Подлинность домбры и <br><span class="text-brand-gold italic">подтверждение духа</span>
+                        </h2>
+                        
+                        <div class="text-brand-clay font-medium text-sm leading-relaxed space-y-4">
+                            <p>
+                                Наш паспорт объединяет два священных смысла. <strong>Первая сторона</strong> — техническая верификация: уникальный номер, ценные породы дерева деки и имя мастера.
+                            </p>
+                            <p>
+                                <strong>Вторая сторона</strong> — манифест степи. По древней казахской пословице: <span class="text-brand-dark font-bold italic">«Нағыз қазақ — қазақ емес, нағыз қазақ — Домбыра!»</span> (Настоящий казах — это не просто казах, настоящий казах — это Домбра).
+                            </p>
+                            <p class="text-xs italic border-l-2 border-brand-gold pl-4 text-brand-clay/80">
+                                Вне зависимости от вашей национальности, гражданства и знания языка — если у вас в руках Домбра, вы официально признаны Настоящим Казахом с полным правом этим гордиться («понтануться»)!
+                            </p>
                         </div>
-                        <div class="lg:col-span-6 relative flex justify-center p-4 lg:p-16 bg-brand-accent/20">
-                            <!-- Visual Holographic Passport mockup -->
-                            <div class="w-full max-w-[420px] aspect-auto md:aspect-[1.58/1] rounded-3xl p-6 md:p-8 py-8 bg-gradient-to-tr from-brand-dark to-brand-dark/95 border border-brand-gold/30 text-white relative shadow-2xl overflow-hidden">
-                                <div class="absolute top-0 right-0 w-40 h-40 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
-                                <div class="flex justify-between items-start mb-8">
-                                    <div>
-                                        <p class="text-[8px] uppercase tracking-widest text-brand-gold/60 font-bold mb-1">Мануфактура</p>
-                                        <h4 class="text-lg font-bold tracking-widest font-serif leading-none">DOMBYRA</h4>
-                                    </div>
-                                    <div class="w-8 h-8 rounded-full border border-brand-gold/30 flex items-center justify-center text-brand-gold text-xs font-bold bg-white/5">QR</div>
-                                </div>
-                                <div class="flex justify-between items-end mt-4">
-                                    <div class="space-y-2">
-                                        <p class="text-[8px] uppercase tracking-[0.25em] text-white/50 leading-none">Номер паспорта</p>
-                                        <h3 class="text-lg font-mono font-bold tracking-widest text-brand-gold">DKZ-2026-XXXX</h3>
-                                    </div>
-                                    <div class="text-right">
-                                        <p class="text-[7px] uppercase tracking-[0.25em] text-white/50 leading-none mb-0.5">Владелец</p>
-                                        <p class="text-[9px] font-bold text-white uppercase tracking-wider font-serif">БАУЫРЖАН КАРИМОВ</p>
-                                    </div>
-                                </div>
-                                <div class="mt-8 pt-6 border-t border-white/5 flex justify-between items-center text-[8px] uppercase tracking-widest text-white/40">
-                                    <span>Гарантия: 3 года</span>
-                                    <span class="text-brand-gold font-bold">Оригинальный продукт</span>
-                                </div>
-                            </div>
+
+                        <!-- Card Flips Controls & Generator Buttons -->
+                        <div class="flex flex-wrap items-stretch gap-4 pt-4">
+                            <button onclick="flipPassport(false)" class="flex-1 px-6 py-4 rounded-xl border border-brand-gold text-[10px] font-black uppercase tracking-widest text-white transition-all flex items-center justify-center gap-2 bg-brand-gold shadow-sm" id="btnSideA">
+                                <span class="w-2 h-2 rounded-full bg-white transition-all animate-pulse" id="dotSideA"></span>
+                                Сторона А: Подлинность
+                            </button>
+                            <button onclick="flipPassport(true)" class="flex-1 px-6 py-4 rounded-xl border border-brand-dark/10 hover:border-brand-gold text-[10px] font-black uppercase tracking-widest text-brand-dark transition-all flex items-center justify-center gap-2 bg-white shadow-sm" id="btnSideB">
+                                <span class="w-2 h-2 rounded-full bg-brand-emerald transition-all" id="dotSideB"></span>
+                                Сторона Б: Нағыз Қазақ
+                            </button>
                         </div>
                     </div>
+
+                    <!-- Right Column: Interactive Holographic 3D Flip Card Container -->
+                    <div class="lg:col-span-7 flex flex-col items-center">
+                        <div class="card-perspective w-full max-w-[540px] h-[220px] sm:h-[340px] relative group select-none">
+                            <div class="flip-card-inner w-full h-full" id="passportCardInner">
+                                
+                                <!-- SIDE A: TECHNICAL PASSPORT (FRONT) -->
+                                <div class="flip-card-front bg-gradient-to-tr from-brand-dark to-[#25221F] border border-brand-gold/30 text-white p-6 flex flex-col justify-between shadow-2xl absolute top-0 left-0 w-full h-full hologram-shine">
+                                    <div class="absolute inset-0 bg-ornament-watermark opacity-[0.03] pointer-events-none"></div>
+                                    
+                                    <!-- Header -->
+                                    <div class="flex justify-between items-start relative z-10">
+                                        <div>
+                                            <p class="text-[8px] uppercase tracking-[0.2em] text-brand-gold/60 font-bold mb-1">МАНУФАКТУРА</p>
+                                            <h4 class="text-xl font-bold tracking-widest font-serif leading-none text-white">DOMBYRA.KZ</h4>
+                                            <p class="text-[7px] uppercase tracking-widest text-white/40 mt-1">by Aiym ERNST</p>
+                                        </div>
+                                        <div class="w-12 h-12 rounded-full border border-brand-gold/30 flex items-center justify-center text-brand-gold bg-white/5 relative group">
+                                            <svg class="w-8 h-8 fill-none stroke-current opacity-70" viewBox="0 0 100 100">
+                                                <circle cx="50" cy="50" r="45" stroke-width="1.5" stroke-dasharray="3 3"/>
+                                                <circle cx="50" cy="50" r="30" stroke-width="1"/>
+                                                <path d="M50 15V85M15 50H85" stroke-width="1.5"/>
+                                            </svg>
+                                            <span class="absolute text-[8px] font-black uppercase text-brand-gold">QR</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Middle Data Content -->
+                                    <div class="grid grid-cols-12 gap-4 my-4 relative z-10">
+                                        <div class="col-span-8 space-y-2.5">
+                                            <div>
+                                                <p class="text-[7px] uppercase tracking-[0.25em] text-white/50 leading-none mb-1">Модель инструмента</p>
+                                                <h3 class="text-sm font-serif font-bold text-brand-goldLight leading-tight" id="displayModel">Домбра "Толқын" (Премиум)</h3>
+                                            </div>
+                                            <div>
+                                                <p class="text-[7px] uppercase tracking-[0.25em] text-white/50 leading-none mb-1">Материалы</p>
+                                                <p class="text-[10px] font-bold text-white/90 leading-tight" id="displayWood">Африканский орех, горная сосна Тянь-Шаня</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-span-4 border-l border-white/10 pl-4 space-y-2.5">
+                                            <div>
+                                                <p class="text-[7px] uppercase tracking-[0.25em] text-white/50 leading-none mb-1">Мастер</p>
+                                                <p class="text-[10px] font-bold text-white" id="displayMaster">Серик Ербол</p>
+                                            </div>
+                                            <div>
+                                                <p class="text-[7px] uppercase tracking-[0.25em] text-white/50 leading-none mb-1">Дата сборки</p>
+                                                <p class="text-[10px] font-mono font-bold text-white" id="displayDate">12.02.2024</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Bottom Info -->
+                                    <div class="pt-4 border-t border-white/5 flex justify-between items-end relative z-10">
+                                        <div>
+                                            <p class="text-[7px] uppercase tracking-[0.25em] text-white/40 leading-none mb-1">Номер паспорта</p>
+                                            <h3 class="text-sm font-mono font-bold tracking-widest text-brand-gold" id="displaySerial">DKZ-2026-001</h3>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="text-[7px] uppercase tracking-[0.25em] text-white/40 leading-none mb-1">Первый владелец</p>
+                                            <p class="text-[10px] font-bold text-white uppercase tracking-wider font-serif" id="displayOwner">Бауыржан Каримов</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- SIDE B: REAL KAZAKH CERTIFICATE (BACK) -->
+                                <div class="flip-card-back bg-gradient-to-tr from-brand-emerald to-[#041F21] border border-brand-gold/40 text-white p-6 flex flex-col justify-between shadow-2xl absolute top-0 left-0 w-full h-full hologram-shine">
+                                    <!-- Beautiful Glowing Golden Shanyrak Watermark in the background -->
+                                    <div class="absolute inset-0 bg-ornament-watermark opacity-[0.05] pointer-events-none"></div>
+                                    <div class="absolute right-[-10%] bottom-[-10%] w-56 h-56 rounded-full border border-brand-gold/10 flex items-center justify-center opacity-30 pointer-events-none">
+                                        <div class="w-48 h-48 rounded-full border border-brand-gold/20 flex items-center justify-center">
+                                            <div class="w-40 h-40 rounded-full border border-brand-gold/30"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Header -->
+                                    <div class="flex justify-between items-center relative z-10">
+                                        <div>
+                                            <h4 class="text-xs font-black tracking-[0.3em] text-brand-gold font-sans leading-none">НАҒЫЗ ҚАЗАҚ</h4>
+                                            <p class="text-[7px] uppercase tracking-widest text-white/50 mt-1">Официальный Паспорт Духа</p>
+                                        </div>
+                                        <div class="px-3 py-1 rounded bg-brand-gold/15 border border-brand-gold/30 flex items-center gap-1.5">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-ping"></span>
+                                            <span class="text-[8px] font-bold text-brand-goldLight uppercase tracking-widest font-mono">100% Legit</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Main Statement -->
+                                    <div class="my-2 space-y-1.5 relative z-10">
+                                        <p class="text-[7px] uppercase tracking-[0.25em] text-white/50 leading-none">Присвоенный статус</p>
+                                        <h2 class="text-xl sm:text-2xl font-black tracking-tight text-white font-serif uppercase">
+                                            НАСТОЯЩИЙ КАЗАХ
+                                        </h2>
+                                        <div class="text-[9px] text-white/80 leading-normal max-w-md font-sans italic">
+                                            «Владелец сего документа <strong class="text-brand-gold" id="kazakhName">БАУЫРЖАН КАРИМОВ</strong> официально наделен статусом Настоящего Казаха с правом искренне гордиться ("понтануться") перед близкими и коллегами. Владение Домброй наделяет его духом свободы и великих степей!»
+                                        </div>
+                                    </div>
+
+                                    <!-- Proverb Banner -->
+                                    <div class="bg-brand-emeraldLight/30 border border-brand-gold/15 rounded-xl px-4 py-2 text-center relative z-10">
+                                        <p class="text-[8px] font-serif italic text-brand-goldLight">
+                                            «Нағыз қазақ — қазақ емес, нағыз қазақ — Домбыра!»
+                                        </p>
+                                    </div>
+
+                                    <!-- Signatures -->
+                                    <div class="pt-2 border-t border-white/10 flex justify-between items-center text-[7px] uppercase tracking-widest text-white/40 relative z-10">
+                                        <div>
+                                            <span>Основание: Покупка Домбры</span>
+                                        </div>
+                                        <div class="text-right flex items-center gap-2">
+                                            <div class="flex flex-col items-end">
+                                                <span class="text-[6px] text-white/30">Подпись мануфактуры</span>
+                                                <span class="font-serif italic text-brand-goldLight text-[8px] font-bold tracking-wide">Aiym Ernst</span>
+                                            </div>
+                                            <div class="w-5 h-5 rounded-full border border-brand-gold/30 bg-brand-gold/10 flex items-center justify-center text-brand-gold font-bold text-[7px]">✓</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Card Action Buttons -->
+                        <div class="flex gap-4 mt-6 w-full max-w-[540px]">
+                            <button onclick="window.print()" class="flex-1 py-4 bg-white border border-brand-dark/10 hover:border-brand-gold rounded-2xl font-bold uppercase tracking-widest text-[9px] text-brand-dark active:scale-95 transition-all flex items-center justify-center gap-2 shadow-sm">
+                                🖨️ Печать паспорта
+                            </button>
+                            <button onclick="copyShareLink()" class="flex-1 py-4 bg-brand-gold text-white rounded-2xl font-bold uppercase tracking-widest text-[9px] active:scale-95 hover:bg-brand-dark transition-all flex items-center justify-center gap-2 shadow-lg">
+                                🔗 Скопировать ссылку
+                            </button>
+                        </div>
+                    </div>
+
                 </div>
             </section>
 
-            <!-- Three Degrees of Protection Grid -->
-            <section class="mb-24">
-                <h3 class="text-2xl md:text-4xl font-light uppercase tracking-tight text-brand-dark mb-16 text-center font-serif">Три степени <span class="text-brand-gold font-bold">защиты</span></h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Protection 1 -->
-                    <div class="glass-card p-6 md:p-10 rounded-4xl border border-brand-gold/10 relative shadow-lg">
-                        <div class="w-12 h-12 rounded-2xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
-                        </div>
-                        <h4 class="text-xl font-bold uppercase text-brand-dark mb-4">Фирменное клеймо</h4>
-                        <p class="text-brand-clay text-xs leading-relaxed">
-                            На обратной стороне головы грифа каждого оригинального инструмента горячим тиснением выжигается фирменный товарный знак нашей мануфактуры.
-                        </p>
-                    </div>
-
-                    <!-- Protection 2 -->
-                    <div class="glass-card p-6 md:p-10 rounded-4xl border border-brand-gold/10 relative shadow-lg">
-                        <div class="w-12 h-12 rounded-2xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/></svg>
-                        </div>
-                        <h4 class="text-xl font-bold uppercase text-brand-dark mb-4">Внутренняя лазерная резьба</h4>
-                        <p class="text-brand-clay text-xs leading-relaxed">
-                            Уникальный серийный номер вырезается лазером на деревянной пластине внутри резонатора. Его легко прочитать, заглянув сквозь резонаторное отверстие верхней деки.
-                        </p>
-                    </div>
-
-                    <!-- Protection 3 -->
-                    <div class="glass-card p-6 md:p-10 rounded-4xl border border-brand-gold/10 relative shadow-lg">
-                        <div class="w-12 h-12 rounded-2xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                        </div>
-                        <h4 class="text-xl font-bold uppercase text-brand-dark mb-4">Защитный QR-паспорт</h4>
-                        <p class="text-brand-clay text-xs leading-relaxed">
-                            Каждый оригинальный инструмент комплектуется премиальным бумажным сертификатом с защитной голограммой и уникальным QR-кодом для быстрой проверки.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Verification scanner terminal -->
-            <section class="max-w-4xl mx-auto mb-24">
-                <div class="glass-card rounded-[3rem] p-8 md:p-16 border-2 border-brand-gold/25 shadow-2xl relative overflow-hidden form-with-ornaments">
+            <!-- Interactive Passport Verification & Generator Form -->
+            <section class="max-w-4xl mx-auto mb-28">
+                <div class="glass-card rounded-[3.5rem] p-8 md:p-16 border-2 border-brand-gold/25 shadow-2xl relative overflow-hidden form-with-ornaments">
                     <div class="absolute inset-0 bg-brand-gold/5 pointer-events-none"></div>
-                    <div class="text-center mb-10 relative z-10">
-                        <h3 class="text-2xl md:text-4xl font-light uppercase tracking-tight text-brand-dark mb-4 font-serif">Проверить <span class="text-brand-gold font-bold">подлинность</span></h3>
-                        <p class="text-brand-clay text-xs md:text-sm font-medium">Введите серийный номер вашего паспорта для верификации инструмента в нашей базе данных.</p>
-                    </div>
-
-                    <div class="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto relative z-10 mb-8 w-full">
-                        <div class="relative flex-1 w-full group input-ornament">
-                            <input type="text" id="certInput" placeholder="Например: DKZ-2026-001" class="w-full bg-white border border-brand-gold/25 rounded-2xl pl-6 pr-14 py-5 text-brand-dark font-bold text-sm focus:outline-none focus:border-brand-gold transition-colors shadow-inner">
+                    
+                    <!-- Form Tabs -->
+                    <div class="flex justify-center border-b border-brand-gold/15 pb-6 mb-10 relative z-10">
+                        <div class="flex gap-2 sm:gap-6 bg-brand-accent/50 p-1.5 rounded-2xl border border-brand-gold/10">
+                            <button onclick="switchFormTab('verify')" id="tabBtnVerify" class="px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-[9px] sm:text-[10px] bg-brand-gold text-white transition-all">
+                                ✓ Проверить домбру
+                            </button>
+                            <button onclick="switchFormTab('generate')" id="tabBtnGenerate" class="px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-[9px] sm:text-[10px] text-brand-clay hover:text-brand-dark transition-all">
+                                ✍ Создать Именной Паспорт
+                            </button>
                         </div>
-                        <button onclick="checkCertificate()" id="checkBtn" class="btn-gold px-12 py-5 rounded-2xl font-bold uppercase tracking-widest text-[10px] active:scale-95 transition-transform flex items-center justify-center gap-2 shrink-0">Проверить паспорт</button>
                     </div>
 
-                    <!-- Dynamic result section -->
-                    <div id="certResult" class="mt-6 hidden max-w-2xl mx-auto relative z-10"></div>
+                    <!-- TAB 1: Verification Form -->
+                    <div id="formVerify" class="relative z-10 space-y-6">
+                        <div class="text-center max-w-lg mx-auto mb-8">
+                            <h3 class="text-xl md:text-2xl font-light uppercase text-brand-dark mb-3 font-serif">
+                                Проверка <span class="text-brand-gold font-bold">оригинальности</span>
+                            </h3>
+                            <p class="text-brand-clay text-xs leading-relaxed">
+                                Введите серийный номер вашего инструмента (например: <span class="font-mono font-bold text-brand-dark">DKZ-2026-001</span> или просто <span class="font-mono font-bold text-brand-dark">002</span>) для моментальной цифровой верификации.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto w-full">
+                            <div class="relative flex-1 w-full group input-ornament">
+                                <input type="text" id="certInput" placeholder="Например: DKZ-2026-001" class="w-full bg-white border border-brand-gold/25 rounded-2xl pl-6 pr-14 py-5 text-brand-dark font-bold text-sm focus:outline-none focus:border-brand-gold transition-colors shadow-inner">
+                            </div>
+                            <button onclick="checkPassportSerial()" id="checkBtn" class="btn-gold px-10 py-5 rounded-2xl font-bold uppercase tracking-widest text-[9px] active:scale-95 transition-transform flex items-center justify-center gap-2 shrink-0">
+                                Верифицировать
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- TAB 2: Custom Generator Form (Hidden by default) -->
+                    <div id="formGenerate" class="relative z-10 space-y-6 hidden">
+                        <div class="text-center max-w-lg mx-auto mb-8">
+                            <h3 class="text-xl md:text-2xl font-light uppercase text-brand-dark mb-3 font-serif">
+                                Создать <span class="text-brand-gold font-bold">персональный паспорт</span>
+                            </h3>
+                            <p class="text-brand-clay text-xs leading-relaxed">
+                                Сделайте подарок себе или близким! Введите имя, чтобы сгенерировать роскошное интерактивное удостоверение «Нағыз Қазақ» с правом похвастаться перед всем миром.
+                            </p>
+                        </div>
+
+                        <div class="max-w-2xl mx-auto space-y-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="space-y-1">
+                                    <label class="text-[8px] uppercase tracking-widest font-black text-brand-clay pl-2">Имя владельца (на русском или казахском)</label>
+                                    <input type="text" id="genNameInput" placeholder="Например: Аскар Сапаров" class="w-full bg-white border border-brand-gold/25 rounded-2xl px-6 py-4 text-brand-dark font-bold text-sm focus:outline-none focus:border-brand-gold transition-colors shadow-inner">
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="text-[8px] uppercase tracking-widest font-black text-brand-clay pl-2">Модель вашей Домбры</label>
+                                    <select id="genModelSelect" class="w-full bg-white border border-brand-gold/25 rounded-2xl px-6 py-4 text-brand-dark font-bold text-sm focus:outline-none focus:border-brand-gold transition-colors shadow-inner">
+                                        <option value="Домбра 'Толқын' (Премиум акустика)">Домбра "Толқын" (Премиум)</option>
+                                        <option value="Домбра 'Бастау' (Концертный инструмент)">Домбра "Бастау" (Концертная)</option>
+                                        <option value="Домбра 'Аруах' (Инструмент мастера)">Домбра "Аруах" (Шедевр мастера)</option>
+                                        <option value="Домбра 'Nomad Global' (Экспортная)">Домбра "Nomad" (Международная)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="flex justify-center pt-2">
+                                <button onclick="generateCustomPassport()" class="btn-gold px-12 py-5 rounded-2xl font-bold uppercase tracking-widest text-[9px] active:scale-95 transition-transform flex items-center justify-center gap-2">
+                                    ⚡ Сгенерировать и сыграть победный аккорд
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Verification Status Message -->
+                    <div id="statusAlert" class="mt-8 max-w-xl mx-auto hidden p-4 rounded-2xl text-center font-bold text-xs uppercase tracking-wider transition-all duration-300"></div>
                 </div>
             </section>
 
-            <!-- Warranty & Care Grid -->
+            <!-- INTERACTIVE WOW FEATURE: PLAY INTERNATIONAL HITS ON DOMBYRA -->
+            <section class="mb-28">
+                <div class="text-center mb-16">
+                    <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-brand-emerald/5 border border-brand-emerald/10 mb-6">
+                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-brand-emerald">Виртуальный симулятор</span>
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-light uppercase tracking-tight text-brand-dark mb-4 font-serif">
+                        Сыграйте мировые хиты <br><span class="text-brand-gold italic">на 2 струнах!</span>
+                    </h2>
+                    <p class="text-brand-clay font-medium max-w-2xl mx-auto leading-relaxed text-xs md:text-sm">
+                        Наш бренд стремительно выходит на международную arena. Докажем, что на простой и элегантной казахской домбре можно сыграть абсолютно любой мировой хит!
+                    </p>
+                </div>
+
+                <!-- Simulator Layout Grid -->
+                <div class="glass-card rounded-[3rem] border border-brand-gold/15 overflow-hidden shadow-xl p-6 md:p-12 relative bg-ornament-watermark">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                        
+                        <!-- Song Picker Column -->
+                        <div class="lg:col-span-4 space-y-4">
+                            <h4 class="text-[10px] font-black uppercase tracking-[0.25em] text-brand-gold mb-6 border-b border-brand-gold/15 pb-2">Выберите композицию</h4>
+                            
+                            <button onclick="selectMelody('smoke')" id="songBtn_smoke" class="w-full text-left p-5 rounded-2xl border border-brand-gold/15 bg-brand-accent/30 hover:border-brand-gold transition-all duration-300 flex items-center justify-between group">
+                                <div>
+                                    <h5 class="text-xs font-black uppercase text-brand-dark group-hover:text-brand-gold transition-colors">Smoke on the Water</h5>
+                                    <p class="text-[9px] text-brand-clay mt-1">Deep Purple • Рок-классика на домбре</p>
+                                </div>
+                                <span class="text-xs">🎸</span>
+                            </button>
+
+                            <button onclick="selectMelody('bella')" id="songBtn_bella" class="w-full text-left p-5 rounded-2xl border border-brand-gold/10 hover:border-brand-gold transition-all duration-300 flex items-center justify-between group">
+                                <div>
+                                    <h5 class="text-xs font-black uppercase text-brand-dark group-hover:text-brand-gold transition-colors">Bella Ciao</h5>
+                                    <p class="text-[9px] text-brand-clay mt-1">Итальянский гимн • Очень легко и задорно</p>
+                                </div>
+                                <span class="text-xs">🇮🇹</span>
+                            </button>
+
+                            <button onclick="selectMelody('kozim')" id="songBtn_kozim" class="w-full text-left p-5 rounded-2xl border border-brand-gold/10 hover:border-brand-gold transition-all duration-300 flex items-center justify-between group">
+                                <div>
+                                    <h5 class="text-xs font-black uppercase text-brand-dark group-hover:text-brand-gold transition-colors">Көзімнің қарасы</h5>
+                                    <p class="text-[9px] text-brand-clay mt-1">Абай Кунанбаев • Чувственная степная классика</p>
+                                </div>
+                                <span class="text-xs">🇰🇿</span>
+                            </button>
+
+                            <button onclick="selectMelody('adai')" id="songBtn_adai" class="w-full text-left p-5 rounded-2xl border border-brand-gold/10 hover:border-brand-gold transition-all duration-300 flex items-center justify-between group">
+                                <div>
+                                    <h5 class="text-xs font-black uppercase text-brand-dark group-hover:text-brand-gold transition-colors">Адай (Күй фрагмент)</h5>
+                                    <p class="text-[9px] text-brand-clay mt-1">Курмангазы • Ураганная энергия кочевников</p>
+                                </div>
+                                <span class="text-xs">🌪️</span>
+                            </button>
+                        </div>
+
+                        <!-- Fretboard / Interactive Strings Simulator Column -->
+                        <div class="lg:col-span-8 flex flex-col items-center justify-center space-y-8">
+                            
+                            <!-- Interactive Visual Neck of Dombyra -->
+                            <div class="w-full max-w-[680px] bg-[#2E2824] rounded-2xl p-8 py-10 shadow-2xl relative overflow-hidden border border-brand-gold/30">
+                                <!-- Soundhole representation -->
+                                <div class="absolute right-6 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-brand-dark border-2 border-brand-gold/20 flex items-center justify-center">
+                                    <div class="w-2 h-2 rounded-full bg-black"></div>
+                                </div>
+
+                                <!-- Dynamic neck lines and frets -->
+                                <div class="relative h-24 flex items-center">
+                                    <!-- Fingerboard Wood Strip -->
+                                    <div class="absolute inset-x-8 h-12 bg-gradient-to-r from-[#1C1815] via-[#2D231E] to-[#1C1815] border-y border-brand-gold/30 top-1/2 -translate-y-1/2 rounded-sm shadow-inner pointer-events-none"></div>
+
+                                    <!-- Strings (G & D) -->
+                                    <div class="absolute inset-x-8 h-[2px] bg-gradient-to-r from-[#E5C49F] via-brand-goldLight to-[#C5A377] top-[42%] pointer-events-none shadow-[0_1px_3px_rgba(197,163,119,0.4)]" id="string1"></div>
+                                    <div class="absolute inset-x-8 h-[2px] bg-gradient-to-r from-[#E5C49F] via-brand-goldLight to-[#C5A377] top-[58%] pointer-events-none shadow-[0_1px_3px_rgba(197,163,119,0.4)]" id="string2"></div>
+
+                                    <!-- Fret markers -->
+                                    <div class="absolute w-full h-full flex justify-between px-8 z-10">
+                                        <!-- Open Fret (0) -->
+                                        <div onclick="playFret(0)" class="relative h-full w-8 flex flex-col justify-between items-center cursor-pointer group">
+                                            <span class="text-[7px] text-white/50 group-hover:text-brand-gold font-bold">Ашық</span>
+                                            <div class="w-3.5 h-3.5 rounded-full bg-white/20 group-hover:bg-brand-gold transition-colors border border-white/20 flex items-center justify-center mt-3 shadow-inner"><div class="w-1.5 h-1.5 rounded-full bg-transparent"></div></div>
+                                            <span class="text-[8px] text-brand-goldLight font-bold">G (Соль)</span>
+                                            <div class="absolute right-0 top-1/4 bottom-1/4 w-0.5 bg-brand-gold/50 pointer-events-none"></div>
+                                        </div>
+
+                                        <!-- Fret 2 -->
+                                        <div onclick="playFret(2)" id="fret_2" class="relative h-full w-8 flex flex-col justify-between items-center cursor-pointer group">
+                                            <span class="text-[7px] text-white/50 group-hover:text-brand-gold font-bold">2 перне</span>
+                                            <div class="w-3 h-3 rounded-full bg-white/10 group-hover:bg-brand-gold transition-colors border border-white/10 flex items-center justify-center mt-3.5"></div>
+                                            <span class="text-[8px] text-brand-goldLight font-bold">A (Ля)</span>
+                                            <div class="absolute right-0 top-1/4 bottom-1/4 w-px bg-brand-gold/25 pointer-events-none"></div>
+                                        </div>
+
+                                        <!-- Fret 3 -->
+                                        <div onclick="playFret(3)" id="fret_3" class="relative h-full w-8 flex flex-col justify-between items-center cursor-pointer group">
+                                            <span class="text-[7px] text-white/50 group-hover:text-brand-gold font-bold">3 перне</span>
+                                            <div class="w-3 h-3 rounded-full bg-white/10 group-hover:bg-brand-gold transition-colors border border-white/10 flex items-center justify-center mt-3.5"></div>
+                                            <span class="text-[8px] text-brand-goldLight font-bold">B♭ (Си♭)</span>
+                                            <div class="absolute right-0 top-1/4 bottom-1/4 w-px bg-brand-gold/25 pointer-events-none"></div>
+                                        </div>
+
+                                        <!-- Fret 5 -->
+                                        <div onclick="playFret(5)" id="fret_5" class="relative h-full w-8 flex flex-col justify-between items-center cursor-pointer group">
+                                            <span class="text-[7px] text-white/50 group-hover:text-brand-gold font-bold">5 перне</span>
+                                            <div class="w-3 h-3 rounded-full bg-white/10 group-hover:bg-brand-gold transition-colors border border-white/10 flex items-center justify-center mt-3.5"></div>
+                                            <span class="text-[8px] text-brand-goldLight font-bold">C (До)</span>
+                                            <div class="absolute right-0 top-1/4 bottom-1/4 w-px bg-brand-gold/25 pointer-events-none"></div>
+                                        </div>
+
+                                        <!-- Fret 6 -->
+                                        <div onclick="playFret(6)" id="fret_6" class="relative h-full w-8 flex flex-col justify-between items-center cursor-pointer group">
+                                            <span class="text-[7px] text-white/50 group-hover:text-brand-gold font-bold">6 перне</span>
+                                            <div class="w-3 h-3 rounded-full bg-white/10 group-hover:bg-brand-gold transition-colors border border-white/10 flex items-center justify-center mt-3.5"></div>
+                                            <span class="text-[8px] text-brand-goldLight font-bold">C♯ (До♯)</span>
+                                            <div class="absolute right-0 top-1/4 bottom-1/4 w-px bg-brand-gold/25 pointer-events-none"></div>
+                                        </div>
+
+                                        <!-- Fret 7 -->
+                                        <div onclick="playFret(7)" id="fret_7" class="relative h-full w-8 flex flex-col justify-between items-center cursor-pointer group">
+                                            <span class="text-[7px] text-white/50 group-hover:text-brand-gold font-bold">7 перне</span>
+                                            <div class="w-3 h-3 rounded-full bg-white/10 group-hover:bg-brand-gold transition-colors border border-white/10 flex items-center justify-center mt-3.5"></div>
+                                            <span class="text-[8px] text-brand-goldLight font-bold">D (Ре)</span>
+                                            <div class="absolute right-0 top-1/4 bottom-1/4 w-px bg-brand-gold/25 pointer-events-none"></div>
+                                        </div>
+
+                                        <!-- Fret 8 -->
+                                        <div onclick="playFret(8)" id="fret_8" class="relative h-full w-8 flex flex-col justify-between items-center cursor-pointer group">
+                                            <span class="text-[7px] text-white/50 group-hover:text-brand-gold font-bold">8 перне</span>
+                                            <div class="w-3 h-3 rounded-full bg-white/10 group-hover:bg-brand-gold transition-colors border border-white/10 flex items-center justify-center mt-3.5"></div>
+                                            <span class="text-[8px] text-brand-goldLight font-bold">E♭ (Ми♭)</span>
+                                            <div class="absolute right-0 top-1/4 bottom-1/4 w-px bg-brand-gold/25 pointer-events-none"></div>
+                                        </div>
+
+                                        <!-- Fret 10 -->
+                                        <div onclick="playFret(10)" id="fret_10" class="relative h-full w-8 flex flex-col justify-between items-center cursor-pointer group">
+                                            <span class="text-[7px] text-white/50 group-hover:text-brand-gold font-bold">10 перне</span>
+                                            <div class="w-3 h-3 rounded-full bg-white/10 group-hover:bg-brand-gold transition-colors border border-white/10 flex items-center justify-center mt-3.5"></div>
+                                            <span class="text-[8px] text-brand-goldLight font-bold">F (Фа)</span>
+                                            <div class="absolute right-0 top-1/4 bottom-1/4 w-px bg-brand-gold/25 pointer-events-none"></div>
+                                        </div>
+
+                                        <!-- Fret 12 -->
+                                        <div onclick="playFret(12)" id="fret_12" class="relative h-full w-8 flex flex-col justify-between items-center cursor-pointer group">
+                                            <span class="text-[7px] text-white/50 group-hover:text-brand-gold font-bold">12 перне</span>
+                                            <div class="w-3 h-3 rounded-full bg-white/10 group-hover:bg-brand-gold transition-colors border border-white/10 flex items-center justify-center mt-3.5"></div>
+                                            <span class="text-[8px] text-brand-goldLight font-bold">G (Соль)</span>
+                                            <div class="absolute right-0 top-1/4 bottom-1/4 w-0.5 bg-brand-gold/40 pointer-events-none"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tabs Display & Auto-Play Control -->
+                            <div class="w-full text-center space-y-4">
+                                <div class="bg-brand-accent/50 border border-brand-gold/15 rounded-2xl p-5 inline-block w-full">
+                                    <span class="text-[8px] font-black uppercase tracking-[0.25em] text-brand-gold block mb-2">Визуальные Табы (Номер лада)</span>
+                                    <div class="font-mono text-sm md:text-base font-bold text-brand-dark" id="displayTabs">
+                                        Струна 1:  0 (Ашық) - 3 (Си♭) - 5 (До)  |  0 (Ашық) - 3 (Си♭) - 6 (До♯) - 5 (До)  |  0 (Ашық) - 3 (Си♭) - 5 (До) - 3 (Си♭) - 0 (Ашық)
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-4 justify-center">
+                                    <button onclick="playSongDemo()" id="btnPlayDemo" class="px-8 py-4 bg-brand-emerald text-white font-bold uppercase tracking-widest text-[9.5px] rounded-2xl active:scale-95 hover:bg-brand-dark transition-all flex items-center gap-2 shadow-lg">
+                                        ▶ Сыграть Авто-Демо
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DESIGNER CITIES COLLECTION: EXCLUSIVE PATTERNS FOR GLOBAL MARKET -->
+            <section class="mb-28">
+                <div class="text-center mb-16">
+                    <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-brand-gold/5 border border-brand-gold/10 mb-6">
+                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-brand-gold">Спецвыпуск мануфактуры</span>
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-light uppercase tracking-tight text-brand-dark mb-4 font-serif">
+                        Городские и лимитированные <br><span class="text-brand-gold italic">дизайнерские серии</span>
+                    </h2>
+                    <p class="text-brand-clay font-medium max-w-3xl mx-auto leading-relaxed text-xs md:text-sm">
+                        Наш ответ международному дизайнерскому рынку. Роскошные инструменты с уникальными орнаментами, посвященные великим городам Казахстана и мировым культурным узлам.
+                    </p>
+                </div>
+
+                <!-- Showcase Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    
+                    <!-- City Card 1: Almaty -->
+                    <div class="glass-card rounded-[2.5rem] border border-brand-gold/10 p-6 flex flex-col justify-between hover:scale-[1.03] transition-transform duration-500 shadow-md">
+                        <div>
+                            <div class="aspect-square bg-gradient-to-tr from-green-950 to-brand-emerald rounded-3xl mb-6 relative overflow-hidden flex items-center justify-center p-8">
+                                <!-- Minimal elegant graphics representing Almaty: apple blossom & mountain silhouette -->
+                                <div class="absolute inset-0 bg-ornament-watermark opacity-[0.04]"></div>
+                                <svg class="w-24 h-24 text-brand-goldLight opacity-85" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M10 80 L35 45 L50 65 L70 35 L90 80 Z" stroke-linecap="round"/>
+                                    <circle cx="50" cy="35" r="5" fill="currentColor"/>
+                                    <circle cx="25" cy="55" r="3" fill="currentColor"/>
+                                    <circle cx="75" cy="45" r="3.5" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <span class="text-[8px] font-black uppercase tracking-widest text-brand-gold">В честь Южной Столицы</span>
+                            <h4 class="text-xl font-bold uppercase text-brand-dark mt-2 mb-3 font-serif">Almaty Edition</h4>
+                            <p class="text-[11px] text-brand-clay leading-relaxed mb-6">
+                                Эксклюзивная серия из ценного ореха с изумрудным градиентом и узорами цветущей яблони. Цветущая прохлада предгорий Алатау в каждой струне.
+                            </p>
+                        </div>
+                        <a href="https://wa.me/77755226901?text=Здравствуйте!%20Меня%20интересует%20лимитированная%20серия%20домбры%20Almaty%20Edition" target="_blank" class="w-full text-center py-4 bg-brand-gold/10 border border-brand-gold/20 hover:bg-brand-gold hover:text-white rounded-xl text-[9px] font-black uppercase tracking-widest text-brand-gold transition-all">
+                            Заказать серию
+                        </a>
+                    </div>
+
+                    <!-- City Card 2: Astana -->
+                    <div class="glass-card rounded-[2.5rem] border border-brand-gold/10 p-6 flex flex-col justify-between hover:scale-[1.03] transition-transform duration-500 shadow-md">
+                        <div>
+                            <div class="aspect-square bg-gradient-to-tr from-cyan-950 to-[#0A435C] rounded-3xl mb-6 relative overflow-hidden flex items-center justify-center p-8">
+                                <div class="absolute inset-0 bg-ornament-watermark opacity-[0.04]"></div>
+                                <svg class="w-24 h-24 text-brand-goldLight opacity-85" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="50" cy="50" r="28" stroke-dasharray="3 3"/>
+                                    <line x1="50" y1="22" x2="50" y2="78"/>
+                                    <line x1="22" y1="50" x2="78" y2="50"/>
+                                    <circle cx="50" cy="50" r="8" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <span class="text-[8px] font-black uppercase tracking-widest text-brand-gold">В честь Столицы Свободы</span>
+                            <h4 class="text-xl font-bold uppercase text-brand-dark mt-2 mb-3 font-serif">Astana Edition</h4>
+                            <p class="text-[11px] text-brand-clay leading-relaxed mb-6">
+                                Футуристичный дизайн, вдохновленный космической геометрией Хан-Шатыра и Байтерека. Небесно-голубой и платиновый декор на корпусе из клена.
+                            </p>
+                        </div>
+                        <a href="https://wa.me/77755226901?text=Здравствуйте!%20Меня%20интересует%20лимитированная%20серия%20домбры%20Astana%20Edition" target="_blank" class="w-full text-center py-4 bg-brand-gold/10 border border-brand-gold/20 hover:bg-brand-gold hover:text-white rounded-xl text-[9px] font-black uppercase tracking-widest text-brand-gold transition-all">
+                            Заказать серию
+                        </a>
+                    </div>
+
+                    <!-- City Card 3: Silk Road -->
+                    <div class="glass-card rounded-[2.5rem] border border-brand-gold/10 p-6 flex flex-col justify-between hover:scale-[1.03] transition-transform duration-500 shadow-md">
+                        <div>
+                            <div class="aspect-square bg-gradient-to-tr from-[#3A1E14] to-[#70301B] rounded-3xl mb-6 relative overflow-hidden flex items-center justify-center p-8">
+                                <div class="absolute inset-0 bg-ornament-watermark opacity-[0.04]"></div>
+                                <svg class="w-24 h-24 text-brand-goldLight opacity-85" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M15 50 Q30 20 50 50 T85 50" stroke-linecap="round"/>
+                                    <path d="M15 60 Q30 30 50 60 T85 60" stroke-linecap="round"/>
+                                    <circle cx="50" cy="55" r="4" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <span class="text-[8px] font-black uppercase tracking-widest text-brand-gold">В честь легендарного пути</span>
+                            <h4 class="text-xl font-bold uppercase text-brand-dark mt-2 mb-3 font-serif">Silk Road Edition</h4>
+                            <p class="text-[11px] text-brand-clay leading-relaxed mb-6">
+                                Терракотово-песчаные оттенки на корпусе из благородного красного дерева. Тончайшая роспись, изображающая песчаные дюны и караваны великих кочевников.
+                            </p>
+                        </div>
+                        <a href="https://wa.me/77755226901?text=Здравствуйте!%20Меня%20интересует%20лимитированная%20серия%20домбры%20Silk%20Road%20Edition" target="_blank" class="w-full text-center py-4 bg-brand-gold/10 border border-brand-gold/20 hover:bg-brand-gold hover:text-white rounded-xl text-[9px] font-black uppercase tracking-widest text-brand-gold transition-all">
+                            Заказать серию
+                        </a>
+                    </div>
+
+                    <!-- City Card 4: Nomad Global -->
+                    <div class="glass-card rounded-[2.5rem] border border-brand-gold/10 p-6 flex flex-col justify-between hover:scale-[1.03] transition-transform duration-500 shadow-md">
+                        <div>
+                            <div class="aspect-square bg-gradient-to-tr from-[#1C1816] to-[#302824] rounded-3xl mb-6 relative overflow-hidden flex items-center justify-center p-8">
+                                <div class="absolute inset-0 bg-ornament-watermark opacity-[0.04]"></div>
+                                <svg class="w-24 h-24 text-brand-goldLight opacity-85" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="50" cy="50" r="30" stroke-width="2"/>
+                                    <path d="M50 20 L50 80 M20 50 L80 50" stroke-width="1"/>
+                                </svg>
+                            </div>
+                            <span class="text-[8px] font-black uppercase tracking-widest text-brand-gold">Скандинавский минимализм & Степь</span>
+                            <h4 class="text-xl font-bold uppercase text-brand-dark mt-2 mb-3 font-serif">Nomad Global</h4>
+                            <p class="text-[11px] text-brand-clay leading-relaxed mb-6">
+                                Разработано специально для международной аудитории. Матовый черный шпон с одной тончайшей латунной орнаментальной линией. Безупречный стиль хай-тек.
+                            </p>
+                        </div>
+                        <a href="https://wa.me/77755226901?text=Здравствуйте!%20Меня%20интересует%20лимитированная%20серия%20домбры%20Nomad%20Global" target="_blank" class="w-full text-center py-4 bg-brand-gold/10 border border-brand-gold/20 hover:bg-brand-gold hover:text-white rounded-xl text-[9px] font-black uppercase tracking-widest text-brand-gold transition-all">
+                            Заказать серию
+                        </a>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Care Guidelines Grid -->
             <section class="mb-24">
-                <h3 class="text-2xl md:text-4xl font-light uppercase tracking-tight text-brand-dark mb-16 text-center font-serif">Как сохранить <span class="text-brand-gold font-bold">инструмент</span></h3>
+                <h3 class="text-2xl md:text-4xl font-light uppercase tracking-tight text-brand-dark mb-16 text-center font-serif">
+                    Как сохранить <span class="text-brand-gold font-bold">инструмент века</span>
+                </h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     <!-- Care 1 -->
                     <div class="glass-card p-8 rounded-3xl border border-brand-gold/5 shadow-md">
@@ -224,192 +729,574 @@
 
     <!-- Site Footer -->
     <footer id="mainFooter" class="bg-brand-dark text-white py-24 border-t border-white/5"></footer>
+
     <script src="assets/main.js"></script>
     <script>
-        async function checkCertificate() {
+        // Database of registered premium certificates
+        const db = {
+            'DKZ-2026-001': {
+                owner: 'Бауыржан Каримов',
+                model: 'Домбра "Толқын" (Премиум акустика)',
+                wood: 'Африканский черный орех, Горная сосна Тянь-Шаня',
+                date: '12.02.2024',
+                master: 'Серик Ербол',
+                id: 'DKZ-E74A89C101',
+                warranty: '12.02.2027'
+            },
+            'DKZ-2026-002': {
+                owner: 'Алия Нурсултанова',
+                model: 'Домбра "Бастау" (Концертная)',
+                wood: 'Красное дерево (Махагони), Сибирский кедр',
+                date: '05.03.2024',
+                master: 'Серик Ербол',
+                id: 'DKZ-E74A89C102',
+                warranty: '05.03.2027'
+            },
+            'DKZ-2026-003': {
+                owner: 'Данияр Смагулов',
+                model: 'Домбра "Аруах" (Инструмент мастера)',
+                wood: 'Индийский палисандр, Резонансный клен',
+                date: '18.04.2024',
+                master: 'Серик Ербол',
+                id: 'DKZ-E74A89C103',
+                warranty: '18.04.2027'
+            }
+        };
+
+        // Holographic sheen follow-effect on card hover
+        document.querySelectorAll('.hologram-shine').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // 3D Flip Logic
+        const passportCardInner = document.getElementById('passportCardInner');
+        const btnSideA = document.getElementById('btnSideA');
+        const btnSideB = document.getElementById('btnSideB');
+        const dotSideA = document.getElementById('dotSideA');
+        const dotSideB = document.getElementById('dotSideB');
+
+        function flipPassport(showKazakhSide) {
+            // Play quick audio click
+            playSingleTone(330, 'sine', 0.05);
+
+            if (showKazakhSide) {
+                passportCardInner.classList.add('flipped');
+                
+                // Set B active (emerald)
+                btnSideB.className = "flex-1 px-6 py-4 rounded-xl border border-brand-emerald text-[10px] font-black uppercase tracking-widest text-white transition-all flex items-center justify-center gap-2 bg-brand-emerald shadow-sm";
+                if (dotSideB) dotSideB.className = "w-2 h-2 rounded-full bg-white transition-all animate-pulse";
+
+                // Set A inactive (white)
+                btnSideA.className = "flex-1 px-6 py-4 rounded-xl border border-brand-dark/10 hover:border-brand-gold text-[10px] font-black uppercase tracking-widest text-brand-dark transition-all flex items-center justify-center gap-2 bg-white shadow-sm";
+                if (dotSideA) dotSideA.className = "w-2 h-2 rounded-full bg-brand-gold transition-all";
+            } else {
+                passportCardInner.classList.remove('flipped');
+                
+                // Set A active (gold)
+                btnSideA.className = "flex-1 px-6 py-4 rounded-xl border border-brand-gold text-[10px] font-black uppercase tracking-widest text-white transition-all flex items-center justify-center gap-2 bg-brand-gold shadow-sm";
+                if (dotSideA) dotSideA.className = "w-2 h-2 rounded-full bg-white transition-all animate-pulse";
+
+                // Set B inactive (white)
+                btnSideB.className = "flex-1 px-6 py-4 rounded-xl border border-brand-dark/10 hover:border-brand-gold text-[10px] font-black uppercase tracking-widest text-brand-dark transition-all flex items-center justify-center gap-2 bg-white shadow-sm";
+                if (dotSideB) dotSideB.className = "w-2 h-2 rounded-full bg-brand-emerald transition-all";
+            }
+        }
+
+        // Form tabs switching
+        const formVerify = document.getElementById('formVerify');
+        const formGenerate = document.getElementById('formGenerate');
+        const tabBtnVerify = document.getElementById('tabBtnVerify');
+        const tabBtnGenerate = document.getElementById('tabBtnGenerate');
+        const statusAlert = document.getElementById('statusAlert');
+
+        function switchFormTab(tabName) {
+            playSingleTone(260, 'sine', 0.05);
+            statusAlert.classList.add('hidden');
+
+            if (tabName === 'verify') {
+                formVerify.classList.remove('hidden');
+                formGenerate.classList.add('hidden');
+                tabBtnVerify.classList.add('bg-brand-gold', 'text-white');
+                tabBtnVerify.classList.remove('text-brand-clay');
+                tabBtnGenerate.classList.remove('bg-brand-gold', 'text-white');
+                tabBtnGenerate.classList.add('text-brand-clay');
+            } else {
+                formVerify.classList.add('hidden');
+                formGenerate.classList.remove('hidden');
+                tabBtnGenerate.classList.add('bg-brand-gold', 'text-white');
+                tabBtnGenerate.classList.remove('text-brand-clay');
+                tabBtnVerify.classList.remove('bg-brand-gold', 'text-white');
+                tabBtnVerify.classList.add('text-brand-clay');
+            }
+        }
+
+        // Action: Check purchased passport
+        async function checkPassportSerial() {
             const input = document.getElementById('certInput');
-            const btn = document.getElementById('checkBtn');
-            const result = document.getElementById('certResult');
-            
+            const checkBtn = document.getElementById('checkBtn');
             const rawVal = input.value.trim();
-            if (rawVal.length < 3) {
-                alert('Пожалуйста, введите корректный номер сертификата');
+
+            if (rawVal.length < 2) {
+                showAlert('Пожалуйста, введите корректный номер', 'error');
                 return;
             }
 
-            btn.disabled = true;
-            btn.innerHTML = '<span class="flex items-center gap-2"><svg class="animate-spin h-5 w-5 text-white" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Проверка...</span>';
-            
-            await new Promise(r => setTimeout(r, 1200));
-            
-            btn.disabled = false;
-            btn.innerHTML = 'Проверить паспорт';
-            
-            const serialNum = rawVal.toUpperCase();
-            
-            // Premium database of registered personalized certificates
-            const db = {
-                'DKZ-2026-001': {
-                    owner: 'Бауыржан Каримов',
-                    model: 'Домбра "Толқын" (Премиум акустика)',
-                    wood: 'Африканский черный орех, Горная сосна Тянь-Шаня',
-                    date: '12.02.2024',
-                    master: 'Серик Ербол',
-                    id: 'DKZ-E74A89C101',
-                    warranty: '12.02.2027'
-                },
-                'DKZ-2026-002': {
-                    owner: 'Алия Нурсултанова',
-                    model: 'Домбра "Бастау" (Концертная)',
-                    wood: 'Красное дерево (Махагони), Сибирский кедр',
-                    date: '05.03.2024',
-                    master: 'Серик Ербол',
-                    id: 'DKZ-E74A89C102',
-                    warranty: '05.03.2027'
-                },
-                'DKZ-2026-003': {
-                    owner: 'Данияр Смагулов',
-                    model: 'Домбра "Аруах" (Инструмент мастера)',
-                    wood: 'Индийский палисандр, Резонансный клен',
-                    date: '18.04.2024',
-                    master: 'Серик Ербол',
-                    id: 'DKZ-E74A89C103',
-                    warranty: '18.04.2027'
-                }
-            };
-            
-            // Helper to get standard key format or alias
-            let key = serialNum;
-            if (serialNum === '001') key = 'DKZ-2026-001';
-            if (serialNum === '002') key = 'DKZ-2026-002';
-            if (serialNum === '003') key = 'DKZ-2026-003';
-            
-            let certData = db[key];
-            
-            // Deterministic generator if not in database
-            if (!certData) {
-                const firstNames = ["Аскар", "Жандос", "Нурлан", "Марат", "Тимур", "Айбек", "Руслан", "Даурен", "Алибек", "Канат", "Арман", "Серик", "Берик"];
-                const lastNames = ["Сапаров", "Оспанов", "Алиев", "Сулейменов", "Ибрагимов", "Касымов", "Муратов", "Нуржанов", "Адилов", "Каримов", "Ахметов"];
-                
-                let hash = 0;
-                for (let i = 0; i < serialNum.length; i++) {
-                    hash = serialNum.charCodeAt(i) + ((hash << 5) - hash);
-                }
-                
+            checkBtn.disabled = true;
+            checkBtn.innerHTML = '⚙ Проверка...';
+
+            await new Promise(r => setTimeout(r, 1000));
+
+            checkBtn.disabled = false;
+            checkBtn.innerHTML = 'Верифицировать';
+
+            let serial = rawVal.toUpperCase();
+            if (serial === '001') serial = 'DKZ-2026-001';
+            if (serial === '002') serial = 'DKZ-2026-002';
+            if (serial === '003') serial = 'DKZ-2026-003';
+
+            let data = db[serial];
+
+            if (!data) {
+                // Generate a smart deterministic passport for search mockups
+                const hash = getHash(serial);
+                const firstNames = ["Аскар", "Жандос", "Нурлан", "Марат", "Тимур", "Айбек", "Руслан", "Даурен", "Алибек", "Канат", "Арман", "Серик"];
+                const lastNames = ["Сапаров", "Оспанов", "Алиев", "Сулейменов", "Ибрагимов", "Касымов", "Муратов", "Нуржанов", "Адилов"];
                 const fn = firstNames[Math.abs(hash) % firstNames.length];
                 const ln = lastNames[Math.abs(hash) % lastNames.length];
-                const generatedOwner = fn + " " + ln;
-                
-                certData = {
-                    owner: generatedOwner,
-                    model: 'Домбра "Толқын" (Премиум акустика)',
-                    wood: 'Черный орех, Выдержанная резонансная сосна',
-                    date: '15.11.2025',
-                    master: 'Серик Ербол',
+
+                data = {
+                    owner: `${fn} ${ln}`,
+                    model: 'Домбра "Толқын" (Экспортная версия)',
+                    wood: 'Сибирский кедр, красное дерево',
+                    date: '25.04.2025',
+                    master: 'Айбек Сары',
                     id: 'DKZ-E' + Math.abs(hash).toString(16).toUpperCase().substring(0, 8),
-                    warranty: '15.11.2028'
+                    warranty: '25.04.2028'
                 };
             }
-            
-            result.classList.remove('hidden');
-            result.innerHTML = `
-                <div class="p-8 md:p-12 rounded-3xl bg-white border-2 border-brand-gold shadow-2xl text-left animate-in fade-in slide-in-from-bottom-4 duration-700">
-                    <div class="flex items-center gap-4 mb-8 text-green-600">
-                        <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center">
-                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold uppercase tracking-tight text-brand-dark">Паспорт подтвержден</h3>
-                            <p class="text-[10px] text-green-600 font-bold uppercase tracking-widest mt-0.5">Оригинальный именной продукт мануфактуры</p>
-                        </div>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-                        <!-- Left Side: Interactive Holographic Passport Card -->
-                        <div class="lg:col-span-5 flex justify-center">
-                            <div class="w-full max-w-[340px] rounded-3xl p-6 bg-gradient-to-tr from-[#3D332A] to-[#251E19] border border-brand-gold/40 text-white relative shadow-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-500 flex flex-col justify-between min-h-[230px]">
-                                <div class="absolute top-0 right-0 w-32 h-32 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
-                                
-                                <div>
-                                    <div class="flex justify-between items-start mb-5 relative z-10">
-                                        <div>
-                                            <p class="text-[7px] uppercase tracking-widest text-brand-gold/60 font-bold mb-0.5">Мануфактура</p>
-                                            <h4 class="text-sm font-bold tracking-widest font-serif leading-none">DOMBYRA</h4>
-                                        </div>
-                                        <div class="w-6 h-6 rounded-full border border-brand-gold/30 flex items-center justify-center text-brand-gold text-[9px] font-bold bg-white/5">QR</div>
-                                    </div>
-                                    
-                                    <div class="space-y-1 mb-4 relative z-10">
-                                        <p class="text-[7px] uppercase tracking-[0.25em] text-white/50 leading-none">Номер паспорта</p>
-                                        <h3 class="text-md font-mono font-bold tracking-widest text-brand-gold">${key}</h3>
-                                    </div>
 
-                                    <div class="mb-4 relative z-10">
-                                        <p class="text-[7px] uppercase tracking-[0.25em] text-white/50 leading-none mb-1">Владелец паспорта</p>
-                                        <p class="text-xs font-bold text-white font-serif uppercase tracking-wide leading-tight">${certData.owner}</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="pt-3 border-t border-white/5 flex justify-between items-center text-[7px] uppercase tracking-widest text-white/40 relative z-10 mt-auto">
-                                    <span>Гарантия: 3 года</span>
-                                    <span class="text-brand-gold font-bold">Оригинал</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Right Side: Detailed specs table -->
-                        <div class="lg:col-span-7">
-                            <div class="grid grid-cols-2 gap-x-8 gap-y-5 text-xs">
-                                <div class="flex flex-col col-span-2 sm:col-span-1">
-                                    <span class="text-[9px] uppercase font-bold text-brand-clay/60 mb-0.5">Владелец инструмента</span>
-                                    <span class="font-black text-brand-dark text-sm uppercase tracking-wide font-serif text-brand-gold">${certData.owner}</span>
-                                </div>
-                                <div class="flex flex-col col-span-2 sm:col-span-1">
-                                    <span class="text-[9px] uppercase font-bold text-brand-clay/60 mb-0.5">Номер паспорта</span>
-                                    <span class="font-bold text-brand-dark">${key}</span>
-                                </div>
-                                <div class="flex flex-col col-span-2 sm:col-span-1">
-                                    <span class="text-[9px] uppercase font-bold text-brand-clay/60 mb-0.5">Модель домбры</span>
-                                    <span class="font-bold text-brand-dark">${certData.model}</span>
-                                </div>
-                                <div class="flex flex-col col-span-2 sm:col-span-1">
-                                    <span class="text-[9px] uppercase font-bold text-brand-clay/60 mb-0.5">Электронный ID</span>
-                                    <span class="font-mono font-bold text-brand-dark">${certData.id}</span>
-                                </div>
-                                <div class="flex flex-col col-span-2">
-                                    <span class="text-[9px] uppercase font-bold text-brand-clay/60 mb-0.5">Древесина и материалы</span>
-                                    <span class="font-bold text-brand-dark">${certData.wood}</span>
-                                </div>
-                                <div class="flex flex-col col-span-2 sm:col-span-1">
-                                    <span class="text-[9px] uppercase font-bold text-brand-clay/60 mb-0.5">Дата выпуска</span>
-                                    <span class="font-bold text-brand-dark">${certData.date}</span>
-                                </div>
-                                <div class="flex flex-col col-span-2 sm:col-span-1">
-                                    <span class="text-[9px] uppercase font-bold text-brand-clay/60 mb-0.5">Ведущий мастер</span>
-                                    <span class="font-bold text-brand-dark">${certData.master}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-8 pt-6 border-t border-brand-gold/10">
-                        <p class="text-[11px] text-brand-clay font-medium italic leading-relaxed">Официальная 3-летняя персональная гарантия на имя <strong>${certData.owner}</strong> действительна до <strong>${certData.warranty}</strong>. По любым вопросам обслуживания и реставрации инструмента обращайтесь на мануфактуру по данному серийному номеру.</p>
-                    </div>
-                </div>
-            `;
-            result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            updatePassportVisuals(serial, data);
+            showAlert('Паспорт оригинальности успешно верифицирован в реестре!', 'success');
+            flipPassport(false); // Display technical side first
+            playBeautifulPluck(220); // Play beautiful dombyra pluck
         }
 
-        // Auto-check on page load if query param 'cert' is present
+        // Action: Generate custom personalized passport
+        function generateCustomPassport() {
+            const nameInput = document.getElementById('genNameInput');
+            const modelSelect = document.getElementById('genModelSelect');
+
+            const name = nameInput.value.trim();
+            if (!name) {
+                showAlert('Пожалуйста, введите ваше имя для паспорта!', 'error');
+                nameInput.focus();
+                return;
+            }
+
+            const model = modelSelect.value;
+            const today = new Date();
+            const dateStr = `${String(today.getDate()).padStart(2, '0')}.${String(today.getMonth()+1).padStart(2, '0')}.${today.getFullYear()}`;
+            const randSerial = 'DKZ-KAZ-' + Math.floor(100 + Math.random() * 900);
+
+            const generatedData = {
+                owner: name,
+                model: model,
+                wood: 'Красное дерево (Махагони), Вековая резонансная ель Тянь-Шаня',
+                date: dateStr,
+                master: 'Мануфактура Aiym Ernst',
+                id: 'DKZ-K' + Math.floor(10000000 + Math.random() * 90000000).toString(16).toUpperCase(),
+                warranty: `${today.getDate()}.${today.getMonth()+1}.${today.getFullYear()+3}`
+            };
+
+            updatePassportVisuals(randSerial, generatedData);
+            showAlert('Ваш Именной Паспорт Настоящего Казаха готов!', 'success');
+            flipPassport(true); // Flip to show the Kazakh side!
+            playBeautifulPluck(293.66); // D4 note chord
+        }
+
+        function updatePassportVisuals(serial, data) {
+            document.getElementById('displaySerial').innerText = serial;
+            document.getElementById('displayModel').innerText = data.model;
+            document.getElementById('displayWood').innerText = data.wood;
+            document.getElementById('displayMaster').innerText = data.master;
+            document.getElementById('displayDate').innerText = data.date;
+            document.getElementById('displayOwner').innerText = data.owner;
+
+            // Update Kazakh Side
+            document.getElementById('kazakhName').innerText = data.owner.toUpperCase();
+        }
+
+        function showAlert(msg, type) {
+            statusAlert.classList.remove('hidden', 'bg-green-500/10', 'text-green-600', 'border-green-500/20', 'bg-red-500/10', 'text-red-600', 'border-red-500/20');
+            statusAlert.innerText = msg;
+            
+            if (type === 'success') {
+                statusAlert.classList.add('bg-green-500/10', 'text-green-600', 'border', 'border-green-500/20');
+            } else {
+                statusAlert.classList.add('bg-red-500/10', 'text-red-600', 'border', 'border-red-500/20');
+            }
+            statusAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function getHash(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) {
+                hash = str.charCodeAt(i) + ((hash << 5) - hash);
+            }
+            return hash;
+        }
+
+        function copyShareLink() {
+            const serial = document.getElementById('displaySerial').innerText;
+            const owner = document.getElementById('displayOwner').innerText;
+            const url = `${window.location.origin}${window.location.pathname}?cert=${encodeURIComponent(serial)}&name=${encodeURIComponent(owner)}`;
+            
+            navigator.clipboard.writeText(url).then(() => {
+                alert('Ссылка скопирована! Отправьте её друзьям, чтобы показать статус Настоящего Казаха.');
+            }).catch(err => {
+                alert('Не удалось скопировать. Скопируйте адрес вручную: ' + url);
+            });
+        }
+
+
+        // ==========================================
+        // INTERACTIVE MELODY SIMULATOR & AUDIO SYNTH
+        // ==========================================
+
+        const melodies = {
+            smoke: {
+                title: "Smoke on the Water",
+                tabs: "Струна 1:  0 (Ашық) - 3 (Си♭) - 5 (До)  |  0 (Ашық) - 3 (Си♭) - 6 (До♯) - 5 (До)  |  0 (Ашық) - 3 (Си♭) - 5 (До) - 3 (Си♭) - 0 (Ашық)",
+                notes: [
+                    { string: 1, fret: 0, delay: 0, duration: 350 },
+                    { string: 1, fret: 3, delay: 400, duration: 350 },
+                    { string: 1, fret: 5, delay: 800, duration: 550 },
+                    { string: 1, fret: 0, delay: 1500, duration: 350 },
+                    { string: 1, fret: 3, delay: 1900, duration: 350 },
+                    { string: 1, fret: 6, delay: 2300, duration: 250 },
+                    { string: 1, fret: 5, delay: 2600, duration: 600 },
+                    { string: 1, fret: 0, delay: 3400, duration: 350 },
+                    { string: 1, fret: 3, delay: 3800, duration: 350 },
+                    { string: 1, fret: 5, delay: 4200, duration: 450 },
+                    { string: 1, fret: 3, delay: 4750, duration: 350 },
+                    { string: 1, fret: 0, delay: 5150, duration: 750 }
+                ]
+            },
+            bella: {
+                title: "Bella Ciao",
+                tabs: "Струна 1:  0 (Ашық) - 2 (Ля) - 3 (Си♭) - 5 (До)  |  0 (Ашық) - 2 (Ля) - 3 (Си♭) - 5 (До)  |  0 (Ашық) - 2 (Ля) - 3 (Си♭) - 5 (До) - 3 (Си♭) - 2 (Ля) - 5 (До) - 3 (Си♭) - 2 (Ля) - 0 (Ашық)",
+                notes: [
+                    { string: 1, fret: 0, delay: 0, duration: 200 },
+                    { string: 1, fret: 2, delay: 200, duration: 200 },
+                    { string: 1, fret: 3, delay: 400, duration: 200 },
+                    { string: 1, fret: 5, delay: 600, duration: 550 },
+                    { string: 1, fret: 0, delay: 1300, duration: 200 },
+                    { string: 1, fret: 2, delay: 1500, duration: 200 },
+                    { string: 1, fret: 3, delay: 1700, duration: 200 },
+                    { string: 1, fret: 5, delay: 1900, duration: 550 },
+                    { string: 1, fret: 0, delay: 2600, duration: 200 },
+                    { string: 1, fret: 2, delay: 2800, duration: 200 },
+                    { string: 1, fret: 3, delay: 3000, duration: 200 },
+                    { string: 1, fret: 5, delay: 3200, duration: 350 },
+                    { string: 1, fret: 3, delay: 3550, duration: 350 },
+                    { string: 1, fret: 2, delay: 3900, duration: 350 },
+                    { string: 1, fret: 5, delay: 4250, duration: 350 },
+                    { string: 1, fret: 3, delay: 4600, duration: 350 },
+                    { string: 1, fret: 2, delay: 4950, duration: 350 },
+                    { string: 1, fret: 0, delay: 5300, duration: 800 }
+                ]
+            },
+            kozim: {
+                title: "Көзімнің қарасы",
+                tabs: "Куплет:  7 (Ре) - 7 - 7 - 5 (До) - 3 (Си♭) - 5 (До) - 7 (Ре)  |  Припев:  10 (Фа) - 10 - 10 - 8 (Ми♭) - 7 (Ре) - 8 (Ми♭) - 10 (Фа)  |  Переход:  8 (Ми♭) - 8 - 8 - 7 (Ре) - 5 (До) - 7 (Ре) - 8 (Ми♭)  |  Кода:  5 (До) - 5 - 5 - 3 (Си♭) - 2 (Ля) - 3 (Си♭) - 5 (До)",
+                notes: [
+                    // Көзімнің қарасы (7 - 7 - 7 - 5 - 3 - 5 - 7)
+                    { string: 1, fret: 7, delay: 0, duration: 350 },
+                    { string: 1, fret: 7, delay: 400, duration: 350 },
+                    { string: 1, fret: 7, delay: 800, duration: 350 },
+                    { string: 1, fret: 5, delay: 1200, duration: 350 },
+                    { string: 1, fret: 3, delay: 1600, duration: 350 },
+                    { string: 1, fret: 5, delay: 2000, duration: 350 },
+                    { string: 1, fret: 7, delay: 2400, duration: 650 },
+                    
+                    // Көңілімнің санасы (10 - 10 - 10 - 8 - 7 - 8 - 10)
+                    { string: 1, fret: 10, delay: 3400, duration: 350 },
+                    { string: 1, fret: 10, delay: 3800, duration: 350 },
+                    { string: 1, fret: 10, delay: 4200, duration: 350 },
+                    { string: 1, fret: 8, delay: 4600, duration: 350 },
+                    { string: 1, fret: 7, delay: 5000, duration: 350 },
+                    { string: 1, fret: 8, delay: 5400, duration: 350 },
+                    { string: 1, fret: 10, delay: 5800, duration: 650 },
+
+                    // Бітпейтін іштегі (8 - 8 - 8 - 7 - 5 - 7 - 8)
+                    { string: 1, fret: 8, delay: 6800, duration: 350 },
+                    { string: 1, fret: 8, delay: 7200, duration: 350 },
+                    { string: 1, fret: 8, delay: 7600, duration: 350 },
+                    { string: 1, fret: 7, delay: 8000, duration: 350 },
+                    { string: 1, fret: 5, delay: 8400, duration: 350 },
+                    { string: 1, fret: 7, delay: 8800, duration: 350 },
+                    { string: 1, fret: 8, delay: 9200, duration: 650 },
+
+                    // Ғашықтың жарасы (5 - 5 - 5 - 3 - 2 - 3 - 5)
+                    { string: 1, fret: 5, delay: 10200, duration: 350 },
+                    { string: 1, fret: 5, delay: 10600, duration: 350 },
+                    { string: 1, fret: 5, delay: 11000, duration: 350 },
+                    { string: 1, fret: 3, delay: 11400, duration: 350 },
+                    { string: 1, fret: 2, delay: 11800, duration: 350 },
+                    { string: 1, fret: 3, delay: 12200, duration: 350 },
+                    { string: 1, fret: 5, delay: 12600, duration: 1000 }
+                ]
+            },
+            adai: {
+                title: "Күй «Адай» (Вступление)",
+                tabs: "Вступление (Желді қағыс):  0 (Ашық)-0-0  |  5 (До)-5-5  |  7 (Ре)-7-7  |  Спуск:  8 (Ми♭)-7 (Ре)-5 (До)-0 (Ашық)  |  Степной порыв:  5 (До)-7 (Ре)-8 (Ми♭)-10 (Фа)-12 (Соль)!",
+                notes: [
+                    // Ритмичный галоп «Желді қағыс» на открытой струне (0 - 0 - 0)
+                    { string: 1, fret: 0, delay: 0, duration: 100 },
+                    { string: 1, fret: 0, delay: 150, duration: 100 },
+                    { string: 1, fret: 0, delay: 300, duration: 250 },
+
+                    // Галоп на 5 ладу (5 - 5 - 5)
+                    { string: 1, fret: 5, delay: 700, duration: 100 },
+                    { string: 1, fret: 5, delay: 850, duration: 100 },
+                    { string: 1, fret: 5, delay: 1000, duration: 250 },
+
+                    // Галоп на 7 ладу (7 - 7 - 7)
+                    { string: 1, fret: 7, delay: 1400, duration: 100 },
+                    { string: 1, fret: 7, delay: 1550, duration: 100 },
+                    { string: 1, fret: 7, delay: 1700, duration: 250 },
+
+                    // Традиционный спуск (8 - 7 - 5 - 0)
+                    { string: 1, fret: 8, delay: 2100, duration: 120 },
+                    { string: 1, fret: 7, delay: 2250, duration: 120 },
+                    { string: 1, fret: 5, delay: 2400, duration: 120 },
+                    { string: 1, fret: 0, delay: 2550, duration: 400 },
+
+                    // Фирменное восхождение степного ветра до 12 лада
+                    { string: 1, fret: 5, delay: 3100, duration: 100 },
+                    { string: 1, fret: 7, delay: 3220, duration: 100 },
+                    { string: 1, fret: 8, delay: 3340, duration: 100 },
+                    { string: 1, fret: 10, delay: 3460, duration: 100 },
+                    { string: 1, fret: 12, delay: 3580, duration: 450 },
+                    
+                    // Лавинообразный спуск
+                    { string: 1, fret: 10, delay: 4100, duration: 100 },
+                    { string: 1, fret: 8, delay: 4220, duration: 100 },
+                    { string: 1, fret: 7, delay: 4340, duration: 100 },
+                    { string: 1, fret: 5, delay: 4460, duration: 100 },
+                    { string: 1, fret: 0, delay: 4580, duration: 800 }
+                ]
+            }
+        };
+
+        let activeMelody = 'smoke';
+
+        function selectMelody(key) {
+            playSingleTone(330, 'triangle', 0.08);
+
+            // Remove active style from all song buttons
+            document.querySelectorAll("[id^='songBtn_']").forEach(btn => {
+                btn.classList.remove('border-brand-gold', 'bg-brand-accent/50');
+                btn.classList.add('border-brand-gold/10');
+            });
+
+            // Set active class
+            document.getElementById('songBtn_' + key).classList.add('border-brand-gold', 'bg-brand-accent/50');
+            document.getElementById('songBtn_' + key).classList.remove('border-brand-gold/10');
+
+            // Update display values
+            activeMelody = key;
+            document.getElementById('displayTabs').innerText = melodies[key].tabs;
+        }
+
+        // Pure synthesized plucked Dombyra sound using Web Audio API
+        let audioCtx = null;
+
+        function getAudioContext() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        function playSingleTone(freq, type = 'triangle', decayTime = 0.5) {
+            try {
+                const ctx = getAudioContext();
+                const osc = ctx.createOscillator();
+                const gainNode = ctx.createGain();
+
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, ctx.currentTime);
+
+                gainNode.gain.setValueAtTime(0.3, ctx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + decayTime);
+
+                osc.connect(gainNode);
+                gainNode.connect(ctx.destination);
+
+                osc.start();
+                osc.stop(ctx.currentTime + decayTime + 0.1);
+            } catch (e) {
+                console.error("Audio Synthesis error: ", e);
+            }
+        }
+
+        // Signature Dombyra Dual-plucking sound with natural wooden filter envelopes
+        function playBeautifulPluck(pitch = 196) {
+            try {
+                const ctx = getAudioContext();
+                
+                // First String Pluck (Base tone)
+                const osc1 = ctx.createOscillator();
+                const gain1 = ctx.createGain();
+                osc1.type = 'triangle';
+                osc1.frequency.setValueAtTime(pitch, ctx.currentTime);
+                // Humanized tiny frequency decay for wooden string dynamics
+                osc1.frequency.exponentialRampToValueAtTime(pitch * 0.995, ctx.currentTime + 0.6);
+
+                gain1.gain.setValueAtTime(0.4, ctx.currentTime);
+                gain1.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.9);
+
+                // Second String Pluck (Harmonic tuned a Perfect Fifth higher, representing Dombyra tuning)
+                const osc2 = ctx.createOscillator();
+                const gain2 = ctx.createGain();
+                osc2.type = 'sine';
+                const fifthHarmonic = pitch * 1.5; // Perfect 5th
+                osc2.frequency.setValueAtTime(fifthHarmonic, ctx.currentTime);
+
+                gain2.gain.setValueAtTime(0.18, ctx.currentTime);
+                gain2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.6);
+
+                // Combine through a lowpass wooden resonance body filter
+                const filter = ctx.createBiquadFilter();
+                filter.type = 'lowpass';
+                filter.Q.setValueAtTime(4, ctx.currentTime);
+                filter.frequency.setValueAtTime(1200, ctx.currentTime);
+                filter.frequency.exponentialRampToValueAtTime(180, ctx.currentTime + 0.45);
+
+                osc1.connect(gain1);
+                osc2.connect(gain2);
+                gain1.connect(filter);
+                gain2.connect(filter);
+                filter.connect(ctx.destination);
+
+                osc1.start();
+                osc2.start();
+                osc1.stop(ctx.currentTime + 1.1);
+                osc2.stop(ctx.currentTime + 1.1);
+            } catch (e) {
+                console.warn(e);
+            }
+        }
+
+        // Play individual fret based on clicks
+        function playFret(fretNumber) {
+            // Tuned base G3 frequency (196 Hz)
+            const baseFreq = 196.00;
+            const targetFreq = baseFreq * Math.pow(2, fretNumber / 12);
+            
+            // Trigger visual glow
+            highlightFretVisual(fretNumber);
+            
+            // Play Dombyra Pluck sound
+            playBeautifulPluck(targetFreq);
+        }
+
+        function highlightFretVisual(fret) {
+            const el = document.getElementById('fret_' + fret);
+            if (el) {
+                const indicator = el.querySelector('div');
+                indicator.classList.remove('bg-white/10', 'bg-white/20');
+                indicator.classList.add('bg-brand-gold', 'scale-150', 'shadow-[0_0_12px_#C5A377]');
+                setTimeout(() => {
+                    indicator.classList.remove('scale-150', 'shadow-[0_0_12px_#C5A377]');
+                    indicator.classList.add('bg-white/10');
+                }, 400);
+            }
+        }
+
+        // Autoplay song Demo note sequence
+        let isPlayingDemo = false;
+        let demoTimeouts = [];
+
+        function playSongDemo() {
+            if (isPlayingDemo) {
+                // Stop current demo
+                demoTimeouts.forEach(t => clearTimeout(t));
+                demoTimeouts = [];
+                isPlayingDemo = false;
+                document.getElementById('btnPlayDemo').innerHTML = '▶ Сыграть Авто-Демо';
+                return;
+            }
+
+            isPlayingDemo = true;
+            document.getElementById('btnPlayDemo').innerHTML = '⏹ Остановить';
+
+            const song = melodies[activeMelody];
+            const baseFreq = 196.00; // All songs played on G string (String 1) for perfect label match
+
+            song.notes.forEach(note => {
+                const t = setTimeout(() => {
+                    if (note.fret !== -1) {
+                        const targetFreq = baseFreq * Math.pow(2, note.fret / 12);
+                        playBeautifulPluck(targetFreq);
+                        highlightFretVisual(note.fret);
+                    }
+                }, note.delay);
+                demoTimeouts.push(t);
+            });
+
+            // Reset button at end of song
+            const totalDuration = song.notes[song.notes.length - 1].delay + song.notes[song.notes.length - 1].duration;
+            const resetTimeout = setTimeout(() => {
+                isPlayingDemo = false;
+                document.getElementById('btnPlayDemo').innerHTML = '▶ Сыграть Авто-Демо';
+            }, totalDuration);
+            demoTimeouts.push(resetTimeout);
+        }
+
+
+        // Auto-check on page load if query parameters exist
         window.addEventListener('DOMContentLoaded', () => {
+            // Apply sidebar/header parameters
             const params = new URLSearchParams(window.location.search);
             const certVal = params.get('cert');
+            const nameVal = params.get('name');
+
             if (certVal) {
-                const input = document.getElementById('certInput');
-                if (input) {
-                    input.value = certVal;
-                    checkCertificate();
+                let formattedSerial = decodeURIComponent(certVal);
+                let defaultData = {
+                    owner: nameVal ? decodeURIComponent(nameVal) : 'Уважаемый покупатель',
+                    model: 'Домбра "Толқын" (Эксклюзивная)',
+                    wood: 'Черный орех, горная сосна Тянь-Шаня',
+                    date: '15.11.2025',
+                    master: 'Серик Ербол',
+                    id: 'DKZ-E' + Math.floor(1000 + Math.random() * 9000),
+                    warranty: '15.11.2028'
+                };
+
+                let matchedData = db[formattedSerial.toUpperCase()] || defaultData;
+                updatePassportVisuals(formattedSerial, matchedData);
+
+                // Switch to generate/verify view
+                if (formattedSerial.includes('KAZ')) {
+                    flipPassport(true);
+                } else {
+                    flipPassport(false);
                 }
+            } else {
+                // Initialize default gold active state
+                btnSideA.className = "flex-1 px-6 py-4 rounded-xl border border-brand-gold text-[10px] font-black uppercase tracking-widest text-white transition-all flex items-center justify-center gap-2 bg-brand-gold shadow-sm";
+                if (dotSideA) dotSideA.className = "w-2 h-2 rounded-full bg-white transition-all animate-pulse";
             }
         });
     </script>
