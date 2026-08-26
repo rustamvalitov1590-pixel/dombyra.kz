@@ -1,0 +1,74 @@
+[
+  {
+    "id": "guide",
+    "title": "Как выбрать свою первую домбру?",
+    "abstract": "6 ключевых вопросов, на которые нужно ответить перед покупкой инструмента для обучения.",
+    "image": "img/bastau.webp",
+    "is_featured": true,
+    "status": "published"
+  },
+  {
+    "id": "where-to-buy",
+    "title": "Где лучше покупать домбру?",
+    "abstract": "Сравнение рынков, музыкальных магазинов и частных мастерских: все плюсы и минусы.",
+    "image": "assets/img/article_where_to_buy.png",
+    "is_featured": false,
+    "status": "draft"
+  },
+  {
+    "id": "kids",
+    "title": "Домбра для ребенка",
+    "abstract": "Почему качество первого инструмента напрямую влияет на желание ребенка продолжать занятия.",
+    "image": "assets/img/article_kids.png",
+    "is_featured": false,
+    "status": "draft"
+  },
+  {
+    "id": "size",
+    "title": "Размер домбры",
+    "abstract": "Разбор того, как измеряется размер домбры и на что он влияет при выборе инструмента.",
+    "image": "img/kyrat.webp",
+    "is_featured": false,
+    "status": "draft"
+  },
+  {
+    "id": "wood",
+    "title": "Секреты дерева",
+    "abstract": "Породы дерева and их влияние на уникальный тембр и долговечность вашей домбры.",
+    "image": "assets/img/quality.png",
+    "is_featured": false,
+    "status": "draft"
+  },
+  {
+    "id": "comparison",
+    "title": "50к VS 500к тенге",
+    "abstract": "Разъяснение различий между бюджетными и дорогостоящими инструментами для новичков.",
+    "image": "img/adal.webp",
+    "is_featured": false,
+    "status": "draft"
+  },
+  {
+    "id": "courses",
+    "title": "Курсы обучения",
+    "abstract": "Рассказ об опыте обучения учеников за многие годы работы нашей мастерской.",
+    "image": "assets/img/studio.png",
+    "is_featured": false,
+    "status": "draft"
+  },
+  {
+    "id": "success-story",
+    "title": "Айтишник-домбрист",
+    "abstract": "Как специалист из IT исполнил свою мечту и научился играть на домбре с нуля.",
+    "image": "assets/img/workshop.jpg",
+    "is_featured": false,
+    "status": "draft"
+  },
+  {
+    "id": "inspiration",
+    "title": "Музыка против рутины",
+    "abstract": "История о том, как домбра помогает найти вдохновение и спокойствие вне рабочих будней.",
+    "image": "img/bastau.webp",
+    "is_featured": false,
+    "status": "draft"
+  }
+]
