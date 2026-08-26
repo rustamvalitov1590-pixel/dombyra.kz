@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg">
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Статья о домбре">
+    <title>Статья | DOMBYRA.KZ</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#C5A377',
+                            goldLight: '#E2D1B9',
+                            cream: '#FAF9F6',
+                            dark: '#3A3530',
+                            clay: '#8C7B6C',
+                            accent: '#F3F0E9',
+                            white: '#FFFFFF',
+                            primary: '#171C8F',
+                            lime: '#B7F702',
+                            neon: '#B7F702',
+                            red: '#EE5340',
+                            coral: '#EE5340',
+                            teal: '#197890',
+                            navy: '#081F2C',
+                            orange: '#E87133',
+                            light: '#E1EAF4',
+                            emerald: '#0B3C3F',
+                            emeraldLight: '#185B5F',
+                            'cert-blue': '#171C8F'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Comfortaa', 'sans-serif'],
+                        serif: ['Outfit', 'sans-serif'],
+                        display: ['Zexo', 'sans-serif'],
+                        kazakh: ['NauryzRedKeds', 'serif'],
+                        signature: ['"Great Vibes"', '"Marck Script"', 'cursive'],
+                    },
+                    borderRadius: {
+                        '4xl': '2.5rem',
+                        '5xl': '3.5rem',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-brand-cream font-['Inter'] text-brand-navy selection:bg-brand-neon selection:text-white overflow-x-hidden">
+    <!-- Floating Background Shapes -->
+    <div class="floating-shape bg-brand-neon/10 w-96 h-96 top-[-10%] left-[-10%]"></div>
+    <div class="floating-shape bg-brand-clay/5 w-[500px] h-[500px] top-[30%] right-[-15%]"></div>
+    
+    <header class="fixed w-full top-0 z-50 transition-all duration-300" id="mainHeader"></header>
+    <div id="mobileMenu" class="fixed inset-0 z-[60] bg-brand-cream transform translate-x-full transition-transform duration-300 md:hidden"></div>
+
+    <main class="pt-32 pb-24 min-h-screen">
+        <div class="w-full max-w-4xl mx-auto px-4 sm:px-6 md:px-10 lg:px-16 md:px-10" id="articleContainer">
+            <div class="text-center py-20">
+                <p class="text-brand-teal text-lg animate-pulse">Загрузка статьи...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Site Footer -->
+    <footer id="mainFooter" class="bg-brand-navy text-white py-24 border-t border-white/5"></footer>
+    <script src="assets/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const articleId = urlParams.get('id');
+            const container = document.getElementById('articleContainer');
+
+            if (!articleId) {
+                container.innerHTML = '<div class="text-center py-20 text-red-500">Статья не найдена.</div>';
+                return;
+            }
+
+            try {
+                const response = await fetch(`data/articles/${articleId}.json`);
+                if (!response.ok) throw new Error('Article not found');
+                const article = await response.json();
+
+                document.title = `${article.title} | DOMBYRA.KZ`;
+                document.querySelector('meta[name="description"]').content = article.abstract;
+
+                container.innerHTML = `
+                    <!-- Breadcrumbs Fallback for visually impaired / initial load -->
+                    <nav class="sr-only">
+                        <ol>
+                            <li><a href="/">Главная</a></li>
+                            <li><a href="articles.html">Статьи</a></li>
+                            <li>${article.title}</li>
+                        </ol>
+                    </nav>
+
+                    <div class="mb-12">
+                        <a href="articles.html" class="text-brand-orange text-sm font-bold uppercase tracking-widest hover:text-brand-navy transition-colors">← Назад к статьям</a>
+                    </div>
+
+                    <h1 class="text-4xl md:text-6xl font-light uppercase tracking-tight text-brand-navy mb-6 font-serif leading-tight">
+                        ${article.title}
+                    </h1>
+                    
+                    <div class="flex items-center gap-4 mb-10 border-b border-brand-teal/10 pb-6">
+                        ${article.author ? `<span class="text-sm font-bold text-brand-teal uppercase tracking-wider">${article.author}</span>` : ''}
+                        ${article.datePublished ? `<span class="text-sm text-brand-teal/70">${article.datePublished}</span>` : ''}
+                    </div>
+
+                    <div class="w-full aspect-video rounded-3xl overflow-hidden shadow-2xl mb-12 bg-white flex items-center justify-center p-8 border border-brand-teal/5">
+                        <img src="${article.image}" alt="${article.title}" class="w-full h-full object-contain">
+                    </div>
+
+                    <div class="prose prose-lg prose-brand max-w-none text-brand-navy">
+                        ${article.content}
+                    </div>
+                `;
+
+                // Add BreadcrumbList JSON-LD
+                const breadcrumbLd = {
+                    "@context": "https://schema.org",
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://dombyra.kz/" },
+                        { "@type": "ListItem", "position": 2, "name": "Статьи", "item": "https://dombyra.kz/articles.html" },
+                        { "@type": "ListItem", "position": 3, "name": article.title, "item": window.location.href }
+                    ]
+                };
+
+                // Add Article JSON-LD
+                const articleLd = {
+                    "@context": "https://schema.org",
+                    "@type": "Article",
+                    "headline": article.title,
+                    "image": "https://dombyra.kz/" + article.image,
+                    "datePublished": article.datePublished,
+                    "dateModified": article.dateModified || article.datePublished,
+                    "author": [{
+                        "@type": "Person",
+                        "name": article.author || "DOMBYRA.KZ"
+                    }],
+                    "publisher": {
+                        "@type": "Organization",
+                        "name": "DOMBYRA.KZ",
+                        "logo": {
+                            "@type": "ImageObject",
+                            "url": "https://dombyra.kz/assets/logo.png"
+                        }
+                    }
+                };
+
+                const breadcrumbScript = document.createElement('script');
+                breadcrumbScript.type = 'application/ld+json';
+                breadcrumbScript.text = JSON.stringify(breadcrumbLd);
+                document.head.appendChild(breadcrumbScript);
+
+                const articleScript = document.createElement('script');
+                articleScript.type = 'application/ld+json';
+                articleScript.text = JSON.stringify(articleLd);
+                document.head.appendChild(articleScript);
+
+            } catch (error) {
+                console.error(error);
+                container.innerHTML = '<div class="text-center py-20 text-red-500">Ошибка загрузки статьи.</div>';
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
