@@ -1,0 +1,125 @@
+/* DombyraAI Fretboard & Simulator styles ported from game.html */
+
+/* Core colors for the simulator (using Tailwind colors mapped to custom vars if needed, but we can just use the hex codes directly) */
+:root {
+  --sim-gold: #F5C842;
+  --sim-navy: #152238;
+  --sim-space: #0B1320;
+  --sim-violet: #8B5CF6;
+  --sim-cyan: #06B6D4;
+  --sim-coral: #F87171;
+}
+
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes metronome{0%,100%{transform:translateX(-20px);opacity:0.3}50%{transform:translateX(20px);opacity:1}}
+@keyframes tab-highlight{0%{background:rgba(212,175,55,0);transform:scale(1)}50%{background:rgba(212,175,55,0.3);transform:scale(1.1)}100%{background:rgba(212,175,55,0.15);transform:scale(1)}}
+@keyframes bar-fill{from{width:0}to{width:var(--target-w)}}
+@keyframes glow-pulse{0%,100%{box-shadow:0 0 10px rgba(72,201,176,0.3)}50%{box-shadow:0 0 30px rgba(72,201,176,0.8)}}
+
+.metro-ball{animation:metronome 0.6s ease-in-out infinite;}
+.bar-animated{animation:bar-fill 1.2s ease-out forwards;}
+.glow-anim{animation:glow-pulse 2s ease-in-out infinite;}
+.ripple-btn{position:relative;overflow:hidden;}
+
+/* DombyraAI Fretboard styles */
+.fretboard-zh {
+  display: flex;
+  flex-direction: column;
+  background-color: #be975b;
+  width: 100%;
+  height: 150px;
+  border: rgb(48, 33, 5) 4px solid;
+  min-width: 800px;
+}
+
+.string-zh {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+}
+
+.string-zh::before {
+  content: '';
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(#eee, #999);
+  box-shadow: 76px 3px 10px #806233;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.noteFret-zh {
+  display: flex;
+  flex: 1;
+  border-right: 5px solid;
+  border-image: linear-gradient(to left, #777, #bbb, #777) 1 100%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.noteFret-zh:last-child {
+  background-color: rgb(48, 33, 5);
+  min-width: 76px;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.noteFret-zh:first-child {
+  background-color: rgb(48, 33, 5);
+  min-width: 50px;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.noteFret-zh::before {
+  content: attr(data-note);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  line-height: 30px;
+  text-align: center;
+  z-index: 2;
+  color: #eee;
+  opacity: var(--noteDotOpacity, 0);
+  transition: opacity 0.1s;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.string-zh[string_number="1"] .noteFret-zh::before {
+  background: #92400e; /* amber-800 */
+}
+
+.string-zh[string_number="2"] .noteFret-zh::before {
+  background: #d97706; /* amber-600 */
+}
+
+.fretmark-zh::after {
+  content: '';
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: rgb(48, 33, 5);
+  bottom: -7.5px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.shadow-glow-gold {
+  box-shadow: 0 0 15px rgba(245, 200, 66, 0.7);
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

@@ -1,0 +1,62 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../Fonts/Montserrat-Regular (1).woff') format('woff'),
+         url('../Fonts/Montserrat-Regular (1).ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../Fonts/Montserrat-Medium.woff') format('woff'),
+         url('../Fonts/Montserrat-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../Fonts/Montserrat-SemiBold.woff') format('woff'),
+         url('../Fonts/Montserrat-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../Fonts/Montserrat-Bold.woff') format('woff'),
+         url('../Fonts/Montserrat-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Comfortaa';
+    src: url('../Fonts/Comfortaa-VariableFont_wght.woff') format('woff'),
+         url('../Fonts/Comfortaa-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NauryzRedKeds';
+    src: url('../Fonts/NauryzRedKeds.woff') format('woff'),
+         url('../Fonts/NauryzRedKeds.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Zexo';
+    src: url('../Fonts/Zexo.woff') format('woff'),
+         url('../Fonts/Zexo.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

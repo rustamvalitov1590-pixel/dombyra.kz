@@ -1,0 +1,31 @@
+.pattern-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-repeat: repeat;
+    background-size: 400px;
+    opacity: 0.03; /* subtle */
+}
+
+.pattern-bg-1 {
+    background-image: url('../pattern/svg/pattern-02.svg');
+}
+
+.pattern-bg-2 {
+    background-image: url('../pattern/svg/pattern-06.svg');
+}
+
+.floating-sticker {
+    position: absolute;
+    pointer-events: none;
+    z-index: 10;
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(2deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
